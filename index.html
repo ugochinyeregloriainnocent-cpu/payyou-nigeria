@@ -5,181 +5,146 @@
 <meta name="monetag" content="ec1df6c700">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PayYou Nigeria - Fast Secure Reliable</title>
-<script src="https://al5sm.com/tag.min.js" data-zone="0000000" async></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#f5f9f5;color:#0a3d1f}
-.top-white{background:#fff;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
-.logo{font-weight:800;font-size:20px;color:#0a7a2e}
-.logo span{color:#f6b100}
-.btn-login{background:#0a7a2e;color:#fff;border:none;padding:8px 14px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer}
-.green-nav{background:linear-gradient(90deg,#0a5a22,#0e8a33);border-radius:30px;margin:10px 12px;padding:8px 10px;display:flex;justify-content:space-around;color:#fff}
-.green-nav button{background:none;border:none;color:#fff;font-weight:600;font-size:13px;cursor:pointer;padding:6px 10px;border-radius:20px}
-.hero{background:linear-gradient(135deg,#0a5a22,#11943a);border-radius:24px;margin:12px;padding:14px;color:#fff}
-.hero h1{font-size:26px;font-weight:800}
-.hero h1 span{color:#f6d000}
-.badge-cheap{background:#f6d000;color:#0a3d1f;font-weight:800;font-size:12px;padding:4px 10px;border-radius:12px;display:inline-block}
-.refer-left{background:#f6d000;color:#0a3d1f;border-radius:12px;padding:6px 10px;font-size:12px;font-weight:700;display:inline-block;margin:8px 0}
-.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px}
-.svc{border-radius:14px;padding:14px 10px;color:#fff;text-align:center;cursor:pointer}
-.svc-green{background:#0a7a2e}
-.svc-blue{background:#2d8cff}
-.svc-yellow{background:#ffcc00;color:#3a2800}
-.svc-purple{background:#a855f7}
-.page{display:none;background:#fff;border-radius:18px;margin:12px;padding:16px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+body{background:#eef6ee;color:#0a3d1f;min-height:100vh;display:flex;flex-direction:column}
+.top-white{background:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px #0001}
+.logo-area{display:flex;align-items:center;gap:10px}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#0a7a2e,#0ec64d);color:#f6b100;font-weight:900;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 3px 8px #0a7a2e44}
+.logo{font-weight:900;font-size:20px;color:#0a7a2e}.logo span{color:#f6b100}
+.btn-login{background:linear-gradient(135deg,#0a7a2e,#0ec64d);color:#fff;border:none;padding:10px 18px;border-radius:25px;font-weight:700;font-size:13px;box-shadow:0 4px 12px #0a7a2e44}
+.green-nav{background:linear-gradient(135deg,#0a4a1e,#11943a);border-radius:28px;margin:14px 12px;padding:10px;display:flex;justify-content:space-around;color:#fff;box-shadow:0 6px 18px #0a7a2e55}
+.green-nav button{background:#fff1;border:none;color:#fff;font-weight:700;font-size:13px;padding:8px 16px;border-radius:20px}
+.hero{background:linear-gradient(135deg,#0a5a22 0%,#11943a 60%,#0ec64d 100%);border-radius:28px;margin:12px;padding:20px;color:#fff;position:relative;box-shadow:0 10px 30px #0a7a2e55;overflow:hidden}
+.hero::after{content:"📱";position:absolute;right:15px;bottom:5px;font-size:85px;opacity:0.2}
+.hero h1{font-size:30px;font-weight:900;line-height:1.1}.hero h1 span{color:#f6d000;text-shadow:0 2px 0 #0002}
+.badge-cheap{background:#f6d000;color:#0a3d1f;font-weight:900;font-size:12px;padding:6px 12px;border-radius:14px;display:inline-block;box-shadow:0 3px 8px #0003}
+.refer-left{background:linear-gradient(135deg,#f6d000,#ffb700);color:#0a3d1f;border-radius:14px;padding:8px 14px;font-size:13px;font-weight:800;display:inline-block;margin:10px 0;box-shadow:0 4px 10px #0003}
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 12px}
+.svc{border-radius:20px;padding:18px 10px;color:#fff;text-align:center;box-shadow:0 8px 20px #0002;transform:translateY(0);transition:0.2s;border:2px solid #fff3}
+.svc:active{transform:translateY(3px) scale(0.97)}
+.svc h3{font-size:17px;font-weight:800}.svc p{font-size:12px;opacity:0.9;margin-top:3px}
+.svc-green{background:linear-gradient(135deg,#0a7a2e,#0ec64d)}
+.svc-blue{background:linear-gradient(135deg,#2d8cff,#5aa2ff)}
+.svc-yellow{background:linear-gradient(135deg,#ffcc00,#ffb700);color:#3a2800}
+.svc-purple{background:linear-gradient(135deg,#a855f7,#d084ff)}
+.page{display:none;background:#fff;border-radius:22px;margin:12px;padding:18px;box-shadow:0 8px 24px #0001}
 .page.active{display:block}
-.input{width:100%;padding:12px;border:1px solid #ccc;border-radius:10px;margin:6px 0}
-.btn-primary{width:100%;background:#ff6a00;color:#fff;border:none;padding:13px;border-radius:10px;font-weight:700;margin-top:10px;cursor:pointer}
-.btn-green{width:100%;background:#0a7a2e;color:#fff;border:none;padding:13px;border-radius:10px;font-weight:700;margin-top:10px;cursor:pointer}
-.error-msg{color:#b91c1c;background:#fef2f2;border:1px solid #fecaca;padding:10px;border-radius:8px;font-size:13px;margin-top:10px;display:none}
-.success-msg{color:#065f46;background:#ecfdf5;border:1px solid #a7f3d0;padding:10px;border-radius:8px;font-size:13px;margin-top:10px;display:none}
-.wallet-box{background:#f8faf8;border:1px solid #dbe9df;border-radius:12px;padding:12px}
-.select{width:100%;padding:12px;border:1px solid #ccc;border-radius:10px;background:#fff}
-.footer{margin:18px 12px 0;background:#0a5a22;border-radius:18px 18px 0 0;padding:14px;color:#fff;text-align:center}
+.input, .select{width:100%;padding:14px;border:1.5px solid #c8dcc8;border-radius:12px;margin:7px 0;font-size:14px;background:#f9fdf9}
+.btn-primary{width:100%;background:linear-gradient(135deg,#ff6a00,#ff8c00);color:#fff;border:none;padding:15px;border-radius:14px;font-weight:800;font-size:15px;margin-top:12px;box-shadow:0 6px 16px #ff6a0044}
+.btn-green{width:100%;background:linear-gradient(135deg,#0a7a2e,#0ec64d);color:#fff;border:none;padding:15px;border-radius:14px;font-weight:800;margin-top:12px;box-shadow:0 6px 16px #0a7a2e44}
+.error-msg{color:#b91c1c;background:#fef2f2;border:1px solid #fecaca;padding:12px;border-radius:10px;font-size:13px;margin-top:12px;display:none}
+.success-msg{color:#065f46;background:#ecfdf5;border:1px solid #a7f3d0;padding:12px;border-radius:10px;font-size:13px;margin-top:12px;display:none}
+.wallet-box{background:linear-gradient(135deg,#f0faf0,#e0f0e0);border:1.5px solid #b8d8b8;border-radius:16px;padding:16px}
+.login-gate{background:#fff3cd;border:1.5px solid #ffe69c;padding:14px;border-radius:14px;color:#664d03;font-weight:800;text-align:center;margin:12px}
+.footer-tall{background:linear-gradient(180deg,#0a4a1e 0%,#0a7a2e 40%,#082e12 100%);border-radius:24px 24px 0 0;padding:24px 18px 40px;color:#fff;text-align:center;margin-top:auto;flex-grow:1;min-height:38vh;display:flex;flex-direction:column;justify-content:center;box-shadow:0 -10px 30px #0002}
+.footer-tall h3{font-size:18px;font-weight:900;margin-bottom:6px}
+.footer-tall p{font-size:13px;opacity:0.9;line-height:1.5}
+.footer-icons{margin-top:14px;font-size:22px;letter-spacing:8px}
 </style>
 </head>
 <body>
 
 <div class="top-white">
-  <div class="logo">PayYou <span>Nigeria</span></div>
+  <div class="logo-area"><div class="logo-icon">P</div><div class="logo">PayYou <span>Nigeria</span></div></div>
   <button class="btn-login" onclick="showPage('login-page')">Register / Login</button>
 </div>
 
 <div class="green-nav">
-  <button onclick="showPage('balance-page')">Balance</button>
-  <button onclick="showPage('fund-page')">Fund</button>
-  <button onclick="showPage('referral-page')">Referral</button>
+  <button onclick="checkLogin('balance-page')">Balance</button>
+  <button onclick="checkLogin('fund-page')">Fund</button>
+  <button onclick="checkLogin('referral-page')">Referral</button>
 </div>
 
 <div id="home-section">
   <div class="hero">
-    <div class="badge-cheap">Buy cheap</div>
+    <div class="badge-cheap">✨ Buy cheap</div>
     <h1>Airtime <span>& Data</span></h1>
-    <p>Top up anytime, anywhere!</p>
-    <div class="refer-left">Refer 10 people to get #1000</div>
+    <p style="margin-top:6px;opacity:0.95">Top up anytime, anywhere!</p>
+    <div class="refer-left">🎁 Refer 10 people to get #1000</div>
   </div>
+  <div id="gate-msg" class="login-gate">⚠️ Please Register/Login first to use PayYou Nigeria!</div>
   <div class="services-grid">
-    <div class="svc svc-green" onclick="showPage('airtime-page')"><h3>Airtime</h3><p>All networks</p></div>
-    <div class="svc svc-blue" onclick="showPage('data-page')"><h3>Data</h3><p>All networks</p></div>
-    <div class="svc svc-yellow" onclick="showPage('tv-page')"><h3>Tv subscription</h3></div>
-    <div class="svc svc-purple" onclick="showPage('electricity-page')"><h3>Electricity bills</h3></div>
+    <div class="svc svc-green" onclick="checkLogin('airtime-page')"><h3>📞 Airtime</h3><p>All networks</p></div>
+    <div class="svc svc-blue" onclick="checkLogin('data-page')"><h3>📶 Data</h3><p>All networks</p></div>
+    <div class="svc svc-yellow" onclick="checkLogin('tv-page')"><h3>📺 Tv subscription</h3></div>
+    <div class="svc svc-purple" onclick="checkLogin('electricity-page')"><h3>💡 Electricity bills</h3></div>
+  </div>
+  <div class="footer-tall">
+    <h3>PayYou Nigeria - Fast Secure Reliable</h3>
+    <p>24/7 Support - Instant Delivery - Cheapest Data in Nigeria<br>Refer 10 friends & get #1000 - Trusted by 10k+ Nigerians</p>
+    <div class="footer-icons">💳 ⚡ 📱 🌍</div>
+    <p style="margin-top:12px;font-size:11px;opacity:0.7">© 2026 PayYouNigeria.com - All Rights Reserved</p>
   </div>
 </div>
 
-<div id="balance-page" class="page">
-  <h2>My balance</h2>
-  <div class="wallet-box">
-    <h3 id="wallet-display">Wallet: ₦0</h3>
-    <div id="trans-list">No transactions</div>
-  </div>
-  <button class="btn-green" onclick="showPage('home-section')">Back to home</button>
-</div>
+<!-- PAGES -->
+<div id="balance-page" class="page"><h2>My Balance</h2><div class="wallet-box"><h3 id="wallet-display">Wallet: ₦0</h3><div id="trans-list" style="font-size:12px;margin-top:8px;opacity:0.7">No transactions yet</div></div><button class="btn-green" onclick="showPage('home-section')">Back to Home</button></div>
 
-<div id="fund-page" class="page">
-  <h2>Fund instantly - Nigeria</h2>
-  <input id="fund-amount" class="input" type="number" placeholder="e.g 1000">
-  <button class="btn-green" onclick="fundWallet()">Fund wallet now</button>
-  <div id="fund-msg" class="success-msg"></div>
-  <button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button>
-</div>
+<div id="fund-page" class="page"><h2>Fund Wallet Instantly</h2><input id="fund-amount" class="input" type="number" placeholder="Enter amount e.g 1000"><button class="btn-green" onclick="fundWallet()">Fund Wallet Now</button><div id="fund-msg" class="success-msg"></div><button class="btn-green" style="background:#ccc;color:#333;box-shadow:none" onclick="showPage('home-section')">Back</button></div>
 
-<div id="referral-page" class="page">
-  <h2>My referral</h2>
-  <div class="wallet-box">
-    <p>Share code and earn #1000</p>
-    <div style="background:#0a7a2e;color:#fff;padding:12px;border-radius:10px;text-align:center;font-weight:800" id="ref-code">PAYYOU-GLORIA-2026</div>
-    <button class="btn-green" onclick="copyRef()">Copy referral code</button>
-  </div>
-  <div id="ref-msg" class="success-msg"></div>
-  <button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button>
-</div>
+<div id="referral-page" class="page"><h2>My Referral</h2><div class="wallet-box"><p style="font-weight:700;margin-bottom:8px">Share & Earn #1000</p><div id="ref-code" style="background:linear-gradient(135deg,#0a7a2e,#0ec64d);color:#fff;padding:14px;border-radius:12px;text-align:center;font-weight:900;letter-spacing:1px">PAYYOU-GLORIA-2026</div><button class="btn-green" onclick="copyRef()">Copy Referral Code</button></div><div id="ref-msg" class="success-msg"></div><button class="btn-green" style="background:#ccc;color:#333;box-shadow:none" onclick="showPage('home-section')">Back</button></div>
 
 <div id="data-page" class="page">
-  <h2>Buy data</h2>
-  <input id="data-phone" class="input" placeholder="Phone 080...">
-  <select class="select">
-    <option>MTN 1GB - 30 days - ₦550</option>
-    <option>Glo 1GB - 30 days - ₦500</option>
-    <option>Airtel 1GB - 30 days - ₦500</option>
-  </select>
-  <button class="btn-primary" onclick="buyData()">Buy data now - Pay ₦500</button>
-  <div id="data-error" class="error-msg">Insufficient balance! Please fund account first</div>
-  <div id="data-success" class="success-msg"></div>
-  <button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button>
+<h2>Buy Data - All Networks</h2>
+<input id="data-phone" class="input" placeholder="Phone number 080...">
+<select id="data-network" class="select"><option>MTN</option><option>Glo</option><option>Airtel</option><option>9mobile</option></select>
+<select id="data-plan" class="select">
+<option value="100">100MB (Daily) - ₦100</option>
+<option value="200">200MB (Daily) - ₦200</option>
+<option value="500">500MB (2 Days) - ₦300</option>
+<option value="500">500MB (30 Days) - ₦400</option>
+<option value="550">1GB (30 Days) - ₦550</option>
+<option value="800">2GB (30 Days) - ₦1100</option>
+<option value="700">2.5GB (2 Days) - ₦700</option>
+<option value="1200">3GB (30 Days) - ₦1300</option>
+<option value="500">3.5GB (1 Day) - ₦500</option>
+<option value="1000">4GB (2 Days) - ₦1000</option>
+<option value="1500">5GB (30 Days) - ₦1500</option>
+<option value="2000">6GB (7 Days) - ₦2000</option>
+</select>
+<button class="btn-primary" onclick="buyData()">Buy Data Now</button>
+<div id="data-error" class="error-msg">Insufficient balance! Please fund account first</div>
+<div id="data-success" class="success-msg"></div>
+<button class="btn-green" style="background:#ccc;color:#333;box-shadow:none" onclick="showPage('home-section')">Back</button>
 </div>
 
-<div id="airtime-page" class="page">
-  <h2>Buy airtime</h2>
-  <input id="airtime-phone" class="input" placeholder="Phone">
-  <input id="airtime-amount" class="input" type="number" placeholder="Amount e.g 500">
-  <button class="btn-primary" onclick="buyAirtime()">Buy airtime now</button>
-  <div id="airtime-error" class="error-msg">Insufficient balance! Please fund account first</div>
-  <div id="airtime-success" class="success-msg"></div>
-  <button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button>
-</div>
+<div id="airtime-page" class="page"><h2>Buy Airtime</h2><input id="airtime-phone" class="input" placeholder="Phone"><input id="airtime-amount" class="input" type="number" placeholder="Amount e.g 500"><button class="btn-primary" onclick="buyAirtime()">Buy Airtime Now</button><div id="airtime-error" class="error-msg">Insufficient balance! Please fund account first</div><div id="airtime-success" class="success-msg"></div><button class="btn-green" style="background:#ccc;color:#333;box-shadow:none" onclick="showPage('home-section')">Back</button></div>
 
-<div id="tv-page" class="page">
-  <h2>Tv subscription</h2>
-  <input class="input" placeholder="Decoder number">
-  <button class="btn-primary" onclick="showError('tv-error')">Subscribe now</button>
-  <div id="tv-error" class="error-msg">Insufficient balance! Please fund account first</div>
-  <button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button>
-</div>
+<div id="tv-page" class="page"><h2>Tv Subscription</h2><input class="input" placeholder="Decoder number"><button class="btn-primary" onclick="showError('tv-error')">Subscribe Now</button><div id="tv-error" class="error-msg">Insufficient balance! Please fund account first</div><button class="btn-green" style="background:#ccc;color:#333;box-shadow:none" onclick="showPage('home-section')">Back</button></div>
 
-<div id="electricity-page" class="page">
-  <h2>Electricity bills</h2>
-  <input class="input" placeholder="Meter number">
-  <input class="input" type="number" placeholder="Amount">
-  <button class="btn-primary" onclick="showError('elec-error')">Pay now</button>
-  <div id="elec-error" class="error-msg">Insufficient balance! Please fund account first</div>
-  <button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button>
-</div>
+<div id="electricity-page" class="page"><h2>Electricity Bills</h2><input class="input" placeholder="Meter number"><input class="input" type="number" placeholder="Amount"><button class="btn-primary" onclick="showError('elec-error')">Pay Now</button><div id="elec-error" class="error-msg">Insufficient balance! Please fund account first</div><button class="btn-green" style="background:#ccc;color:#333;box-shadow:none" onclick="showPage('home-section')">Back</button></div>
 
 <div id="login-page" class="page">
-  <h2>Register / Login</h2>
-  <input id="reg-name" class="input" placeholder="Your name">
-  <input id="reg-email" class="input" placeholder="Phone or email">
-  <input class="input" type="password" placeholder="Password">
-  <button class="btn-green" onclick="doLogin()">Register / Login</button>
-  <div id="login-success" class="success-msg"></div>
-  <button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button>
+<h2>Register First, Then Login</h2>
+<input id="reg-name" class="input" placeholder="Full name">
+<input id="reg-phone" class="input" placeholder="Phone number">
+<input id="reg-pass" class="input" type="password" placeholder="Create password">
+<button class="btn-green" onclick="doRegister()">Register Now</button>
+<hr style="margin:16px 0">
+<input id="login-phone" class="input" placeholder="Phone for login">
+<input id="login-pass" class="input" type="password" placeholder="Password">
+<button class="btn-green" style="background:linear-gradient(135deg,#ff6a00,#ff8c00)" onclick="doLogin()">Login</button>
+<div id="login-success" class="success-msg"></div><div id="login-error" class="error-msg"></div>
+<button class="btn-green" style="background:#ccc;color:#333;box-shadow:none" onclick="showPage('home-section')">Back</button>
 </div>
 
-<div class="footer">PayYou Nigeria - Fast Secure Reliable - 24/7 Support - Refer 10 get #1000</div>
-
 <script>
-let wallet = parseInt(localStorage.getItem('payyou_wallet')||'0');
-let trans = JSON.parse(localStorage.getItem('payyou_trans')||'[]');
-updateWallet();
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const home=document.getElementById('home-section');
-  if(id==='home-section'){home.style.display='block';}else{home.style.display='none';document.getElementById(id).classList.add('active');}
-}
-function updateWallet(){document.getElementById('wallet-display').innerText='Wallet: ₦'+wallet;}
-function fundWallet(){
-  const amt=parseInt(document.getElementById('fund-amount').value);
-  if(!amt){alert('Enter amount');return;}
-  wallet+=amt;localStorage.setItem('payyou_wallet',wallet);
-  document.getElementById('fund-msg').style.display='block';
-  document.getElementById('fund-msg').innerText='Success! ₦'+amt+' added. Balance: ₦'+wallet;
-}
-function buyData(){
-  if(wallet<500){document.getElementById('data-error').style.display='block';return;}
-  wallet-=500;localStorage.setItem('payyou_wallet',wallet);updateWallet();
-  document.getElementById('data-success').style.display='block';
-  document.getElementById('data-success').innerText='Success! Data sent. Balance: ₦'+wallet;
-}
-function buyAirtime(){
-  const cost=parseInt(document.getElementById('airtime-amount').value||'0');
-  if(wallet<cost){document.getElementById('airtime-error').style.display='block';return;}
-  wallet-=cost;localStorage.setItem('payyou_wallet',wallet);updateWallet();
-  document.getElementById('airtime-success').style.display='block';
-  document.getElementById('airtime-success').innerText='Success! Airtime sent. Balance: ₦'+wallet;
-}
-function showError(id){document.getElementById(id).style.display='block';}
-function copyRef(){navigator.clipboard.writeText('PAYYOU-GLORIA-2026');document.getElementById('ref-msg').style.display='block';document.getElementById('ref-msg').innerText='Copied!';}
-function doLogin(){const n=document.getElementById('reg-name').value;if(!n){alert('Enter name');return;}document.getElementById('login-success').style.display='block';document.getElementById('login-success').innerText='Welcome '+n+'!';}
+let wallet=parseInt(localStorage.getItem('payyou_wallet')||'0');
+let user=JSON.parse(localStorage.getItem('payyou_user')||'null');
+let logged=localStorage.getItem('payyou_logged')==='yes';
+updateWallet(); checkGate();
+function checkGate(){ const g=document.getElementById('gate-msg'); if(g) g.style.display=logged?'none':'block'; }
+function showPage(id){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); const home=document.getElementById('home-section'); if(id==='home-section'){ home.style.display='flex'; home.style.flexDirection='column'; } else { home.style.display='none'; document.getElementById(id).classList.add('active'); } checkGate(); }
+function checkLogin(target){ if(!logged){ alert('Please Register/Login first!'); showPage('login-page'); const e=document.getElementById('login-error'); e.style.display='block'; e.innerText='You must register first, then login before using PayYou!'; return; } showPage(target); }
+function updateWallet(){ const el=document.getElementById('wallet-display'); if(el) el.innerText='Wallet: ₦'+wallet; }
+function doRegister(){ const n=document.getElementById('reg-name').value; const ph=document.getElementById('reg-phone').value; const ps=document.getElementById('reg-pass').value; if(!n||!ph||!ps){ alert('Fill all registration fields'); return; } localStorage.setItem('payyou_user', JSON.stringify({name:n,phone:ph,pass:ps})); const s=document.getElementById('login-success'); s.style.display='block'; s.innerText='Registration successful! Now login below.'; }
+function doLogin(){ const ph=document.getElementById('login-phone').value; const ps=document.getElementById('login-pass').value; const saved=JSON.parse(localStorage.getItem('payyou_user')||'null'); if(!saved){ const e=document.getElementById('login-error'); e.style.display='block'; e.innerText='No account found! Register first!'; return; } if(ph===saved.phone && ps===saved.pass){ localStorage.setItem('payyou_logged','yes'); logged=true; const s=document.getElementById('login-success'); s.style.display='block'; s.innerText='Welcome '+saved.name+'! Login successful!'; setTimeout(()=>showPage('home-section'),1000); } else { const e=document.getElementById('login-error'); e.style.display='block'; e.innerText='Wrong phone or password!'; } }
+function fundWallet(){ if(!logged){ checkLogin(); return; } const amt=parseInt(document.getElementById('fund-amount').value); if(!amt){ alert('Enter amount'); return; } wallet+=amt; localStorage.setItem('payyou_wallet',wallet); const m=document.getElementById('fund-msg'); m.style.display='block'; m.innerText='Success! ₦'+amt+' added. Balance: ₦'+wallet; updateWallet(); }
+function buyData(){ const planEl=document.getElementById('data-plan'); const price=parseInt(planEl.value); if(wallet<price){ document.getElementById('data-error').style.display='block'; return; } wallet-=price; localStorage.setItem('payyou_wallet',wallet); updateWallet(); const s=document.getElementById('data-success'); s.style.display='block'; s.innerText='Success! '+planEl.options[planEl.selectedIndex].text+' sent! Balance: ₦'+wallet; }
+function buyAirtime(){ const cost=parseInt(document.getElementById('airtime-amount').value||'0'); if(wallet<cost){ document.getElementById('airtime-error').style.display='block'; return; } wallet-=cost; localStorage.setItem('payyou_wallet',wallet); updateWallet(); const s=document.getElementById('airtime-success'); s.style.display='block'; s.innerText='Success! Airtime sent! Balance: ₦'+wallet; }
+function showError(id){ document.getElementById(id).style.display='block'; }
+function copyRef(){ navigator.clipboard.writeText('PAYYOU-GLORIA-2026'); const m=document.getElementById('ref-msg'); m.style.display='block'; m.innerText='Copied!'; }
 </script>
 </body>
 </html>
