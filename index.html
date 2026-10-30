@@ -1,54 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAYYOU - Buy Cheap Airtime & Data</title>
+<title>PayYou Nigeria - Fast Secure Reliable</title>
 <style>
-body{margin:0;font-family:Arial;background:#F5F7FB}
-.hero-navy{background:linear-gradient(135deg,#0F2A4D,#1A3A65);border-radius:20px;margin:12px;padding:14px 12px 18px;color:#FFFEF7;position:relative;overflow:hidden;min-height:180px}
-.hero-navy h1{font-size:28px;line-height:1.1;margin:0;font-weight:900}
-.hero-navy h1 span{color:#FFD700}
-.hero-navy p{font-size:13px;margin:8px 0 0;opacity:0.9}
-.refer-yellow{background:#FFD700;color:#0F2A4D;border-radius:14px;padding:8px 14px;font-size:12px;font-weight:800;display:inline-block;margin-top:10px}
-.card{background:#fff;border-radius:18px;margin:12px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
-.card h2{font-size:16px;margin:0 0 10px;color:#0F2A4D}
-select,input,button{width:100%;padding:12px;border-radius:12px;border:1px solid #ddd;margin:6px 0;font-size:14px;box-sizing:border-box}
-button{background:#0F2A4D;color:#fff;border:none;font-weight:800}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#F8F9FF;color:#0F2A4D}
+.header{display:flex;justify-content:space-between;align-items:center;padding:12px 12px;background:#fff}
+.header h2{font-size:20px;font-weight:900}
+.header h2 span{color:#E6B800}
+.header small{display:block;font-size:11px;color:#666;font-weight:400}
+.btn-login{background:#0F2A4D;color:#fff;padding:10px 18px;border-radius:24px;border:none;font-size:13px;font-weight:700}
+.nav-pills{background:#0F2A4D;border-radius:24px;margin:8px 12px;padding:10px 14px;display:flex;justify-content:space-between;color:#fff;font-size:13px;font-weight:700}
+.hero-navy{background:linear-gradient(135deg,#0F2A4D 0%,#1A3D6B 100%);border-radius:20px;margin:12px;padding:18px 16px 20px;color:#fff;position:relative;overflow:hidden;width:auto}
+.badge-yellow{background:#FFD700;color:#0F2A4D;border-radius:20px;padding:6px 12px;font-size:11px;font-weight:900;display:inline-block;margin-bottom:8px}
+.hero-navy h1{font-size:26px;line-height:1.15;font-weight:900;margin:0}
+.hero-navy h1 .y{color:#FFD700}
+.hero-navy .sub{font-size:13px;margin-top:6px;opacity:0.9}
+.refer-yellow{background:#FFD700;color:#0F2A4D;border-radius:24px;padding:10px 16px;font-size:13px;font-weight:800;display:inline-block;margin-top:12px}
+.refer-small{font-size:11px;font-style:italic;margin-top:8px;opacity:0.8}
+.our-services{text-align:center;margin:16px 0 10px}
+.our-services span{background:#0F2A4D;color:#fff;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 12px}
+.box{border-radius:16px;padding:16px 10px;text-align:center;color:#fff;font-weight:800;font-size:14px}
+.box small{display:block;font-weight:400;font-size:12px;margin-top:2px}
+.box.dark{background:#0F2A4D}
+.box.blue{background:#2A8CFF}
+.box.yellow{background:#FFD700;color:#0F2A4D}
+.box.purple{background:#A855F7}
+.footer{background:#0F2A4D;color:#FFD700;text-align:center;padding:14px;border-radius:20px 20px 0 0;margin:14px 12px 0 12px;font-weight:800;font-size:14px}
+select,input,button{width:100%;padding:12px;border-radius:12px;border:1px solid #ddd;margin-top:8px}
 </style>
 </head>
 <body>
 
+<div class="header">
+<div><h2>PayYou <span>Nigeria</span><small>Fast • Secure • Reliable</small></h2></div>
+<button class="btn-login">Register / Login</button>
+</div>
+
+<div class="nav-pills">
+<div>💳 Balance</div><div>|</div><div>👤 Fund</div><div>|</div><div>👥 Referral</div>
+</div>
+
 <div class="hero-navy">
-<h1>BUY CHEAP<br><span>AIRTIME & DATA</span></h1>
-<p>Top Up Anytime, Anywhere – Instant Delivery & Secure Payment for All Networks</p>
-<div class="refer-yellow">Refer 10 people and get N1,000 airtime</div>
+<div class="badge-yellow">BUY CHEAP</div>
+<h1>AIRTIME &<br><span class="y">DATA</span></h1>
+<div class="sub">Top Up Anytime, Anywhere!</div>
+<div class="refer-yellow">Refer 10 people to get #1000</div>
+<div class="refer-small">Stay Connected Always!</div>
 </div>
 
-<div class="card">
-<h2>Buy Data - All Networks</h2>
-<select id="network">
-<option value="MTN">MTN</option>
-<option value="GLO">GLO</option>
-<option value="AIRTEL">AIRTEL</option>
-<option value="9MOBILE">9MOBILE</option>
-</select>
-<select id="plan"></select>
-<button onclick="buy()">Buy Now</button>
+<div class="our-services"><span>Our Services</span></div>
+
+<div class="grid">
+<div class="box dark">📱<br>Airtime<br><small>All Networks</small></div>
+<div class="box blue">🗄️<br>Data<br><small>All Networks</small></div>
+<div class="box yellow">📺<br>TV Subscription</div>
+<div class="box purple">⚡<br>Electricity Bills</div>
 </div>
 
-<script>
-const plans={
-'MTN':[{t:'500MB #200 (30days)',p:200},{t:'1GB #300 (30days)',p:300},{t:'2GB #500 (30days)',p:500},{t:'2.5GB #1000 (2days)',p:1000},{t:'3GB #600 (30days)',p:600},{t:'5GB #1000 (30days)',p:1000},{t:'10GB #2000 (30days)',p:2000}],
-'GLO':[{t:'100mb-1day-100',p:100},{t:'200mb-14 days-200',p:200},{t:'750mb-1 day-400',p:400},{t:'500mb-30days-500',p:500},{t:'1.5Gb-1 day-450',p:450},{t:'1Gb-3 days-450',p:450},{t:'1Gb-30 days-600',p:600},{t:'2.5Gb-2 days-600',p:600},{t:'1.5Gb+(2GbNight)-2 days-700',p:700},{t:'2Gb-30 days-900',p:900},{t:'3Gb-3 days-1200',p:1200},{t:'3Gb-30 days-1400',p:1400},{t:'5Gb-7 days-2000',p:2000},{t:'5Gb-3days-1900',p:1900},{t:'5Gb-30days-2200',p:2200},{t:'10Gb-7 days-2500',p:2500}],
-'AIRTEL':[{t:'100MB #100',p:100},{t:'300MB #200',p:200},{t:'500MB #500',p:500},{t:'1GB #1000',p:1000},{t:'2GB #1200',p:1200},{t:'5GB #2500',p:2500},{t:'10GB #4000',p:4000}],
-'9MOBILE':[{t:'100mb-1day-100',p:100},{t:'200mb-14 days-200',p:200},{t:'750mb-1 day-400',p:400},{t:'500mb-30days-500',p:500},{t:'1.5Gb-1 day-450',p:450},{t:'1Gb-3 days-450',p:450},{t:'1Gb-30 days-600',p:600},{t:'2.5Gb-2 days-600',p:600},{t:'1.5Gb+(2GbNight)-2 days-700',p:700},{t:'2Gb-30 days-900',p:900},{t:'3Gb-3 days-1200',p:1200},{t:'3Gb-30 days-1400',p:1400},{t:'5Gb-7 days-2000',p:2000},{t:'5Gb-3days-1900',p:1900},{t:'5Gb-30days-2200',p:2200},{t:'10Gb-7 days-2500',p:2500}]
-};
-const net=document.getElementById('network');
-const plan=document.getElementById('plan');
-function load(){plan.innerHTML='';plans[net.value].forEach(o=>{let op=document.createElement('option');op.value=o.p;op.text=o.t;plan.add(op)})}
-net.addEventListener('change',load);load();
-function buy(){alert('You selected: '+plan.options[plan.selectedIndex].text)}
-</script>
+<div class="footer">PayYou Nigeria - Fast • Secure • Reliable</div>
+
 </body>
 </html>
