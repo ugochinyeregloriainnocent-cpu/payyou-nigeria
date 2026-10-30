@@ -1,96 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PayYou Nigeria</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#F8F9FF}
-.header{display:flex;justify-content:space-between;align-items:center;padding:12px 12px;background:#fff}
-.header h2{font-size:19px;font-weight:900;color:#0F2A4D}
-.header h2 span{color:#E6B800}
-.header small{display:block;font-size:11px;color:#666;font-weight:400}
-.btn-login{background:#0F2A4D;color:#FFD700;padding:10px 18px;border-radius:24px;border:none;font-size:13px;font-weight:700;cursor:pointer}
-.nav-pills{background:#0F2A4D;border-radius:24px;margin:8px 12px;padding:11px 14px;display:flex;justify-content:space-between;color:#fff;font-size:13px;font-weight:700}
-.nav-pills div{cursor:pointer}
-.hero-navy{background:#0F2A4D;border-radius:20px;margin:10px 12px;padding:20px 16px;color:#fff}
-.badge-yellow{background:#FFD700;color:#0F2A4D;border-radius:20px;padding:6px 12px;font-size:11px;font-weight:900;display:inline-block;margin-bottom:8px}
-.hero-navy h1{font-size:27px;line-height:1.15;font-weight:900}
-.hero-navy h1 .y{color:#FFD700}
-.hero-navy .sub{font-size:13px;margin-top:6px;opacity:0.9}
-.refer-yellow{background:#FFD700;color:#0F2A4D;border-radius:24px;padding:10px 16px;font-size:13px;font-weight:800;display:inline-block;margin-top:12px;cursor:pointer}
-.refer-small{font-size:11px;font-style:italic;margin-top:8px;opacity:0.8}
-.our-services{text-align:center;margin:16px 0 10px}
-.our-services span{background:#0F2A4D;color:#fff;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:700}
+body{background:#F8F9FF;font-family:Arial,sans-serif}
+.header{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#fff}
+.header h2{font-size:19px;font-weight:900;color:#0F2A4D;line-height:1.1}
+.header h2 span{color:#FFD700}
+.header small{font-size:11px;color:#666;font-weight:400;display:block}
+.btn-login{background:#0F2A4D;color:#FFD700;padding:11px 20px;border-radius:24px;border:none;font-weight:700;cursor:pointer}
+.nav-pills{background:#0F2A4D;border-radius:24px;margin:8px 12px;padding:12px 14px;display:flex;justify-content:space-between;color:#fff;font-weight:700;font-size:13px}
+.nav-pills b{cursor:pointer}
+.hero-navy{background:#0F2A4D;border-radius:20px;margin:10px 12px;padding:18px 16px;color:#fff}
+.badge{background:#FFD700;color:#0F2A4D;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block}
+.hero-navy h1{font-size:28px;margin-top:8px;line-height:1.1;font-weight:900}
+.hero-navy h1 y{color:#FFD700}
+.sub{font-size:13px;margin-top:4px}
+.refer{background:#FFD700;color:#0F2A4D;padding:10px 14px;border-radius:24px;font-weight:800;font-size:13px;display:inline-block;margin-top:12px;cursor:pointer}
+.our{text-align:center;margin:14px 0 10px}
+.our span{background:#0F2A4D;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 12px}
-.box{border-radius:16px;padding:16px 10px;text-align:center;color:#fff;font-weight:800;font-size:14px;cursor:pointer}
-.box small{display:block;font-weight:400;font-size:12px;margin-top:2px}
-.box.dark{background:#0F2A4D}
-.box.blue{background:#2A8CFF}
-.box.yellow{background:#FFD700;color:#0F2A4D}
-.box.purple{background:#A855F7}
-.footer{background:#0F2A4D;color:#FFD700;text-align:center;padding:14px;border-radius:20px;margin:14px 12px 0 12px;font-weight:800;font-size:14px}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:999}
-.modal-box{background:#fff;border-radius:20px;padding:20px;width:90%;max-width:350px}
-.modal-box h3{color:#0F2A4D;text-align:center}
-.modal-box input,.modal-box select{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #ddd}
-.modal-box button{width:100%;padding:12px;background:#0F2A4D;color:#FFD700;border:none;border-radius:12px;font-weight:800;margin-top:10px;cursor:pointer}
-.close{float:right;font-size:22px;cursor:pointer}
+.box{border-radius:16px;padding:18px 10px;text-align:center;font-weight:800;font-size:14px;color:#fff;cursor:pointer}
+.dark{background:#0F2A4D} .blue{background:#2A8CFF} .yellow{background:#FFD700;color:#0F2A4D} .purple{background:#A855F7}
+.footer{background:#0F2A4D;color:#FFD700;text-align:center;padding:14px;border-radius:20px;margin:14px 12px 0;font-weight:800;font-size:14px}
+.m{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:99}
+.mb{background:#fff;border-radius:16px;padding:18px;width:90%;max-width:320px}
+.mb input,.mb select{width:100%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:10px}
+.mb button{width:100%;padding:11px;background:#0F2A4D;color:#FFD700;border:none;border-radius:10px;font-weight:800;margin-top:8px}
 </style>
 </head>
 <body>
-
-<div class="header">
-<div><h2>PayYou <span>Nigeria</span><small>Fast • Secure • Reliable</small></h2></div>
-<button class="btn-login" onclick="openModal('loginModal')">Register / Login</button>
-</div>
-
-<div class="nav-pills">
-<div onclick="openModal('balanceModal')">💳 Balance</div><div>|</div><div onclick="openModal('fundModal')">👤 Fund</div><div>|</div><div onclick="openModal('referModal')">👥 Referral</div>
-</div>
-
-<div class="hero-navy">
-<div class="badge-yellow">BUY CHEAP</div>
-<h1>AIRTIME &<br><span class="y">DATA</span></h1>
-<div class="sub">Top Up Anytime, Anywhere!</div>
-<div class="refer-yellow" onclick="openModal('referModal')">Refer 10 people to get #1000</div>
-<div class="refer-small">Stay Connected Always!</div>
-</div>
-
-<div class="our-services"><span>Our Services</span></div>
-
+<div class="header"><h2>PayYou<br><span>Nigeria</span><small>Fast • Secure • Reliable</small></h2><button class="btn-login" onclick="o('lg')">Register / Login</button></div>
+<div class="nav-pills"><b onclick="o('bal')">💳 Balance</b><b>|</b><b onclick="o('fund')">👤 Fund</b><b>|</b><b onclick="o('ref')">👥 Referral</b></div>
+<div class="hero-navy"><div class="badge">BUY CHEAP</div><h1>AIRTIME &<br><y>DATA</y></h1><div class="sub">Top Up Anytime, Anywhere!</div><div class="refer" onclick="o('ref')">Refer 10 people to get #1000</div><div style="font-size:11px;font-style:italic;margin-top:8px;opacity:.8">Stay Connected Always!</div></div>
+<div class="our"><span>Our Services</span></div>
 <div class="grid">
-<div class="box dark" onclick="openModal('airtimeModal')">📱<br>Airtime<br><small>All Networks</small></div>
-<div class="box blue" onclick="openModal('dataModal')">🗄️<br>Data<br><small>All Networks</small></div>
-<div class="box yellow" onclick="openModal('tvModal')">📺<br>TV Subscription</div>
-<div class="box purple" onclick="openModal('electricModal')">⚡<br>Electricity Bills</div>
+<div class="box dark" onclick="o('air')">📱<br>Airtime<br><small style="font-weight:400;font-size:12px">All Networks</small></div>
+<div class="box blue" onclick="o('data')">🗄️<br>Data<br><small style="font-weight:400;font-size:12px">All Networks</small></div>
+<div class="box yellow" onclick="o('tv')">📺<br>TV Subscription</div>
+<div class="box purple" onclick="o('el')">⚡<br>Electricity Bills</div>
 </div>
-
 <div class="footer">PayYou Nigeria - Fast • Secure • Reliable</div>
 
-<!-- MODALS -->
-<div id="loginModal" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('loginModal')">&times;</span><h3>Register / Login</h3><input type="text" placeholder="Phone / Email"><input type="password" placeholder="Password"><button onclick="alert('Login Successful!')">Login</button><button onclick="alert('Registered!')" style="background:#FFD700;color:#0F2A4D">Register</button></div></div>
-
-<div id="balanceModal" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('balanceModal')">&times;</span><h3>Your Balance</h3><p style="text-align:center;font-size:24px;font-weight:900;color:#0F2A4D;margin:20px 0">#0.00</p><button onclick="openModal('fundModal')">Fund Wallet</button></div></div>
-
-<div id="fundModal" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('fundModal')">&times;</span><h3>Fund Wallet</h3><input type="number" placeholder="Enter Amount"><select><option>Paystack</option><option>Bank Transfer</option></select><button onclick="alert('Redirecting to Payment...')">Fund Now</button></div></div>
-
-<div id="referModal" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('referModal')">&times;</span><h3>Referral Bonus</h3><p style="text-align:center;margin:15px 0">Refer 10 people to get #1000! Your code: <b>PAYYOU123</b></p><button onclick="alert('Link Copied!')">Copy Referral Link</button></div></div>
-
-<div id="airtimeModal" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('airtimeModal')">&times;</span><h3>Buy Airtime</h3><select><option>MTN</option><option>Glo</option><option>Airtel</option><option>9Mobile</option></select><input type="text" placeholder="Phone Number"><input type="number" placeholder="Amount"><button onclick="alert('Airtime Purchase Successful!')">Buy Now</button></div></div>
-
-<div id="dataModal" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('dataModal')">&times;</span><h3>Buy Data</h3><select><option>MTN</option><option>Glo</option><option>Airtel</option><option>9Mobile</option></select><input type="text" placeholder="Phone Number"><select><option>1GB - #300</option><option>2GB - #600</option><option>5GB - #1500</option></select><button onclick="alert('Data Purchase Successful!')">Buy Now</button></div></div>
-
-<div id="tvModal" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('tvModal')">&times;</span><h3>TV Subscription</h3><select><option>DSTV</option><option>GOTV</option><option>Startimes</option></select><input type="text" placeholder="Smart Card Number"><button onclick="alert('TV Subscription Successful!')">Subscribe</button></div></div>
-
-<div id="electricModal" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('electricModal')">&times;</span><h3>Electricity Bills</h3><select><option>IKEDC</option><option>EKEDC</option><option>PHED</option></select><input type="text" placeholder="Meter Number"><input type="number" placeholder="Amount"><button onclick="alert('Electricity Payment Successful!')">Pay Now</button></div></div>
+<div id="lg" class="m" onclick="c(event,'lg')"><div class="mb"><h3>Register / Login</h3><input placeholder="Phone"><input type="password" placeholder="Password"><button onclick="alert('Login Successful')">Login</button><button style="background:#FFD700;color:#0F2A4D" onclick="alert('Registered!')">Register</button></div></div>
+<div id="bal" class="m" onclick="c(event,'bal')"><div class="mb"><h3>Balance</h3><p style="text-align:center;font-size:26px;font-weight:900;margin:18px 0">#0.00</p><button onclick="o('fund')">Fund Wallet</button></div></div>
+<div id="fund" class="m" onclick="c(event,'fund')"><div class="mb"><h3>Fund Wallet</h3><input type="number" placeholder="Amount"><select><option>Paystack</option><option>Bank Transfer</option></select><button onclick="alert('Payment Page')">Fund Now</button></div></div>
+<div id="ref" class="m" onclick="c(event,'ref')"><div class="mb"><h3>Referral</h3><p style="text-align:center;margin:10px 0">Your Code: <b>PAYYOU123</b><br>Refer 10 get #1000</p><button onclick="alert('Link Copied!')">Copy Link</button></div></div>
+<div id="air" class="m" onclick="c(event,'air')"><div class="mb"><h3>Buy Airtime</h3><select><option>MTN</option><option>Glo</option><option>Airtel</option><option>9Mobile</option></select><input placeholder="Phone"><input type="number" placeholder="Amount"><button onclick="alert('Airtime Sent!')">Buy</button></div></div>
+<div id="data" class="m" onclick="c(event,'data')"><div class="mb"><h3>Buy Data</h3><select><option>MTN</option><option>Glo</option><option>Airtel</option><option>9Mobile</option></select><input placeholder="Phone"><select><option>1GB - #300</option><option>2GB - #600</option><option>5GB - #1500</option></select><button onclick="alert('Data Sent!')">Buy</button></div></div>
+<div id="tv" class="m" onclick="c(event,'tv')"><div class="mb"><h3>TV Subscription</h3><select><option>DSTV</option><option>GOTV</option><option>Startimes</option></select><input placeholder="Smartcard No"><button onclick="alert('TV Paid!')">Pay</button></div></div>
+<div id="el" class="m" onclick="c(event,'el')"><div class="mb"><h3>Electricity</h3><select><option>IKEDC</option><option>PHED</option><option>EKEDC</option></select><input placeholder="Meter No"><input type="number" placeholder="Amount"><button onclick="alert('Electricity Paid!')">Pay</button></div></div>
 
 <script>
-function openModal(id){document.getElementById(id).style.display='flex';}
-function closeModal(id){document.getElementById(id).style.display='none';}
-window.onclick=function(e){if(e.target.classList.contains('modal')){e.target.style.display='none';}}
+function o(i){document.getElementById(i).style.display='flex'}
+function c(e,i){if(e.target.id==i)document.getElementById(i).style.display='none'}
 </script>
-
 </body>
 </html>
