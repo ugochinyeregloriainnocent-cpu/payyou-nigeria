@@ -1,9 +1,10 @@
+<!-- V10 FINAL 30-Oct-2026 - OPAY 9073772447 - FULL PRICE LIST - NO PAYSTACK - LOGIN REQUIRED -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PayYou Nigeria</title>
+<title>PayYou Nigeria V10</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#F8F9FF;font-family:Arial,sans-serif}
@@ -36,7 +37,7 @@ body{background:#F8F9FF;font-family:Arial,sans-serif}
 <body>
 <div class="header"><h2 onclick="goHome()">PayYou<br><span>Nigeria</span><small>Fast • Secure • Reliable</small></h2><button class="btn-login" id="loginBtn" onclick="o('lg')">Register / Login</button><button class="btn-login" id="logoutBtn" onclick="logout()" style="display:none;background:#FFD700;color:#0F2A4D">Logout</button></div>
 <div class="nav-pills"><b onclick="goHome()">🏠 Home</b><b onclick="check('bal')">💳 Balance</b><b onclick="check('fund')">👤 Fund</b><b onclick="check('ref')">👥 Referral</b></div>
-<div class="hero-navy"><div class="badge">BUY CHEAP</div><h1>AIRTIME &<br><y>DATA</y></h1><div style="margin-top:12px"><span onclick="check('ref')" style="background:#FFD700;color:#0F2A4D;padding:10px 14px;border-radius:24px;font-weight:800;font-size:13px;cursor:pointer">Refer 10 people to get #1000</span></div></div>
+<div class="hero-navy"><div class="badge">BUY CHEAP</div><h1>AIRTIME &<br><y>DATA</y></h1><div style="margin-top:12px"><span onclick="check('ref')" style="background:#FFD700;color:#0F2A4D;padding:10px 14px;border-radius:24px;font-weight:800;font-size:13px;cursor:pointer">Refer 10 people to get #1000</span></div><div style="font-size:11px;font-style:italic;margin-top:8px;opacity:.8">V10 FINAL - NO PAYSTACK</div></div>
 <div class="our"><span>Our Services</span></div>
 <div class="grid">
 <div class="box dark" onclick="check('air')">📱<br>Airtime<br><small style="font-weight:400">All Networks</small></div>
@@ -44,25 +45,22 @@ body{background:#F8F9FF;font-family:Arial,sans-serif}
 <div class="box yellow" onclick="check('tv')">📺<br>TV Subscription</div>
 <div class="box purple" onclick="check('el')">⚡<br>Electricity Bills</div>
 </div>
-<div class="footer">PayYou Nigeria - Fast • Secure • Reliable</div>
+<div class="footer">PayYou Nigeria - V10 FINAL - Fast • Secure • Reliable<br><small>9073772447 Opay - Gloria</small></div>
 <div style="text-align:center;margin:10px"><button onclick="goHome()" style="background:#0F2A4D;color:#fff;border:none;padding:8px 18px;border-radius:20px">⬅️ Back to Home</button></div>
 
-<!-- LOGIN -->
-<div id="lg" class="m"><div class="mb"><h3>Please Login to Use Site</h3><p style="font-size:11px;text-align:center;margin:5px 0">You must login - expires when you leave site</p><input id="ph" placeholder="Phone / Email"><input id="pw" type="password" placeholder="Password"><button onclick="login()">LOGIN</button><button style="background:#FFD700;color:#0F2A4D" onclick="login()">REGISTER</button></div></div>
+<div id="lg" class="m"><div class="mb"><h3>Please Login to Use Site</h3><p style="font-size:11px;text-align:center;margin:5px 0">You must login - session expires when you leave</p><input id="ph" placeholder="Phone / Email"><input id="pw" type="password" placeholder="Password"><button onclick="login()">LOGIN</button><button style="background:#FFD700;color:#0F2A4D" onclick="login()">REGISTER</button></div></div>
 
-<!-- FUND - NO PAYSTACK - ONLY YOUR ACCOUNT -->
-<div id="fund" class="m" onclick="c(event,'fund')"><div class="mb"><span class="close-x" onclick="x('fund')">×</span><h3>Fund Wallet</h3><div class="acct"><b>MANUAL PAYMENT - PAY TO:</b><br><br><b style="font-size:22px">9073772447</b><br><b>Opay</b><br>Gloria Ugochinyere Innocent<br><br><small>After payment click I Have Paid</small><br><button onclick="navigator.clipboard.writeText('9073772447');alert('Copied 9073772447')" style="background:#FFD700;color:#0F2A4D">Copy Account Number</button></div><input type="number" placeholder="Amount Paid"><input placeholder="Your Name"><button onclick="alert('Thanks! We will fund your wallet after confirmation');x('fund')">I Have Paid</button><button class="back-btn" onclick="x('fund')">⬅️ Back to Home</button></div></div>
+<div id="fund" class="m" onclick="c(event,'fund')"><div class="mb"><span class="close-x" onclick="x('fund')">×</span><h3>Fund Wallet - NO PAYSTACK</h3><div class="acct"><b>MANUAL PAYMENT ONLY - PAY TO:</b><br><br><b style="font-size:22px">9073772447</b><br><b>Opay</b><br>Gloria Ugochinyere Innocent<br><br><small>After payment click I Have Paid</small><br><button onclick="alert('Copied 9073772447')" style="background:#FFD700;color:#0F2A4D">Copy Account</button></div><input type="number" placeholder="Amount Paid"><input placeholder="Your Name"><button onclick="alert('Thanks! We will fund you after confirmation');x('fund')">I Have Paid</button><button class="back-btn" onclick="x('fund')">⬅️ Back to Home</button></div></div>
 
 <div id="bal" class="m" onclick="c(event,'bal')"><div class="mb"><span class="close-x" onclick="x('bal')">×</span><h3>Balance</h3><p style="text-align:center;font-size:26px;font-weight:900;margin:15px 0">#0.00</p><button onclick="check('fund')">Fund Now</button><button class="back-btn" onclick="x('bal')">⬅️ Home</button></div></div>
 <div id="ref" class="m" onclick="c(event,'ref')"><div class="mb"><span class="close-x" onclick="x('ref')">×</span><h3>Referral</h3><p style="text-align:center">Code: <b>PAYYOU123</b><br>Refer 10 get #1000</p><button class="back-btn" onclick="x('ref')">⬅️ Home</button></div></div>
 <div id="air" class="m" onclick="c(event,'air')"><div class="mb"><span class="close-x" onclick="x('air')">×</span><h3>Buy Airtime</h3><select><option>MTN</option><option>Glo</option><option>Airtel</option><option>9Mobile</option></select><input placeholder="Phone"><input type="number" placeholder="Amount"><button onclick="alert('Airtime Sent!')">Buy Now</button><button class="back-btn" onclick="x('air')">⬅️ Back</button></div></div>
 
-<!-- DATA WITH FULL PRICE LIST -->
-<div id="data" class="m" onclick="c(event,'data')"><div class="mb"><span class="close-x" onclick="x('data')">×</span><h3>Buy Data - Full Price List</h3><select id="dNet" onchange="sh()"><option value="m">MTN</option><option value="g">GLO</option><option value="a">AIRTEL</option><option value="n">9MOBILE</option></select><input placeholder="Phone Number">
-<div id="mP"><p style="font-weight:800;margin:8px 0 4px">MTN Plans:</p><select><option>500MB - #150 (1 Day)</option><option>1GB - #300 (SME)</option><option>1GB - #350 (30 Days)</option><option>2GB - #600</option><option>3GB - #900</option><option>5GB - #1350</option><option>10GB - #2700</option><option>20GB - #5000</option><option>40GB - #10000</option><option>75GB - #15000</option></select></div>
-<div id="gP" style="display:none"><p style="font-weight:800;margin:8px 0 4px">GLO Plans:</p><select><option>1GB - #300</option><option>2.5GB - #600</option><option>4.1GB - #1000</option><option>5.8GB - #1500</option><option>7.7GB - #2000</option><option>10GB - #2500</option><option>13.25GB - #3000</option><option>18.25GB - #4000</option><option>29.5GB - #5000</option><option>50GB - #8000</option></select></div>
-<div id="aP" style="display:none"><p style="font-weight:800;margin:8px 0 4px">AIRTEL Plans:</p><select><option>500MB - #150</option><option>1GB - #350</option><option>2GB - #650</option><option>3GB - #1000</option><option>4GB - #1300</option><option>5GB - #1500</option><option>10GB - #3000</option><option>15GB - #4000</option><option>20GB - #5000</option><option>40GB - #10000</option></select></div>
-<div id="nP" style="display:none"><p style="font-weight:800;margin:8px 0 4px">9MOBILE Plans:</p><select><option>500MB - #200</option><option>1GB - #400</option><option>1.5GB - #600</option><option>2GB - #800</option><option>3GB - #1100</option><option>5GB - #1500</option><option>10GB - #3000</option><option>15GB - #4000</option><option>20GB - #5000</option></select></div>
+<div id="data" class="m" onclick="c(event,'data')"><div class="mb"><span class="close-x" onclick="x('data')">×</span><h3>Buy Data - FULL PRICE LIST</h3><select id="dNet" onchange="sh()"><option value="m">MTN</option><option value="g">GLO</option><option value="a">AIRTEL</option><option value="n">9MOBILE</option></select><input placeholder="Phone Number">
+<div id="mP"><p style="font-weight:800;margin:8px 0 4px">MTN Plans:</p><select><option>500MB - #150 (1 Day)</option><option>1GB - #300 (SME)</option><option>2GB - #600</option><option>3GB - #900</option><option>5GB - #1350</option><option>10GB - #2700</option><option>20GB - #5000</option><option>40GB - #10000</option><option>75GB - #15000</option></select></div>
+<div id="gP" style="display:none"><p style="font-weight:800;margin:8px 0 4px">GLO Plans:</p><select><option>1GB - #300</option><option>2.5GB - #600</option><option>4.1GB - #1000</option><option>5.8GB - #1500</option><option>10GB - #2500</option><option>29.5GB - #5000</option><option>50GB - #8000</option></select></div>
+<div id="aP" style="display:none"><p style="font-weight:800;margin:8px 0 4px">AIRTEL Plans:</p><select><option>500MB - #150</option><option>1GB - #350</option><option>2GB - #650</option><option>5GB - #1500</option><option>10GB - #3000</option><option>20GB - #5000</option><option>40GB - #10000</option></select></div>
+<div id="nP" style="display:none"><p style="font-weight:800;margin:8px 0 4px">9MOBILE Plans:</p><select><option>500MB - #200</option><option>1GB - #400</option><option>2GB - #800</option><option>5GB - #1500</option><option>10GB - #3000</option><option>20GB - #5000</option></select></div>
 <button onclick="alert('Data Purchase Successful!')">Buy Data</button><button class="back-btn" onclick="x('data')">⬅️ Back to Home</button>
 </div></div>
 
@@ -71,24 +69,11 @@ body{background:#F8F9FF;font-family:Arial,sans-serif}
 
 <script>
 let logged=sessionStorage.getItem('payyou_login')==='true';
-window.onload=()=>{
-upd();
-if(!logged)o('lg');
-}
-function upd(){
-document.getElementById('loginBtn').style.display=logged?'none':'block';
-document.getElementById('logoutBtn').style.display=logged?'block':'none';
-}
-function login(){
-let a=document.getElementById('ph').value,b=document.getElementById('pw').value;
-if(!a||!b){alert('Enter phone and password');return;}
-sessionStorage.setItem('payyou_login','true');logged=true;upd();x('lg');alert('Login Successful!');
-}
-function logout(){sessionStorage.removeItem('payyou_login');logged=false;upd();o('lg');alert('Logged out - Login again');}
-function check(id){
-if(!logged){alert('Please login first!');o('lg');return;}
-o(id);
-}
+window.onload=()=>{upd();if(!logged)o('lg');}
+function upd(){document.getElementById('loginBtn').style.display=logged?'none':'block';document.getElementById('logoutBtn').style.display=logged?'block':'none';}
+function login(){let a=document.getElementById('ph').value,b=document.getElementById('pw').value;if(!a||!b){alert('Enter phone and password');return;}sessionStorage.setItem('payyou_login','true');logged=true;upd();x('lg');alert('Login Successful!');}
+function logout(){sessionStorage.removeItem('payyou_login');logged=false;upd();o('lg');alert('Logged out');}
+function check(id){if(!logged){alert('Please login first!');o('lg');return;}o(id);}
 function o(i){document.getElementById(i).style.display='flex'}
 function x(i){if(i==='lg'&&!logged)return;document.getElementById(i).style.display='none'}
 function c(e,i){if(e.target.id==i)x(i)}
