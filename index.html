@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PayYou Nigeria</title>
+<meta name="monetag" content="c424b42d891486570181244861f9ebb8">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}body{background:#F8F9FF;font-family:Arial,sans-serif}
 .header{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#fff}
@@ -47,7 +48,6 @@
 
 <div id="tv" class="m" onclick="c(event,'tv')"><div class="mb"><span class="close-x" onclick="x('tv')">×</span><h3>TV Subscription / Cable</h3><div class="charge">Charge: #150 on all TV</div><div class="warn">⚠️ Must have enough balance!</div><select id="tvNet" onchange="shTV()"><option value="d">DSTV</option><option value="gt">GOTV</option><option value="st">Startimes</option></select><input id="tvSmart" placeholder="Smartcard / IUC"><div id="dP"><select id="dVal"><option value="3800">DSTV Great Wall Standard Bouquet - #3800 + #150 = #3950</option></select></div><div id="gtP" style="display:none"><select id="gtVal"><option value="1900">GOTV Small Monthly - #1900 + #150 = #2050</option></select></div><div id="stP" style="display:none"><select id="stVal"><option value="700">Startimes Nova (Dish) 1 Week - #700 + #150 = #850</option></select></div><button onclick="buyTV()">Pay TV</button><button class="back-btn" onclick="x('tv')">⬅️ Back</button></div></div>
 
-<!-- FIXED ELECTRICITY - NO EXAMPLE, ONLY MIN #1000 CHARGE #100 -->
 <div id="el" class="m" onclick="c(event,'el')"><div class="mb"><span class="close-x" onclick="x('el')">×</span><h3>Electricity Bills</h3><div class="charge">Minimum: #1000 - Charge: #100</div><div class="warn">⚠️ Must have enough balance!</div><select><option>IKEDC - Ikeja Electric</option><option>EKEDC - Eko Electric (Lagos)</option><option>AEDC - Abuja Electric</option><option>KAEDCO - Kaduna Electric</option><option>JEDC - Jos Electric</option><option>EEDC - Enugu Electric (EDDC)</option><option>KEDCO - Kano Electric</option><option>IBEDC - Ibadan Electric</option><option>BEDC - Benin Electric</option><option>PHED - Port Harcourt Electric</option><option>YEDC - Yola Electric</option></select><select><option>Prepaid</option><option>Postpaid</option></select><input id="elMeter" placeholder="Meter Number"><input id="elAmt" type="number" placeholder="Amount (Min #1000)"><button onclick="buyEL()">Pay Electricity</button><button class="back-btn" onclick="x('el')">⬅️ Back</button></div></div>
 
 <script>
@@ -56,7 +56,7 @@ let bal=parseInt(localStorage.getItem('payyou_bal')||'0');
 window.onload=()=>{updBal();upd();if(!logged){o('lg');}else{x('lg');}}
 function upd(){let lb=document.getElementById('loginBtn'),lo=document.getElementById('logoutBtn');if(lb&&lo){lb.style.display=logged?'none':'block';lo.style.display=logged?'block':'none';}}
 function updBal(){document.getElementById('balText').innerText='#'+bal+'.00';document.getElementById('balWarn').style.display=bal<500?'block':'none';}
-function login(){let a=document.getElementById('ph').value,b=document.getElementById('pw').value;if(!a||!b){alert('Enter phone and password');return;}sessionStorage.setItem('payyou_login','true');logged=true;upd();x('lg');alert('Login Successful! Balance: #'+bal);}
+function login(){let a=document.getElementById('ph').value,b=document.getElementById('pw').value;if(!a||!b){alert('Enter phone and password');return;}sessionStorage.setItem('payyou_login','true');logged=true;upd();x('lg');alert('Login Successful!');}
 function logout(){sessionStorage.removeItem('payyou_login');logged=false;upd();o('lg');}
 function check(id){if(!logged){alert('Please Register/Login first!');o('lg');return;}if(id==='bal')updBal();o(id);}
 function o(i){document.getElementById(i).style.display='flex'}
@@ -70,7 +70,7 @@ function need(needAmt){if(bal<needAmt){alert('INSUFFICIENT FUNDS! Balance: #'+ba
 function buyAirtime(){let amt=parseInt(document.getElementById('airAmt').value),ph=document.getElementById('airPhone').value;if(!ph||!amt){alert('Enter phone and amount');return;}if(!need(amt))return;bal-=amt;localStorage.setItem('payyou_bal',bal);updBal();alert('Airtime #'+amt+' sent to '+ph+'! New Balance: #'+bal);x('air');}
 function buyData(){let v=document.getElementById('dNet').value,sel=document.getElementById(v+'Val');let amt=parseInt(sel.value),ph=document.getElementById('dataPhone').value;if(!ph){alert('Enter phone');return;}if(!need(amt))return;bal-=amt;localStorage.setItem('payyou_bal',bal);updBal();alert('Data Purchase Successful! #'+amt+' deducted. New Balance: #'+bal);x('data');}
 function buyTV(){let v=document.getElementById('tvNet').value,sel=document.getElementById(v+'Val');let base=parseInt(sel.value);let total=base+150;let smart=document.getElementById('tvSmart').value;if(!smart){alert('Enter smartcard/IUC');return;}if(!need(total))return;bal-=total;localStorage.setItem('payyou_bal',bal);updBal();alert('TV Paid! #'+total+' deducted. New Balance: #'+bal);x('tv');}
-function buyEL(){let amt=parseInt(document.getElementById('elAmt').value),meter=document.getElementById('elMeter').value;if(!meter){alert('Enter meter number');return;}if(!amt||amt<1000){alert('Min #1000 for electricity');return;}let total=amt+100;if(!need(total))return;bal-=total;localStorage.setItem('payyou_bal',bal);updBal();alert('Electricity Paid! #'+total+' ( #'+amt+' + #100 charge ) deducted. New Balance: #'+bal);x('el');}
+function buyEL(){let amt=parseInt(document.getElementById('elAmt').value),meter=document.getElementById('elMeter').value;if(!meter){alert('Enter meter number');return;}if(!amt||amt<1000){alert('Min #1000 for electricity');return;}let total=amt+100;if(!need(total))return;bal-=total;localStorage.setItem('payyou_bal',bal);updBal();alert('Electricity Paid! #'+total+' deducted. New Balance: #'+bal);x('el');}
 </script>
 </body>
 </html>
