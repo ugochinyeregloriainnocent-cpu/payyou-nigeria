@@ -7,72 +7,125 @@
 <title>PayYou Nigeria - Fast Secure Reliable</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#f7fdf7;color:#0a3d1f}
-.top-white{background:#fff;padding:8px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
-.logo-img{height:52px}
-.btn-login{background:#0a7a2e;color:#fff;border:none;padding:10px 18px;border-radius:22px;font-weight:700;font-size:13px}
-.green-nav{background:linear-gradient(90deg,#0a5a22,#11943a);border-radius:28px;margin:8px 12px;padding:10px 14px;display:flex;justify-content:space-between;color:#fff;box-shadow:0 4px 12px #0002}
-.hero{background:linear-gradient(135deg,#0a5a22,#11943a);border-radius:0 0 28px 28px;padding:12px 12px 16px;color:#fff;position:relative;overflow:hidden;min-height:220px}
-.hero-text{width:60%;position:relative;z-index:2}
-.badge-cheap{background:#f6d000;color:#0a3d1f;font-weight:900;font-size:12px;padding:5px 12px;border-radius:12px;display:inline-block}
-.refer-box{margin-top:10px;display:flex;gap:8px;align-items:center;background:rgba(0,0,0,0.12);border-radius:14px;padding:8px 10px;width:fit-content}
-.refer-box b{color:#f6d000;font-size:22px}
-.hero-girl{position:absolute;right:0;bottom:0;width:42%;height:100%;object-fit:cover;object-position:top}
-.net-float{position:absolute;right:40%;top:8px;display:flex;flex-direction:column;gap:5px;z-index:3}
-.net-float div{padding:5px 9px;border-radius:12px;font-weight:800;font-size:11px;box-shadow:0 2px 6px #0003;text-align:center}
-.our-services{background:#0a7a2e;color:#fff;padding:6px 18px;border-radius:20px;font-weight:800;font-size:14px;width:fit-content;margin:14px auto;display:block}
+body{background:#FFFEF7;color:#0F2A4D}
+.top-white{background:#FFFEF7;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px #0001;border-bottom:1px solid #0F2A4D15}
+.logo{font-weight:900;font-size:22px;color:#0F2A4D}.logo span{color:#C89600}
+.btn-login{background:#0F2A4D;color:#FFFEF7;border:none;padding:11px 20px;border-radius:22px;font-weight:800;font-size:13px;box-shadow:0 4px 10px #0F2A4D44}
+.nav-navy{background:linear-gradient(90deg,#0F2A4D,#1E3A5F);border-radius:28px;margin:10px 12px;padding:12px 16px;display:flex;justify-content:space-between;color:#fff;font-weight:700;font-size:13px;box-shadow:0 4px 12px #0002}
+.hero-navy{background:linear-gradient(135deg,#0F2A4D,#1A3A65);border-radius:0 0 28px 28px;padding:14px 12px 18px;color:#FFFEF7;position:relative;overflow:hidden;min-height:230px}
+.badge-cheap{background:#FFD700;color:#0F2A4D;font-weight:900;font-size:12px;padding:5px 12px;border-radius:12px;display:inline-block}
+.refer-yellow{background:#FFD700;color:#0F2A4D;border-radius:14px;padding:8px 14px;font-size:12px;font-weight:800;display:inline-block;margin-top:10px}
+.hero-girl{position:absolute;right:0;bottom:0;width:42%;height:100%;object-fit:cover;object-position:top;border-radius:0 0 28px 0}
 .services-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px}
-.svc{border-radius:18px;padding:16px 8px;text-align:center;color:#fff;box-shadow:0 6px 14px #0002}
-.svc h3{font-size:15px;font-weight:800}.svc p{font-size:11px;margin-top:2px}
-.page{display:none;background:#fff;border-radius:18px;margin:12px;padding:16px}.page.active{display:block}
-.input,.select{width:100%;padding:14px;border:1.5px solid #c8dcc8;border-radius:12px;margin:7px 0}
-.pass-wrap{position:relative}.eye-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:18px}
-.btn-primary{width:100%;background:linear-gradient(135deg,#ff6a00,#ff8c00);color:#fff;border:none;padding:15px;border-radius:14px;font-weight:800;margin-top:10px}
-.btn-green{width:100%;background:linear-gradient(135deg,#0a7a2e,#0ec64d);color:#fff;border:none;padding:15px;border-radius:14px;font-weight:800;margin-top:10px}
-.error-msg,.success-msg{padding:12px;border-radius:10px;font-size:13px;margin-top:10px;display:none}.error-msg{color:#b91c1c;background:#fef2f2;border:1px solid #fecaca}.success-msg{color:#065f46;background:#ecfdf5;border:1px solid #a7f3d0}
-.footer-tall{background:linear-gradient(180deg,#0a5a22,#082e12);border-radius:28px 28px 0 0;padding:18px 12px 36px;color:#fff;text-align:center;margin-top:16px;min-height:32vh}
+.svc{border-radius:18px;padding:18px 8px;text-align:center;color:#fff;font-weight:800;box-shadow:0 6px 14px #0002}
+.page{display:none;background:#fff;border-radius:18px;margin:12px;padding:16px;box-shadow:0 6px 20px #0001;border:1px solid #0F2A4D11}.page.active{display:block}
+.input,.select{width:100%;padding:14px;border:1.5px solid #0F2A4D22;border-radius:12px;margin:7px 0;background:#FFFEF7}
+.pass-wrap{position:relative}.eye-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:18px;cursor:pointer}
+.btn-navy{width:100%;background:#0F2A4D;color:#FFFEF7;border:none;padding:15px;border-radius:14px;font-weight:800;margin-top:10px}
+.btn-orange{width:100%;background:#FF8C00;color:#fff;border:none;padding:15px;border-radius:14px;font-weight:800;margin-top:10px}
+.error-msg{color:#b91c1c;background:#fef2f2;border:1px solid #fecaca;padding:12px;border-radius:10px;font-size:13px;margin-top:10px;display:none}
+.success-msg{color:#0F2A4D;background:#EEF2FF;border:1px solid #0F2A4D22;padding:12px;border-radius:10px;font-size:13px;margin-top:10px;display:none}
+.wallet-navy{background:linear-gradient(135deg,#0F2A4D,#1E3A5F);border-radius:20px;padding:20px;color:#fff;box-shadow:0 10px 24px #0F2A4D44}
+.footer-last{background:linear-gradient(135deg,#0F2A4D,#0A1F3A);border-radius:28px 28px 0 0;padding:22px 12px 30px;color:#FFFEF7;text-align:center;margin-top:16px;min-height:34vh}
+.opay-box{background:#ffffff15;border:1px solid #ffffff25;border-radius:14px;padding:14px;margin-top:14px;text-align:left}
 </style>
 </head>
 <body>
-<div class="top-white"><img src="payyou_logo.png" class="logo-img" alt="PayYou Nigeria"><button class="btn-login" onclick="showPage('login-page')">Register / Login</button></div>
-<div class="green-nav"><span>💳 Balance</span><span>|</span><span>👤 Fund</span><span>|</span><span>👥 Referral</span></div>
+<div class="top-white"><div class="logo">PayYou <span>Nigeria</span><div style="font-size:10px;font-weight:600;color:#0F2A4D99">Fast • Secure • Reliable</div></div><button class="btn-login" onclick="showPage('login-page')">Register / Login</button></div>
+
+<!-- CORRECTION 1: Referral/Fund/Balance REMOVED from inside, ONLY here and requires login -->
+<div class="nav-navy">
+<span onclick="requireLogin('balance-page')">💳 Balance</span><span>|</span><span onclick="requireLogin('fund-page')">👤 Fund</span><span>|</span><span onclick="requireLogin('referral-page')">👥 Referral</span>
+</div>
 
 <div id="home-section">
-<div class="hero">
-<div class="hero-text"><div class="badge-cheap">BUY CHEAP</div><h1 style="font-size:26px;font-weight:900">AIRTIME & DATA</h1><p style="font-size:13px;margin:5px 0">Top Up Anytime, Anywhere!</p><div class="refer-box"><div style="background:#f6d000;color:#0a3d1f;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center">👥</div><div><div style="font-size:11px">Refer 10 people<br>to get</div><b>#1000</b></div></div><div style="font-style:italic;font-size:12px;margin-top:8px">Stay Connected Always!</div></div>
-<div class="net-float"><div style="background:#0a7a2e;color:#fff">glo</div><div style="background:#ffcc00;color:#0a3d1f">MTN</div><div style="background:#e60000;color:#fff">airtel</div><div style="background:#fff;color:#0a3d1f">9mobile</div></div>
+<!-- CORRECTION Design 1: Use FIRST BANNER -->
+<div class="hero-navy">
+<div style="width:60%"><div class="badge-cheap">BUY CHEAP</div><h1 style="font-size:27px;font-weight:900;line-height:1.1;margin-top:6px">AIRTIME & <span style="color:#FFD700">DATA</span></h1><p style="font-size:13px;margin:6px 0">Top Up Anytime, Anywhere!</p><div class="refer-yellow">Refer 10 people to get #1000</div><div style="font-style:italic;font-size:11px;margin-top:10px;opacity:0.9">Stay Connected Always!</div></div>
 <img src="payyou_girl.png" class="hero-girl">
 </div>
-<div class="our-services">Our Services</div>
-<div class="services-grid"><div class="svc" style="background:linear-gradient(135deg,#0a7a2e,#0ec64d)" onclick="checkLogin('airtime-page')"><div style="font-size:30px">📱</div><h3>Airtime</h3><p>(All Networks)</p></div><div class="svc" style="background:linear-gradient(135deg,#2d8cff,#5aa2ff)" onclick="checkLogin('data-page')"><div style="font-size:30px">🗄️</div><h3>Data</h3><p>(All Networks)</p></div><div class="svc" style="background:linear-gradient(135deg,#ffcc00,#ff9900);color:#3a2800" onclick="checkLogin('tv-page')"><div style="font-size:30px">📺</div><h3>TV Subscription</h3><p>(DStv, GOTV...)</p></div><div class="svc" style="background:linear-gradient(135deg,#a855f7,#7c3aed)" onclick="checkLogin('electricity-page')"><div style="font-size:30px">⚡</div><h3>Electricity Bills</h3><p>(PHCN & Others)</p></div></div>
-<div class="footer-tall"><div style="background:#fff2;padding:10px;border-radius:14px;margin-bottom:10px">🎁 Be among first 10 buyers to receive <b style="color:#f6d000">#50 on data!</b></div><div style="display:flex;justify-content:space-around;font-size:11px"><span>🛡️ Secure Transactions</span><span>⚡ Fast Processing</span><span>👍 Best Rates</span></div><h3 style="margin-top:14px">PayYou Nigeria</h3><p style="font-size:12px">Top Up • Pay • Stay Connected</p><p style="font-size:10px;opacity:0.7;margin-top:8px">24/7 Support - Refer 10 get #1000</p></div>
+<div style="background:#0F2A4D;color:#FFFEF7;padding:6px 18px;border-radius:20px;font-weight:800;font-size:14px;width:fit-content;margin:14px auto;display:block">Our Services</div>
+<div class="services-grid">
+<div class="svc" style="background:linear-gradient(135deg,#0F2A4D,#1E4A7A)" onclick="requireLogin('airtime-page')">📱<br>Airtime<br><small>All Networks</small></div>
+<div class="svc" style="background:#2D8CFF" onclick="requireLogin('data-page')">🗄️<br>Data<br><small>All Networks</small></div>
+<div class="svc" style="background:#FFCC00;color:#0F2A4D" onclick="requireLogin('tv-page')">📺<br>TV Subscription</div>
+<div class="svc" style="background:#7C3AED" onclick="requireLogin('electricity-page')">⚡<br>Electricity Bills</div>
+</div>
+<!-- CORRECTION Design 3: Last banner carries first banner advert - neat format -->
+<div class="footer-last">
+<h3 style="color:#FFD700">PayYou Nigeria - Fast • Secure • Reliable</h3>
+<p style="font-size:13px;line-height:1.6;margin:10px 0">Buy Cheap Airtime & Data - Top Up Anytime, Anywhere!<br>24/7 Instant Delivery • Cheapest Rates • Secure Transactions<br>🎁 Be among first 10 buyers to receive <b style="color:#FFD700">#50 on data!</b><br>Top Up • Pay • Stay Connected • Refer 10 Get #1000</p>
+<div class="opay-box"><div style="font-size:12px;opacity:0.8">Payment Account - Opay</div><div style="font-size:20px;font-weight:900;letter-spacing:1px;margin:4px 0">9063772447</div><div style="font-size:13px;font-weight:700">Gloria Ugochinyere Innocent</div></div>
+<p style="font-size:10px;opacity:0.6;margin-top:14px">© 2026 PayYouNigeria.com - All Rights Reserved</p>
+</div>
 </div>
 
-<div id="data-page" class="page"><h2>Buy Data - All Networks</h2><input class="input" placeholder="Phone 080..."><select class="select"><option>MTN</option><option>Glo</option><option>Airtel</option><option>9mobile</option></select><select id="data-plan" class="select"><option value="100">100MB (Daily) - ₦100</option><option value="200">200MB (Daily) - ₦200</option><option value="300">500MB (2 Days) - ₦300</option><option value="400">500MB (30 Days) - ₦400</option><option value="550">1GB (30 Days) - ₦550</option><option value="1100">2GB (30 Days) - ₦1100</option><option value="700">2.5GB (2 Days) - ₦700</option><option value="1300">3GB (30 Days) - ₦1300</option><option value="500">3.5GB (1 Day) - ₦500</option><option value="1000">4GB (2 Days) - ₦1000</option><option value="1500">5GB (30 Days) - ₦1500</option><option value="2000">6GB (7 Days) - ₦2000</option></select><button class="btn-primary" onclick="buyData()">Buy Data</button><div id="data-error" class="error-msg">Insufficient balance! Please fund first</div><div id="data-success" class="success-msg"></div><button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button></div>
+<!-- LOGIN PAGE - FIRST PAGE ONLY - with Forgot Password -->
+<div id="login-page" class="page">
+<h2 style="color:#0F2A4D">Register First, Then Login</h2>
+<input id="reg-name" class="input" placeholder="Full name">
+<input id="reg-phone" class="input" placeholder="Phone number">
+<div class="pass-wrap"><input id="reg-pass" class="input" type="password" placeholder="Create password"><button class="eye-btn" onclick="toggleEye('reg-pass',this)">👁️</button></div>
+<button class="btn-navy" onclick="doRegister()">Register Now</button>
+<hr style="margin:18px 0">
+<input id="login-phone" class="input" placeholder="Phone for login">
+<div class="pass-wrap"><input id="login-pass" class="input" type="password" placeholder="Password"><button class="eye-btn" onclick="toggleEye('login-pass',this)">👁️</button></div>
+<button class="btn-orange" onclick="doLogin()">Login</button>
+<div style="text-align:right;margin-top:10px"><a href="#" onclick="forgotPass();return false" style="color:#0F2A4D;font-weight:800;font-size:13px;text-decoration:underline">Forgot Password?</a></div>
+<div id="login-success" class="success-msg"></div><div id="login-error" class="error-msg"></div>
+<button class="btn-navy" style="background:#ccc;color:#0F2A4D" onclick="showPage('home-section')">Back to Home</button>
+</div>
 
-<div id="login-page" class="page"><h2>Register First, Then Login</h2><input id="reg-name" class="input" placeholder="Full name"><input id="reg-phone" class="input" placeholder="Phone number"><div class="pass-wrap"><input id="reg-pass" class="input" type="password" placeholder="Create password"><button class="eye-btn" onclick="toggleEye('reg-pass',this)">👁️</button></div><button class="btn-green" onclick="doRegister()">Register Now</button><hr style="margin:16px 0"><input id="login-phone" class="input" placeholder="Phone for login"><div class="pass-wrap"><input id="login-pass" class="input" type="password" placeholder="Password"><button class="eye-btn" onclick="toggleEye('login-pass',this)">👁️</button></div><button class="btn-green" style="background:linear-gradient(135deg,#ff6a00,#ff8c00)" onclick="doLogin()">Login</button><div id="login-success" class="success-msg"></div><div id="login-error" class="error-msg"></div><button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button></div>
+<div id="balance-page" class="page"><div class="wallet-navy"><div style="font-size:13px;opacity:0.8">Wallet balance</div><h1 id="wallet-display" style="font-size:38px;margin:8px 0">₦0</h1><div style="display:flex;gap:10px;margin-top:14px"><button class="btn-navy" style="background:#fff;color:#0F2A4D;width:auto;padding:10px 18px;border-radius:10px" onclick="showPage('fund-page')">Add funds</button><button class="btn-navy" style="background:#ffffff1A;border:1px solid #ffffff33;width:auto;padding:10px 18px;border-radius:10px" onclick="showPage('referral-page')">Referrals</button></div><div class="opay-box"><div style="font-size:13px;opacity:0.8">Opay</div><div style="font-size:22px;font-weight:900">9063772447</div><div style="font-size:12px">Gloria Ugochinyere Innocent</div><button style="margin-top:10px;background:#ffffff1A;border:1px solid #ffffff44;color:#fff;padding:8px 16px;border-radius:8px" onclick="navigator.clipboard.writeText('9063772447');alert('Copied 9063772447')">Copy</button></div></div><button class="btn-navy" style="background:#ccc;color:#0F2A4D;margin-top:14px" onclick="logout()">Logout</button><button class="btn-navy" style="background:#eee;color:#0F2A4D;margin-top:8px" onclick="showPage('home-section')">Back Home</button></div>
 
-<div id="balance-page" class="page"><h2>My Balance</h2><h3 id="wallet-display">Wallet: ₦0</h3><button class="btn-green" onclick="showPage('home-section')">Back</button></div>
-<div id="fund-page" class="page"><h2>Fund Wallet</h2><input id="fund-amount" class="input" type="number" placeholder="Amount"><button class="btn-green" onclick="fundWallet()">Fund Now</button><div id="fund-msg" class="success-msg"></div><button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button></div>
-<div id="referral-page" class="page"><h2>My Referral</h2><div id="ref-code" style="background:#0a7a2e;color:#fff;padding:14px;border-radius:12px;text-align:center;font-weight:900">PAYYOU-GLORIA-2026</div><button class="btn-green" onclick="copyRef()">Copy Code</button><div id="ref-msg" class="success-msg"></div><button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button></div>
-<div id="airtime-page" class="page"><h2>Airtime</h2><input class="input" placeholder="Phone"><input id="airtime-amount" class="input" type="number" placeholder="Amount"><button class="btn-primary" onclick="buyAirtime()">Buy Airtime</button><div id="airtime-error" class="error-msg">Insufficient balance!</div><div id="airtime-success" class="success-msg"></div><button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button></div>
-<div id="tv-page" class="page"><h2>TV</h2><input class="input" placeholder="Decoder"><button class="btn-primary" onclick="showError('tv-error')">Subscribe</button><div id="tv-error" class="error-msg">Insufficient balance!</div><button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button></div>
-<div id="electricity-page" class="page"><h2>Electricity</h2><input class="input" placeholder="Meter"><button class="btn-primary" onclick="showError('elec-error')">Pay</button><div id="elec-error" class="error-msg">Insufficient balance!</div><button class="btn-green" style="background:#ccc;color:#333" onclick="showPage('home-section')">Back</button></div>
+<div id="fund-page" class="page"><h2>Fund Wallet</h2><p style="font-size:13px">Transfer to <b>Opay: 9063772447 - Gloria Ugochinyere Innocent</b><br>Min: ₦1000</p><input id="fund-amount" class="input" type="number" placeholder="Amount after transfer"><button class="btn-navy" onclick="fundWallet()">I Have Paid - Fund Now</button><div id="fund-msg" class="success-msg"></div><button class="btn-navy" style="background:#ccc;color:#0F2A4D" onclick="showPage('balance-page')">Back</button></div>
+
+<div id="referral-page" class="page"><h2>My Referral</h2><div style="background:#0F2A4D;color:#fff;padding:16px;border-radius:12px;text-align:center;font-weight:900;letter-spacing:1px">PAYYOU-GLORIA-2026</div><p style="font-size:12px;margin:10px 0">Refer 10 people to get #1000</p><button class="btn-navy" onclick="navigator.clipboard.writeText('PAYYOU-GLORIA-2026');document.getElementById('ref-msg').style.display='block';document.getElementById('ref-msg').innerText='Copied!'">Copy Code</button><div id="ref-msg" class="success-msg"></div><button class="btn-navy" style="background:#ccc;color:#0F2A4D" onclick="showPage('balance-page')">Back</button></div>
+
+<div id="data-page" class="page">
+<h2>Buy Data - CORRECTED PRICES</h2>
+<select id="data-network" class="select" onchange="updateDataPlans()"><option value="MTN">MTN</option><option value="AIRTEL">AIRTEL</option><option value="GLO">GLO</option><option value="9MOBILE">9MOBILE - Use Gloria price-list</option></select>
+<input id="data-phone" class="input" placeholder="Phone number 080...">
+<select id="data-plan" class="select"></select>
+<button class="btn-orange" onclick="buyData()">Buy Data Now</button>
+<div id="data-error" class="error-msg">Insufficient balance! Fund account with 9063772447 Opay first</div><div id="data-success" class="success-msg"></div>
+<button class="btn-navy" style="background:#ccc;color:#0F2A4D" onclick="showPage('home-section')">Back</button>
+</div>
+
+<div id="airtime-page" class="page"><h2>Airtime</h2><input id="airtime-phone" class="input" placeholder="Phone"><input id="airtime-amount" class="input" type="number" placeholder="Amount"><button class="btn-orange" onclick="buyAirtime()">Buy Airtime</button><div id="airtime-error" class="error-msg">Insufficient balance!</div><div id="airtime-success" class="success-msg"></div><button class="btn-navy" style="background:#ccc;color:#0F2A4D" onclick="showPage('home-section')">Back</button></div>
+
+<div id="tv-page" class="page"><h2>TV Subscription (Charge ₦150)</h2><select id="tv-type" class="select"><option value="3800">Dstv - Great Wall standard bouquet (3800)</option><option value="1900">Gotv - small monthly (1900)</option><option value="700">Startimes - Nova (Dish) 1 week (700)</option></select><input id="tv-decoder" class="input" placeholder="Decoder/IUC number"><button class="btn-orange" onclick="payTv()">Subscribe</button><div id="tv-error" class="error-msg"></div><div id="tv-success" class="success-msg"></div><button class="btn-navy" style="background:#ccc;color:#0F2A4D" onclick="showPage('home-section')">Back</button></div>
+
+<div id="electricity-page" class="page"><h2>Electricity - Minimum ₦1000 + Charge ₦150</h2><input id="elec-meter" class="input" placeholder="Meter number"><input id="elec-amount" class="input" type="number" placeholder="Amount (Min 1000)"><p style="font-size:12px;color:#b91c1c;font-weight:700">Charge: ₦150 will be added</p><button class="btn-orange" onclick="payElec()">Pay Electricity</button><div id="elec-error" class="error-msg"></div><div id="elec-success" class="success-msg"></div><button class="btn-navy" style="background:#ccc;color:#0F2A4D" onclick="showPage('home-section')">Back</button></div>
 
 <script>
-let wallet=parseInt(localStorage.getItem('payyou_wallet')||'0');let logged=localStorage.getItem('payyou_logged')==='yes';
-function updateWallet(){let e=document.getElementById('wallet-display');if(e) e.innerText='Wallet: ₦'+wallet;}
+// SECURITY CORRECTION: Use sessionStorage - must login every time, if leaves 2 seconds logout
+let wallet=parseInt(localStorage.getItem('payyou_wallet')||'0');
+let logged=sessionStorage.getItem('payyou_logged')==='yes';
+function updateWallet(){let e=document.getElementById('wallet-display');if(e) e.innerText='₦'+wallet;}
 updateWallet();
 function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));let home=document.getElementById('home-section');if(id==='home-section'){home.style.display='block';}else{home.style.display='none';document.getElementById(id).classList.add('active');}}
-function checkLogin(t){if(!logged){showPage('login-page');let e=document.getElementById('login-error');e.style.display='block';e.innerText='Please register first, then login!';return;}showPage(t);}
+function requireLogin(target){if(!logged){showPage('login-page');let e=document.getElementById('login-error');e.style.display='block';e.innerText='⚠️ Security: Please Register/Login first to use platform!';return;}showPage(target);}
 function toggleEye(id,btn){let i=document.getElementById(id);if(i.type==='password'){i.type='text';btn.innerText='🙈';}else{i.type='password';btn.innerText='👁️';}}
 function doRegister(){let n=document.getElementById('reg-name').value.trim();let ph=document.getElementById('reg-phone').value.trim();let ps=document.getElementById('reg-pass').value.trim();let err=document.getElementById('login-error');let suc=document.getElementById('login-success');err.style.display='none';suc.style.display='none';if(!n||!ph||!ps){err.style.display='block';err.innerText='Fill all fields!';return;}localStorage.setItem('payyou_user',JSON.stringify({name:n,phone:ph,pass:ps}));suc.style.display='block';suc.innerText='✅ Registration successful '+n+'! Now login below.';document.getElementById('login-phone').value=ph;}
-function doLogin(){let ph=document.getElementById('login-phone').value.trim();let ps=document.getElementById('login-pass').value.trim();let err=document.getElementById('login-error');let suc=document.getElementById('login-success');err.style.display='none';suc.style.display='none';let saved=JSON.parse(localStorage.getItem('payyou_user')||'null');if(!saved){err.style.display='block';err.innerText='No account! Register first!';return;}if(ph===saved.phone&&ps===saved.pass){localStorage.setItem('payyou_logged','yes');logged=true;suc.style.display='block';suc.innerText='Welcome '+saved.name+'!';setTimeout(()=>showPage('home-section'),1000);}else{err.style.display='block';err.innerText='Wrong phone/password!';}}
-function fundWallet(){let amt=parseInt(document.getElementById('fund-amount').value);if(!amt)return;wallet+=amt;localStorage.setItem('payyou_wallet',wallet);updateWallet();let m=document.getElementById('fund-msg');m.style.display='block';m.innerText='✅ ₦'+amt+' added! Balance ₦'+wallet;}
-function buyData(){let price=parseInt(document.getElementById('data-plan').value);if(wallet<price){document.getElementById('data-error').style.display='block';return;}wallet-=price;localStorage.setItem('payyou_wallet',wallet);updateWallet();let s=document.getElementById('data-success');s.style.display='block';s.innerText='Success! Balance ₦'+wallet;}
-function buyAirtime(){let cost=parseInt(document.getElementById('airtime-amount').value||'0');if(wallet<cost){document.getElementById('airtime-error').style.display='block';return;}wallet-=cost;localStorage.setItem('payyou_wallet',wallet);updateWallet();let s=document.getElementById('airtime-success');s.style.display='block';s.innerText='Success! Balance ₦'+wallet;}
-function showError(id){document.getElementById(id).style.display='block';}
-function copyRef(){navigator.clipboard.writeText('PAYYOU-GLORIA-2026');let m=document.getElementById('ref-msg');m.style.display='block';m.innerText='Copied!';}
+function doLogin(){let ph=document.getElementById('login-phone').value.trim();let ps=document.getElementById('login-pass').value.trim();let err=document.getElementById('login-error');let suc=document.getElementById('login-success');err.style.display='none';suc.style.display='none';let saved=JSON.parse(localStorage.getItem('payyou_user')||'null');if(!saved){err.style.display='block';err.innerText='No account found! Register first!';return;}if(ph===saved.phone&&ps===saved.pass){sessionStorage.setItem('payyou_logged','yes');logged=true;suc.style.display='block';suc.innerText='✅ Welcome '+saved.name+'!';setTimeout(()=>showPage('balance-page'),800);}else{err.style.display='block';err.innerText='❌ Wrong phone or password! Password not accessing before, now FIXED!';}}
+function forgotPass(){let ph=prompt('Enter your registered phone number:');if(!ph)return;let saved=JSON.parse(localStorage.getItem('payyou_user')||'null');if(saved&&saved.phone===ph){let np=prompt('Enter new password:');if(np){saved.pass=np;localStorage.setItem('payyou_user',JSON.stringify(saved));alert('Password changed! Now login with new password.');}}else{alert('Phone not found!');}}
+function logout(){sessionStorage.removeItem('payyou_logged');logged=false;showPage('home-section');alert('Logged out! Security: You must login again to use platform.');}
+function fundWallet(){if(!logged){requireLogin();return;}let amt=parseInt(document.getElementById('fund-amount').value);if(!amt||amt<1000){alert('Minimum ₦1000');return;}wallet+=amt;localStorage.setItem('payyou_wallet',wallet);updateWallet();let m=document.getElementById('fund-msg');m.style.display='block';m.innerText='✅ ₦'+amt+' added! Balance: ₦'+wallet;}
+const PRICES={
+MTN:[{t:'100MB #100 (daily)',p:100},{t:'230MB #200 (daily)',p:200},{t:'500MB #350 (2 days)',p:350},{t:'500MB #400 (30 days)',p:400},{t:'1GB #800 (30 days)',p:800},{t:'2.5GB #100 (2days) - CORRECTION 1000',p:1000},{t:'2GB #950 (7days)',p:950},{t:'2GB #1300 (30days)',p:1300},{t:'3GB #1500 (30 days)',p:1500},{t:'3.5GB #1100 (1day)',p:1100},{t:'4GB #1300 (2 days)',p:1300},{t:'5GB #2400 (30 days)',p:2400},{t:'6GB #2600 (7 days)',p:2600}],
+AIRTEL:[{t:'100MB 1 day -100',p:100},{t:'230MB 2 days-200',p:200},{t:'300MB 2 days-300',p:300},{t:'600MB 2 days-350',p:350},{t:'1GB (socials) 1 day-450',p:450},{t:'1.5GB 1day-450',p:450},{t:'2GB 2 days-700',p:700},{t:'1GB 7 days-800',p:800},{t:'4GB 2 days-1100',p:1100},{t:'1.5GB 30days-1100',p:1100},{t:'3.5GB 7 days-1600',p:1600},{t:'6GB 7days-2500',p:2500},{t:'3GB 30days-2100',p:2100},{t:'4GB 30-days-2600',p:2600}],
+GLO:[{t:'100MB 1day-100',p:100},{t:'200MB 14 days-200',p:200},{t:'750MB 1 day-400',p:400},{t:'500MB 30days-500',p:500},{t:'1.5GB 1 day-450',p:450},{t:'1GB 3 days-450',p:450},{t:'1GB 30 days-600',p:600},{t:'2.5GB 2 days-600',p:600},{t:'1.5GB+(2GB Night) 2 days-700',p:700},{t:'2GB 30 days-900',p:900},{t:'3GB 3 days-1200',p:1200},{t:'3GB 30 days-1400',p:1400},{t:'5GB 7 days-2000',p:2000},{t:'5GB 3days-1900',p:1900},{t:'5GB 30days-2200',p:2200},{t:'10GB 7 days-2500',p:2500}],
+'9MOBILE':[{t:'100MB #100 (daily) - Gloria price',p:100},{t:'230MB #200 (daily)',p:200},{t:'500MB #350 (2 days)',p:350},{t:'500MB #400 (30 days)',p:400},{t:'1GB #800 (30 days)',p:800},{t:'2.5GB #100 (2days)',p:1000},{t:'2GB #950 (7days)',p:950},{t:'2GB #1300 (30days)',p:1300},{t:'3GB #1500',p:1500},{t:'3.5GB #1100 (1day)',p:1100},{t:'4GB #1300 (2 days)',p:1300},{t:'5GB #2400',p:2400},{t:'6GB #2600 (7 days)',p:2600}]
+};
+function updateDataPlans(){let net=document.getElementById('data-network').value;let sel=document.getElementById('data-plan');sel.innerHTML='';PRICES[net].forEach(o=>{let opt=document.createElement('option');opt.value=o.p;opt.textContent=o.t;sel.appendChild(opt);});}
+updateDataPlans();
+function buyData(){let price=parseInt(document.getElementById('data-plan').value);let ph=document.getElementById('data-phone').value.trim();if(!ph){alert('Enter phone');return;}if(wallet<price){document.getElementById('data-error').style.display='block';return;}wallet-=price;localStorage.setItem('payyou_wallet',wallet);updateWallet();let s=document.getElementById('data-success');s.style.display='block';s.innerText='✅ Success! Data sent to '+ph+' - Balance: ₦'+wallet;}
+function buyAirtime(){let cost=parseInt(document.getElementById('airtime-amount').value||'0');if(wallet<cost){document.getElementById('airtime-error').style.display='block';return;}wallet-=cost;localStorage.setItem('payyou_wallet',wallet);updateWallet();let s=document.getElementById('airtime-success');s.style.display='block';s.innerText='✅ Airtime Success! Balance: ₦'+wallet;}
+function payElec(){let amt=parseInt(document.getElementById('elec-amount').value||'0');let total=amt+150;if(!amt||amt<1000){let e=document.getElementById('elec-error');e.style.display='block';e.innerText='Minimum ₦1000 - Charge ₦150';return;}if(wallet<total){let e=document.getElementById('elec-error');e.style.display='block';e.innerText='Insufficient! Need ₦'+total+' (Amount + ₦150 charge)';return;}wallet-=total;localStorage.setItem('payyou_wallet',wallet);updateWallet();let s=document.getElementById('elec-success');s.style.display='block';s.innerText='✅ Electricity Paid! ₦150 charge - Balance ₦'+wallet;}
+function payTv(){let sel=document.getElementById('tv-type');let price=parseInt(sel.value);let total=price+150;if(wallet<total){let e=document.getElementById('tv-error');e.style.display='block';e.innerText='Insufficient! Need ₦'+total+' (₦150 charge) - '+sel.options[sel.selectedIndex].text;return;}wallet-=total;localStorage.setItem('payyou_wallet',wallet);updateWallet();let s=document.getElementById('tv-success');s.style.display='block';s.innerText='✅ '+sel.options[sel.selectedIndex].text+' Subscribed! Charge ₦150 - Balance ₦'+wallet;}
+// Auto logout if leaves 2 seconds - security purpose
+document.addEventListener('visibilitychange',()=>{if(document.hidden){setTimeout(()=>{if(document.hidden){sessionStorage.removeItem('payyou_logged');logged=false;}},2000);}});
 </script>
 </body>
 </html>
