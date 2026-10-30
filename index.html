@@ -5,33 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PayYou Nigeria</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#F8F9FF;font-family:Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}body{background:#F8F9FF;font-family:Arial,sans-serif}
 .header{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#fff}
-.header h2{font-size:19px;font-weight:900;color:#0F2A4D;cursor:pointer}
-.header h2 span{color:#FFD700}
-.header small{font-size:11px;color:#666;display:block;font-weight:400}
+.header h2{font-size:19px;font-weight:900;color:#0F2A4D;cursor:pointer}.header h2 span{color:#FFD700}.header small{font-size:11px;color:#666;display:block;font-weight:400}
 .btn-login{background:#0F2A4D;color:#FFD700;padding:11px 20px;border-radius:24px;border:none;font-weight:700;cursor:pointer}
-.nav-pills{background:#0F2A4D;border-radius:24px;margin:8px 12px;padding:12px 14px;display:flex;justify-content:space-between;color:#fff;font-weight:700;font-size:13px}
-.nav-pills b{cursor:pointer}
-.hero-navy{background:#0F2A4D;border-radius:20px;margin:10px 12px;padding:18px 16px;color:#fff}
-.badge{background:#FFD700;color:#0F2A4D;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block}
-.hero-navy h1{font-size:28px;margin-top:8px;font-weight:900;line-height:1.1}
-.hero-navy h1 y{color:#FFD700}
-.our{text-align:center;margin:14px 0 10px}
-.our span{background:#0F2A4D;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 12px}
-.box{border-radius:16px;padding:18px 10px;text-align:center;font-weight:800;color:#fff;cursor:pointer}
+.nav-pills{background:#0F2A4D;border-radius:24px;margin:8px 12px;padding:12px 14px;display:flex;justify-content:space-between;color:#fff;font-weight:700;font-size:13px}.nav-pills b{cursor:pointer}
+.hero-navy{background:#0F2A4D;border-radius:20px;margin:10px 12px;padding:18px 16px;color:#fff}.badge{background:#FFD700;color:#0F2A4D;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block}
+.hero-navy h1{font-size:28px;margin-top:8px;font-weight:900;line-height:1.1}.hero-navy h1 y{color:#FFD700}
+.our{text-align:center;margin:14px 0 10px}.our span{background:#0F2A4D;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 12px}.box{border-radius:16px;padding:18px 10px;text-align:center;font-weight:800;color:#fff;cursor:pointer}
 .dark{background:#0F2A4D}.blue{background:#2A8CFF}.yellow{background:#FFD700;color:#0F2A4D}.purple{background:#A855F7}
 .footer{background:#0F2A4D;color:#FFD700;text-align:center;padding:14px;border-radius:20px;margin:14px 12px 0;font-weight:800;font-size:14px}
 .m{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:999;padding:10px}
 .mb{background:#fff;border-radius:16px;padding:18px;width:95%;max-width:360px;max-height:90vh;overflow:auto;position:relative}
 .mb input,.mb select{width:100%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:10px}
 .mb button{width:100%;padding:11px;background:#0F2A4D;color:#FFD700;border:none;border-radius:10px;font-weight:800;margin-top:8px;cursor:pointer}
-.close-x{position:absolute;top:8px;right:12px;font-size:24px;cursor:pointer}
-.back-btn{background:#eee!important;color:#333!important}
+.close-x{position:absolute;top:8px;right:12px;font-size:24px;cursor:pointer}.back-btn{background:#eee!important;color:#333!important}
 .acct{background:#FFF9DB;border:2px dashed #FFD700;padding:14px;border-radius:12px;margin:10px 0;text-align:center}
 .charge{background:#E8F5E9;border-left:4px solid #2E7D32;padding:8px 10px;border-radius:8px;margin:8px 0;font-size:12px;font-weight:700}
+.warn{background:#FFEBEE;border-left:4px solid #D32F2F;padding:8px 10px;border-radius:8px;margin:8px 0;font-size:12px;font-weight:700;color:#D32F2F}
 </style>
 </head>
 <body>
@@ -39,49 +31,46 @@ body{background:#F8F9FF;font-family:Arial,sans-serif}
 <div class="nav-pills"><b onclick="goHome()">🏠 Home</b><b onclick="check('bal')">💳 Balance</b><b onclick="check('fund')">👤 Fund</b><b onclick="check('ref')">👥 Referral</b></div>
 <div class="hero-navy"><div class="badge">BUY CHEAP</div><h1>AIRTIME &<br><y>DATA</y></h1><div style="margin-top:12px"><span onclick="check('ref')" style="background:#FFD700;color:#0F2A4D;padding:10px 14px;border-radius:24px;font-weight:800;font-size:13px;cursor:pointer">Refer 10 people to get #1000</span></div></div>
 <div class="our"><span>Our Services</span></div>
-<div class="grid">
-<div class="box dark" onclick="check('air')">📱<br>Airtime<br><small style="font-weight:400">All Networks</small></div>
-<div class="box blue" onclick="check('data')">🗄️<br>Data<br><small style="font-weight:400">All Networks</small></div>
-<div class="box yellow" onclick="check('tv')">📺<br>TV Subscription</div>
-<div class="box purple" onclick="check('el')">⚡<br>Electricity Bills</div>
-</div>
+<div class="grid"><div class="box dark" onclick="check('air')">📱<br>Airtime</div><div class="box blue" onclick="check('data')">🗄️<br>Data</div><div class="box yellow" onclick="check('tv')">📺<br>TV Subscription</div><div class="box purple" onclick="check('el')">⚡<br>Electricity Bills</div></div>
 <div class="footer">PayYou Nigeria - Fast • Secure • Reliable</div>
 <div style="text-align:center;margin:10px"><button onclick="goHome()" style="background:#0F2A4D;color:#fff;border:none;padding:8px 18px;border-radius:20px">⬅️ Back to Home</button></div>
 
-<!-- LOGIN POPUP MUST APPEAR WHEN ENTER + AFTER LEAVING -->
-<div id="lg" class="m" style="display:flex"><div class="mb"><h3 style="text-align:center">Welcome - Please Register / Login</h3><p style="font-size:11px;text-align:center;margin:6px 0">You must sign up and login first to use PayYou</p><input id="ph" placeholder="Phone / Email"><input id="pw" type="password" placeholder="Password"><button onclick="login()">LOGIN</button><button style="background:#FFD700;color:#0F2A4D" onclick="login()">REGISTER / SIGN UP</button><p style="font-size:10px;text-align:center;margin-top:8px;color:#666">Login expires when you leave site - you must login again when you return</p></div></div>
+<div id="lg" class="m" style="display:flex"><div class="mb"><h3 style="text-align:center">Welcome - Please Register / Login</h3><p style="font-size:11px;text-align:center;margin:6px 0">You must sign up and login first</p><input id="ph" placeholder="Phone / Email"><input id="pw" type="password" placeholder="Password"><button onclick="login()">LOGIN</button><button style="background:#FFD700;color:#0F2A4D" onclick="login()">REGISTER / SIGN UP</button><p style="font-size:10px;text-align:center;margin-top:8px">Login expires when you leave - must login again</p></div></div>
 
-<div id="fund" class="m" onclick="c(event,'fund')"><div class="mb"><span class="close-x" onclick="x('fund')">×</span><h3>Fund Wallet</h3><div class="acct"><b>PAY TO:</b><br><br><b style="font-size:22px">9073772447</b><br><b>Opay</b><br>Gloria Ugochinyere Innocent<br><br><button onclick="navigator.clipboard.writeText('9073772447');alert('Copied')" style="background:#FFD700;color:#0F2A4D">Copy Account</button></div><input type="number" placeholder="Amount Paid"><input placeholder="Your Name"><button onclick="alert('Thanks! Will fund after confirmation');x('fund')">I Have Paid</button><button class="back-btn" onclick="x('fund')">⬅️ Back</button></div></div>
+<div id="fund" class="m" onclick="c(event,'fund')"><div class="mb"><span class="close-x" onclick="x('fund')">×</span><h3>Fund Wallet</h3><div class="acct"><b>PAY TO:</b><br><br><b style="font-size:24px">9063772447</b><br><b>Opay</b><br>Gloria Ugochinyere Innocent<br><br><button onclick="navigator.clipboard.writeText('9063772447');alert('Copied 9063772447')" style="background:#FFD700;color:#0F2A4D">Copy Account</button></div><input id="fundAmt" type="number" placeholder="Amount You Paid"><input id="fundName" placeholder="Your Name"><button onclick="doFund()">I Have Paid - Fund Me</button><button class="back-btn" onclick="x('fund')">⬅️ Back</button></div></div>
 
-<div id="bal" class="m" onclick="c(event,'bal')"><div class="mb"><span class="close-x" onclick="x('bal')">×</span><h3>Balance</h3><p style="text-align:center;font-size:26px;font-weight:900;margin:15px 0">#0.00</p><button onclick="check('fund')">Fund Now</button><button class="back-btn" onclick="x('bal')">⬅️ Home</button></div></div>
+<div id="bal" class="m" onclick="c(event,'bal')"><div class="mb"><span class="close-x" onclick="x('bal')">×</span><h3>Your Balance</h3><p style="text-align:center;font-size:32px;font-weight:900;margin:15px 0" id="balText">#0.00</p><div class="warn" id="balWarn" style="display:none">⚠️ Low Balance! Fund Wallet to Transact</div><button onclick="check('fund')">Fund Now</button><button class="back-btn" onclick="x('bal')">⬅️ Home</button></div></div>
 <div id="ref" class="m" onclick="c(event,'ref')"><div class="mb"><span class="close-x" onclick="x('ref')">×</span><h3>Referral</h3><p style="text-align:center">Code: <b>PAYYOU123</b><br>Refer 10 get #1000</p><button class="back-btn" onclick="x('ref')">⬅️ Home</button></div></div>
-<div id="air" class="m" onclick="c(event,'air')"><div class="mb"><span class="close-x" onclick="x('air')">×</span><h3>Buy Airtime</h3><select><option>MTN</option><option>Glo</option><option>Airtel</option><option>9Mobile</option></select><input placeholder="Phone"><input type="number" placeholder="Amount"><button onclick="alert('Airtime Sent!')">Buy Now</button><button class="back-btn" onclick="x('air')">⬅️ Back</button></div></div>
+<div id="air" class="m" onclick="c(event,'air')"><div class="mb"><span class="close-x" onclick="x('air')">×</span><h3>Buy Airtime</h3><div class="warn">⚠️ Must have funds! Check Balance first</div><select><option>MTN</option><option>Glo</option><option>Airtel</option><option>9Mobile</option></select><input id="airPhone" placeholder="Phone"><input id="airAmt" type="number" placeholder="Amount (Min #100)"><button onclick="buyAirtime()">Buy Now</button><button class="back-btn" onclick="x('air')">⬅️ Back</button></div></div>
 
-<div id="data" class="m" onclick="c(event,'data')"><div class="mb"><span class="close-x" onclick="x('data')">×</span><h3>Buy Data - Full Price List</h3><select id="dNet" onchange="sh()"><option value="m">MTN</option><option value="g">GLO</option><option value="a">AIRTEL</option><option value="n">9MOBILE</option></select><input placeholder="Phone"><div id="mP"><select><option>500MB - #150 (1 Day)</option><option>1GB - #300 (SME)</option><option>2GB - #600</option><option>3GB - #900</option><option>5GB - #1350</option><option>10GB - #2700</option></select></div><div id="gP" style="display:none"><select><option>1GB - #300</option><option>2.5GB - #600</option><option>4.1GB - #1000</option><option>10GB - #2500</option></select></div><div id="aP" style="display:none"><select><option>500MB - #150</option><option>1GB - #350</option><option>2GB - #650</option><option>5GB - #1500</option></select></div><div id="nP" style="display:none"><select><option>500MB - #200</option><option>1GB - #400</option><option>2GB - #800</option></select></div><button>Buy Data</button><button class="back-btn" onclick="x('data')">⬅️ Back</button></div></div>
+<div id="data" class="m" onclick="c(event,'data')"><div class="mb"><span class="close-x" onclick="x('data')">×</span><h3>Buy Data - Full Price List</h3><div class="warn">⚠️ Must have funds!</div><select id="dNet" onchange="sh()"><option value="m">MTN</option><option value="g">GLO</option><option value="a">AIRTEL</option><option value="n">9MOBILE</option></select><input id="dataPhone" placeholder="Phone"><div id="mP"><select id="mVal"><option value="150">500MB - #150</option><option value="300">1GB - #300</option><option value="600">2GB - #600</option><option value="900">3GB - #900</option><option value="1350">5GB - #1350</option><option value="2700">10GB - #2700</option></select></div><div id="gP" style="display:none"><select id="gVal"><option value="300">1GB - #300</option><option value="600">2.5GB - #600</option><option value="1000">4.1GB - #1000</option><option value="2500">10GB - #2500</option></select></div><div id="aP" style="display:none"><select id="aVal"><option value="150">500MB - #150</option><option value="350">1GB - #350</option><option value="650">2GB - #650</option><option value="1500">5GB - #1500</option></select></div><div id="nP" style="display:none"><select id="nVal"><option value="200">500MB - #200</option><option value="400">1GB - #400</option><option value="800">2GB - #800</option></select></div><button onclick="buyData()">Buy Data</button><button class="back-btn" onclick="x('data')">⬅️ Back</button></div></div>
 
-<!-- TV WITH YOUR PRICE LIST + 150 CHARGE -->
-<div id="tv" class="m" onclick="c(event,'tv')"><div class="mb"><span class="close-x" onclick="x('tv')">×</span><h3>TV Subscription / Cable</h3><div class="charge">⚡ Charge: #150 on all TV subscriptions</div><select id="tvNet" onchange="shTV()"><option value="d">DSTV</option><option value="gt">GOTV</option><option value="st">Startimes</option></select><input placeholder="Smartcard / IUC Number">
-<div id="dP"><p style="font-weight:800;margin:8px 0 4px">DSTV Plans:</p><select><option>DSTV Great Wall Standard Bouquet - #3800 + #150 charge = #3950</option></select></div>
-<div id="gtP" style="display:none"><p style="font-weight:800;margin:8px 0 4px">GOTV Plans:</p><select><option>GOTV Small Monthly - #1900 + #150 charge = #2050</option></select></div>
-<div id="stP" style="display:none"><p style="font-weight:800;margin:8px 0 4px">Startimes Plans:</p><select><option>Startimes Nova (Dish) 1 Week - #700 + #150 charge = #850</option></select></div>
-<button onclick="alert('TV Subscription Successful!')">Pay TV</button><button class="back-btn" onclick="x('tv')">⬅️ Back to Home</button></div></div>
+<div id="tv" class="m" onclick="c(event,'tv')"><div class="mb"><span class="close-x" onclick="x('tv')">×</span><h3>TV Subscription / Cable</h3><div class="charge">Charge: #150 on all TV</div><div class="warn">⚠️ Must have enough balance!</div><select id="tvNet" onchange="shTV()"><option value="d">DSTV</option><option value="gt">GOTV</option><option value="st">Startimes</option></select><input id="tvSmart" placeholder="Smartcard / IUC"><div id="dP"><select id="dVal"><option value="3800">DSTV Great Wall Standard Bouquet - #3800 + #150 = #3950</option></select></div><div id="gtP" style="display:none"><select id="gtVal"><option value="1900">GOTV Small Monthly - #1900 + #150 = #2050</option></select></div><div id="stP" style="display:none"><select id="stVal"><option value="700">Startimes Nova (Dish) 1 Week - #700 + #150 = #850</option></select></div><button onclick="buyTV()">Pay TV</button><button class="back-btn" onclick="x('tv')">⬅️ Back</button></div></div>
 
-<!-- ELECTRICITY WITH MINIMUM 1000 + 150 CHARGE + ALL DISCOS -->
-<div id="el" class="m" onclick="c(event,'el')"><div class="mb"><span class="close-x" onclick="x('el')">×</span><h3>Electricity Bills</h3><div class="charge">⚡ Minimum: #1000 - Charge: #150<br>Example: Pay #1000 + #150 = #1150</div><select><option>IKEDC - Ikeja Electric</option><option>EKEDC - Eko Electric (Lagos)</option><option>AEDC - Abuja Electric</option><option>KAEDCO - Kaduna Electric</option><option>JEDC - Jos Electric</option><option>EEDC - Enugu Electric (EDDC)</option><option>KEDCO - Kano Electric</option><option>IBEDC - Ibadan Electric</option><option>BEDC - Benin Electric</option><option>PHED - Port Harcourt Electric</option><option>YEDC - Yola Electric</option></select><select><option>Prepaid</option><option>Postpaid</option></select><input placeholder="Meter Number"><input type="number" placeholder="Amount (Min #1000)"><button onclick="alert('Electricity Bill Paid! Charge #150 applied')">Pay Electricity</button><button class="back-btn" onclick="x('el')">⬅️ Back to Home</button></div></div>
+<!-- FIXED ELECTRICITY - NO EXAMPLE, ONLY MIN #1000 CHARGE #100 -->
+<div id="el" class="m" onclick="c(event,'el')"><div class="mb"><span class="close-x" onclick="x('el')">×</span><h3>Electricity Bills</h3><div class="charge">Minimum: #1000 - Charge: #100</div><div class="warn">⚠️ Must have enough balance!</div><select><option>IKEDC - Ikeja Electric</option><option>EKEDC - Eko Electric (Lagos)</option><option>AEDC - Abuja Electric</option><option>KAEDCO - Kaduna Electric</option><option>JEDC - Jos Electric</option><option>EEDC - Enugu Electric (EDDC)</option><option>KEDCO - Kano Electric</option><option>IBEDC - Ibadan Electric</option><option>BEDC - Benin Electric</option><option>PHED - Port Harcourt Electric</option><option>YEDC - Yola Electric</option></select><select><option>Prepaid</option><option>Postpaid</option></select><input id="elMeter" placeholder="Meter Number"><input id="elAmt" type="number" placeholder="Amount (Min #1000)"><button onclick="buyEL()">Pay Electricity</button><button class="back-btn" onclick="x('el')">⬅️ Back</button></div></div>
 
 <script>
 let logged=sessionStorage.getItem('payyou_login')==='true';
-window.onload=()=>{upd();if(!logged){o('lg');}else{x('lg');}}
+let bal=parseInt(localStorage.getItem('payyou_bal')||'0');
+window.onload=()=>{updBal();upd();if(!logged){o('lg');}else{x('lg');}}
 function upd(){let lb=document.getElementById('loginBtn'),lo=document.getElementById('logoutBtn');if(lb&&lo){lb.style.display=logged?'none':'block';lo.style.display=logged?'block':'none';}}
-function login(){let a=document.getElementById('ph').value,b=document.getElementById('pw').value;if(!a||!b){alert('Enter phone and password');return;}sessionStorage.setItem('payyou_login','true');logged=true;upd();x('lg');alert('Welcome! Login Successful - You can now use site');}
-function logout(){sessionStorage.removeItem('payyou_login');logged=false;upd();o('lg');alert('Logged out - you must login again when you return');}
-function check(id){if(!logged){alert('Please Register/Login first!');o('lg');return;}o(id);}
+function updBal(){document.getElementById('balText').innerText='#'+bal+'.00';document.getElementById('balWarn').style.display=bal<500?'block':'none';}
+function login(){let a=document.getElementById('ph').value,b=document.getElementById('pw').value;if(!a||!b){alert('Enter phone and password');return;}sessionStorage.setItem('payyou_login','true');logged=true;upd();x('lg');alert('Login Successful! Balance: #'+bal);}
+function logout(){sessionStorage.removeItem('payyou_login');logged=false;upd();o('lg');}
+function check(id){if(!logged){alert('Please Register/Login first!');o('lg');return;}if(id==='bal')updBal();o(id);}
 function o(i){document.getElementById(i).style.display='flex'}
-function x(i){if(i==='lg'&&!logged){return;}document.getElementById(i).style.display='none'}
+function x(i){if(i==='lg'&&!logged)return;document.getElementById(i).style.display='none'}
 function c(e,i){if(e.target.id==i){if(i==='lg'&&!logged)return;x(i)}}
 function goHome(){document.querySelectorAll('.m').forEach(a=>{if(a.id==='lg'){if(!logged)return;a.style.display='none';return;}a.style.display='none'})}
 function sh(){let v=document.getElementById('dNet').value;['m','g','a','n'].forEach(k=>document.getElementById(k+'P').style.display='none');document.getElementById(v+'P').style.display='block'}
 function shTV(){let v=document.getElementById('tvNet').value;['d','gt','st'].forEach(k=>document.getElementById(k+'P').style.display='none');document.getElementById(v+'P').style.display='block'}
+function doFund(){let amt=parseInt(document.getElementById('fundAmt').value),name=document.getElementById('fundName').value;if(!amt||amt<100){alert('Enter amount min #100');return;}if(!name){alert('Enter your name');return;}alert('Thanks '+name+'! Received #'+amt+' to 9063772447. Demo: adding to balance.');bal+=amt;localStorage.setItem('payyou_bal',bal);updBal();x('fund');alert('Wallet Funded! New Balance: #'+bal);}
+function need(needAmt){if(bal<needAmt){alert('INSUFFICIENT FUNDS! Balance: #'+bal+' Need: #'+needAmt+'\nPlease Fund Wallet First to 9063772447 (Opay)!');check('fund');return false;}return true;}
+function buyAirtime(){let amt=parseInt(document.getElementById('airAmt').value),ph=document.getElementById('airPhone').value;if(!ph||!amt){alert('Enter phone and amount');return;}if(!need(amt))return;bal-=amt;localStorage.setItem('payyou_bal',bal);updBal();alert('Airtime #'+amt+' sent to '+ph+'! New Balance: #'+bal);x('air');}
+function buyData(){let v=document.getElementById('dNet').value,sel=document.getElementById(v+'Val');let amt=parseInt(sel.value),ph=document.getElementById('dataPhone').value;if(!ph){alert('Enter phone');return;}if(!need(amt))return;bal-=amt;localStorage.setItem('payyou_bal',bal);updBal();alert('Data Purchase Successful! #'+amt+' deducted. New Balance: #'+bal);x('data');}
+function buyTV(){let v=document.getElementById('tvNet').value,sel=document.getElementById(v+'Val');let base=parseInt(sel.value);let total=base+150;let smart=document.getElementById('tvSmart').value;if(!smart){alert('Enter smartcard/IUC');return;}if(!need(total))return;bal-=total;localStorage.setItem('payyou_bal',bal);updBal();alert('TV Paid! #'+total+' deducted. New Balance: #'+bal);x('tv');}
+function buyEL(){let amt=parseInt(document.getElementById('elAmt').value),meter=document.getElementById('elMeter').value;if(!meter){alert('Enter meter number');return;}if(!amt||amt<1000){alert('Min #1000 for electricity');return;}let total=amt+100;if(!need(total))return;bal-=total;localStorage.setItem('payyou_bal',bal);updBal();alert('Electricity Paid! #'+total+' ( #'+amt+' + #100 charge ) deducted. New Balance: #'+bal);x('el');}
 </script>
 </body>
 </html>
