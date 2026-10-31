@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PayYou Nigeria</title>
-<meta name="monetag" content="c424b42d891486570181244861f9ebb8">
+<title>PayYou Nigeria - NATA Data Company</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}body{background:#F8F9FF;font-family:Arial,sans-serif}
 .header{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#fff}
@@ -18,7 +17,7 @@
 .dark{background:#0F2A4D}.blue{background:#2A8CFF}.yellow{background:#FFD700;color:#0F2A4D}.purple{background:#A855F7}
 .footer{background:#0F2A4D;color:#FFD700;text-align:center;padding:14px;border-radius:20px;margin:14px 12px 0;font-weight:800;font-size:14px}
 .m{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:999;padding:10px}
-.mb{background:#fff;border-radius:16px;padding:18px;width:95%;max-width:360px;max-height:90vh;overflow:auto;position:relative}
+.mb{background:#fff;border-radius:16px;padding:18px;width:95%;max-width:380px;max-height:90vh;overflow:auto;position:relative}
 .mb input,.mb select{width:100%;padding:11px;margin:6px 0;border:1px solid #ddd;border-radius:10px}
 .mb button{width:100%;padding:11px;background:#0F2A4D;color:#FFD700;border:none;border-radius:10px;font-weight:800;margin-top:8px;cursor:pointer}
 .close-x{position:absolute;top:8px;right:12px;font-size:24px;cursor:pointer}.back-btn{background:#eee!important;color:#333!important}
@@ -30,23 +29,135 @@
 <body>
 <div class="header"><h2 onclick="goHome()">PayYou<br><span>Nigeria</span><small>Fast • Secure • Reliable</small></h2><button class="btn-login" id="loginBtn" onclick="o('lg')">Register / Login</button><button class="btn-login" id="logoutBtn" onclick="logout()" style="display:none;background:#FFD700;color:#0F2A4D">Logout</button></div>
 <div class="nav-pills"><b onclick="goHome()">🏠 Home</b><b onclick="check('bal')">💳 Balance</b><b onclick="check('fund')">👤 Fund</b><b onclick="check('ref')">👥 Referral</b></div>
-<div class="hero-navy"><div class="badge">BUY CHEAP</div><h1>AIRTIME &<br><y>DATA</y></h1><div style="margin-top:12px"><span onclick="check('ref')" style="background:#FFD700;color:#0F2A4D;padding:10px 14px;border-radius:24px;font-weight:800;font-size:13px;cursor:pointer">Refer 10 people to get #1000</span></div></div>
+<div class="hero-navy"><div class="badge">BUY CHEAP - NATA DATA - FULL LIST</div><h1>AIRTIME &<br><y>DATA</y></h1><div style="margin-top:12px"><span onclick="check('ref')" style="background:#FFD700;color:#0F2A4D;padding:10px 14px;border-radius:24px;font-weight:800;font-size:13px;cursor:pointer">Refer 10 people to get #1000</span></div></div>
 <div class="our"><span>Our Services</span></div>
 <div class="grid"><div class="box dark" onclick="check('air')">📱<br>Airtime</div><div class="box blue" onclick="check('data')">🗄️<br>Data</div><div class="box yellow" onclick="check('tv')">📺<br>TV Subscription</div><div class="box purple" onclick="check('el')">⚡<br>Electricity Bills</div></div>
-<div class="footer">PayYou Nigeria - Fast • Secure • Reliable</div>
-<div style="text-align:center;margin:10px"><button onclick="goHome()" style="background:#0F2A4D;color:#fff;border:none;padding:8px 18px;border-radius:20px">⬅️ Back to Home</button></div>
+<div class="footer">PayYou Nigeria - Powered by NATA Data Company</div>
 
-<div id="lg" class="m" style="display:flex"><div class="mb"><h3 style="text-align:center">Welcome - Please Register / Login</h3><p style="font-size:11px;text-align:center;margin:6px 0">You must sign up and login first</p><input id="ph" placeholder="Phone / Email"><input id="pw" type="password" placeholder="Password"><button onclick="login()">LOGIN</button><button style="background:#FFD700;color:#0F2A4D" onclick="login()">REGISTER / SIGN UP</button><p style="font-size:10px;text-align:center;margin-top:8px">Login expires when you leave - must login again</p></div></div>
+<div id="lg" class="m" style="display:flex"><div class="mb"><h3 style="text-align:center">Welcome - Please Register / Login</h3><input id="ph" placeholder="Phone / Email"><input id="pw" type="password" placeholder="Password"><button onclick="login()">LOGIN</button><button style="background:#FFD700;color:#0F2A4D" onclick="login()">REGISTER / SIGN UP</button></div></div>
 
 <div id="fund" class="m" onclick="c(event,'fund')"><div class="mb"><span class="close-x" onclick="x('fund')">×</span><h3>Fund Wallet</h3><div class="acct"><b>PAY TO:</b><br><br><b style="font-size:24px">9063772447</b><br><b>Opay</b><br>Gloria Ugochinyere Innocent<br><br><button onclick="navigator.clipboard.writeText('9063772447');alert('Copied 9063772447')" style="background:#FFD700;color:#0F2A4D">Copy Account</button></div><input id="fundAmt" type="number" placeholder="Amount You Paid"><input id="fundName" placeholder="Your Name"><button onclick="doFund()">I Have Paid - Fund Me</button><button class="back-btn" onclick="x('fund')">⬅️ Back</button></div></div>
 
 <div id="bal" class="m" onclick="c(event,'bal')"><div class="mb"><span class="close-x" onclick="x('bal')">×</span><h3>Your Balance</h3><p style="text-align:center;font-size:32px;font-weight:900;margin:15px 0" id="balText">#0.00</p><div class="warn" id="balWarn" style="display:none">⚠️ Low Balance! Fund Wallet to Transact</div><button onclick="check('fund')">Fund Now</button><button class="back-btn" onclick="x('bal')">⬅️ Home</button></div></div>
 <div id="ref" class="m" onclick="c(event,'ref')"><div class="mb"><span class="close-x" onclick="x('ref')">×</span><h3>Referral</h3><p style="text-align:center">Code: <b>PAYYOU123</b><br>Refer 10 get #1000</p><button class="back-btn" onclick="x('ref')">⬅️ Home</button></div></div>
-<div id="air" class="m" onclick="c(event,'air')"><div class="mb"><span class="close-x" onclick="x('air')">×</span><h3>Buy Airtime</h3><div class="warn">⚠️ Must have funds! Check Balance first</div><select><option>MTN</option><option>Glo</option><option>Airtel</option><option>9Mobile</option></select><input id="airPhone" placeholder="Phone"><input id="airAmt" type="number" placeholder="Amount (Min #100)"><button onclick="buyAirtime()">Buy Now</button><button class="back-btn" onclick="x('air')">⬅️ Back</button></div></div>
 
-<div id="data" class="m" onclick="c(event,'data')"><div class="mb"><span class="close-x" onclick="x('data')">×</span><h3>Buy Data - Full Price List</h3><div class="warn">⚠️ Must have funds!</div><select id="dNet" onchange="sh()"><option value="m">MTN</option><option value="g">GLO</option><option value="a">AIRTEL</option><option value="n">9MOBILE</option></select><input id="dataPhone" placeholder="Phone"><div id="mP"><select id="mVal"><option value="150">500MB - #150</option><option value="300">1GB - #300</option><option value="600">2GB - #600</option><option value="900">3GB - #900</option><option value="1350">5GB - #1350</option><option value="2700">10GB - #2700</option></select></div><div id="gP" style="display:none"><select id="gVal"><option value="300">1GB - #300</option><option value="600">2.5GB - #600</option><option value="1000">4.1GB - #1000</option><option value="2500">10GB - #2500</option></select></div><div id="aP" style="display:none"><select id="aVal"><option value="150">500MB - #150</option><option value="350">1GB - #350</option><option value="650">2GB - #650</option><option value="1500">5GB - #1500</option></select></div><div id="nP" style="display:none"><select id="nVal"><option value="200">500MB - #200</option><option value="400">1GB - #400</option><option value="800">2GB - #800</option></select></div><button onclick="buyData()">Buy Data</button><button class="back-btn" onclick="x('data')">⬅️ Back</button></div></div>
+<div id="air" class="m" onclick="c(event,'air')"><div class="mb"><span class="close-x" onclick="x('air')">×</span><h3>Buy Airtime</h3><div class="warn">⚠️ Must have funds!</div><select id="airNet"><option>MTN</option><option>Glo</option><option>Airtel</option><option>9Mobile</option></select><input id="airPhone" placeholder="Phone"><input id="airAmt" type="number" placeholder="Amount (Min #100)"><button onclick="buyAirtime()">Buy Now</button><button class="back-btn" onclick="x('air')">⬅️ Back</button></div></div>
 
-<div id="tv" class="m" onclick="c(event,'tv')"><div class="mb"><span class="close-x" onclick="x('tv')">×</span><h3>TV Subscription / Cable</h3><div class="charge">Charge: #150 on all TV</div><div class="warn">⚠️ Must have enough balance!</div><select id="tvNet" onchange="shTV()"><option value="d">DSTV</option><option value="gt">GOTV</option><option value="st">Startimes</option></select><input id="tvSmart" placeholder="Smartcard / IUC"><div id="dP"><select id="dVal"><option value="3800">DSTV Great Wall Standard Bouquet - #3800 + #150 = #3950</option></select></div><div id="gtP" style="display:none"><select id="gtVal"><option value="1900">GOTV Small Monthly - #1900 + #150 = #2050</option></select></div><div id="stP" style="display:none"><select id="stVal"><option value="700">Startimes Nova (Dish) 1 Week - #700 + #150 = #850</option></select></div><button onclick="buyTV()">Pay TV</button><button class="back-btn" onclick="x('tv')">⬅️ Back</button></div></div>
+<div id="data" class="m" onclick="c(event,'data')"><div class="mb"><span class="close-x" onclick="x('data')">×</span><h3>Buy Data - FULL PRICE LIST - NATA</h3><div class="warn">⚠️ Must have funds! All Networks Complete</div><select id="dNet" onchange="sh()"><option value="m">MTN</option><option value="g">GLO</option><option value="a">AIRTEL</option><option value="n">9MOBILE</option></select><input id="dataPhone" placeholder="Phone Number">
+
+<div id="mP">
+<select id="mVal">
+<option value="100">MTN 500MB SME - #100 (30 Days)</option>
+<option value="200">MTN 1GB SME - #200 (30 Days)</option>
+<option value="400">MTN 2GB SME - #400 (30 Days)</option>
+<option value="600">MTN 3GB SME - #600 (30 Days)</option>
+<option value="1000">MTN 5GB SME - #1000 (30 Days)</option>
+<option value="2000">MTN 10GB SME - #2000 (30 Days)</option>
+<option value="2500">MTN 12GB SME - #2500 (30 Days)</option>
+<option value="3000">MTN 15GB SME - #3000 (30 Days)</option>
+<option value="4000">MTN 20GB SME - #4000 (30 Days)</option>
+<option value="5000">MTN 25GB SME - #5000 (30 Days)</option>
+<option value="6000">MTN 30GB SME - #6000 (30 Days)</option>
+<option value="8000">MTN 40GB SME - #8000 (30 Days)</option>
+<option value="10000">MTN 50GB SME - #10000 (30 Days)</option>
+<option value="15000">MTN 75GB SME - #15000 (30 Days)</option>
+<option value="20000">MTN 100GB SME - #20000 (30 Days)</option>
+<option value="300">MTN 1GB Gifting - #300 (30 Days)</option>
+<option value="600">MTN 2GB Gifting - #600 (30 Days)</option>
+<option value="900">MTN 3GB Gifting - #900 (30 Days)</option>
+<option value="1350">MTN 5GB Gifting - #1350 (30 Days)</option>
+<option value="2700">MTN 10GB Gifting - #2700 (30 Days)</option>
+<option value="150">MTN 500MB Corporate Gifting - #150 (30 Days)</option>
+<option value="300">MTN 1GB Corporate Gifting - #300 (30 Days)</option>
+<option value="600">MTN 2GB Corporate Gifting - #600 (30 Days)</option>
+<option value="900">MTN 3GB Corporate Gifting - #900 (30 Days)</option>
+<option value="1500">MTN 5GB Corporate Gifting - #1500 (30 Days)</option>
+<option value="3000">MTN 10GB Corporate Gifting - #3000 (30 Days)</option>
+</select>
+</div>
+
+<div id="gP" style="display:none">
+<select id="gVal">
+<option value="100">GLO 500MB - #100 (30 Days)</option>
+<option value="200">GLO 1GB - #200 (30 Days)</option>
+<option value="400">GLO 2GB - #400 (30 Days)</option>
+<option value="600">GLO 3GB - #600 (30 Days)</option>
+<option value="1000">GLO 5GB - #1000 (30 Days)</option>
+<option value="2000">GLO 10GB - #2000 (30 Days)</option>
+<option value="2500">GLO 12GB - #2500 (30 Days)</option>
+<option value="3000">GLO 15GB - #3000 (30 Days)</option>
+<option value="4000">GLO 20GB - #4000 (30 Days)</option>
+<option value="5000">GLO 25GB - #5000 (30 Days)</option>
+<option value="6000">GLO 30GB - #6000 (30 Days)</option>
+<option value="8000">GLO 40GB - #8000 (30 Days)</option>
+<option value="10000">GLO 50GB - #10000 (30 Days)</option>
+<option value="135">GLO 200MB - #135 (14 Days)</option>
+<option value="500">GLO 1.8GB - #500 (14 Days)</option>
+<option value="1000">GLO 4.1GB - #1000 (30 Days)</option>
+<option value="2500">GLO 10GB - #2500 (30 Days)</option>
+<option value="3000">GLO 12.5GB - #3000 (30 Days)</option>
+<option value="4000">GLO 15.6GB - #4000 (30 Days)</option>
+<option value="5000">GLO 20GB - #5000 (30 Days)</option>
+<option value="8000">GLO 32GB - #8000 (30 Days)</option>
+</select>
+</div>
+
+<div id="aP" style="display:none">
+<select id="aVal">
+<option value="100">AIRTEL 500MB - #100 (30 Days)</option>
+<option value="200">AIRTEL 1GB - #200 (30 Days)</option>
+<option value="400">AIRTEL 2GB - #400 (30 Days)</option>
+<option value="600">AIRTEL 3GB - #600 (30 Days)</option>
+<option value="1000">AIRTEL 5GB - #1000 (30 Days)</option>
+<option value="2000">AIRTEL 10GB - #2000 (30 Days)</option>
+<option value="2500">AIRTEL 12GB - #2500 (30 Days)</option>
+<option value="3000">AIRTEL 15GB - #3000 (30 Days)</option>
+<option value="4000">AIRTEL 20GB - #4000 (30 Days)</option>
+<option value="5000">AIRTEL 25GB - #5000 (30 Days)</option>
+<option value="6000">AIRTEL 30GB - #6000 (30 Days)</option>
+<option value="8000">AIRTEL 40GB - #8000 (30 Days)</option>
+<option value="10000">AIRTEL 50GB - #10000 (30 Days)</option>
+<option value="15000">AIRTEL 75GB - #15000 (30 Days)</option>
+<option value="20000">AIRTEL 100GB - #20000 (30 Days)</option>
+<option value="150">AIRTEL 500MB Corporate - #150 (30 Days)</option>
+<option value="300">AIRTEL 1GB Corporate - #300 (30 Days)</option>
+<option value="600">AIRTEL 2GB Corporate - #600 (30 Days)</option>
+<option value="1200">AIRTEL 4GB Corporate - #1200 (30 Days)</option>
+<option value="1500">AIRTEL 5GB Corporate - #1500 (30 Days)</option>
+<option value="3000">AIRTEL 10GB Corporate - #3000 (30 Days)</option>
+</select>
+</div>
+
+<div id="nP" style="display:none">
+<select id="nVal">
+<option value="100">9MOBILE 500MB - #100 (30 Days)</option>
+<option value="200">9MOBILE 1GB - #200 (30 Days)</option>
+<option value="400">9MOBILE 2GB - #400 (30 Days)</option>
+<option value="600">9MOBILE 3GB - #600 (30 Days)</option>
+<option value="1000">9MOBILE 5GB - #1000 (30 Days)</option>
+<option value="2000">9MOBILE 10GB - #2000 (30 Days)</option>
+<option value="2500">9MOBILE 12GB - #2500 (30 Days)</option>
+<option value="3000">9MOBILE 15GB - #3000 (30 Days)</option>
+<option value="4000">9MOBILE 20GB - #4000 (30 Days)</option>
+<option value="5000">9MOBILE 25GB - #5000 (30 Days)</option>
+<option value="6000">9MOBILE 30GB - #6000 (30 Days)</option>
+<option value="8000">9MOBILE 40GB - #8000 (30 Days)</option>
+<option value="10000">9MOBILE 50GB - #10000 (30 Days)</option>
+<option value="120">9MOBILE 500MB - #120 (30 Days)</option>
+<option value="200">9MOBILE 1GB - #200 (30 Days)</option>
+<option value="500">9MOBILE 2GB - #500 (30 Days)</option>
+<option value="1000">9MOBILE 3GB - #1000 (30 Days)</option>
+<option value="1500">9MOBILE 4GB - #1500 (30 Days)</option>
+<option value="2000">9MOBILE 5.5GB - #2000 (30 Days)</option>
+<option value="3000">9MOBILE 11.5GB - #3000 (30 Days)</option>
+<option value="4000">9MOBILE 15GB - #4000 (30 Days)</option>
+<option value="5000">9MOBILE 22GB - #5000 (30 Days)</option>
+</select>
+</div>
+
+<button onclick="buyData()">Buy Data Now</button><button class="back-btn" onclick="x('data')">⬅️ Back</button></div></div>
+
+<div id="tv" class="m" onclick="c(event,'tv')"><div class="mb"><span class="close-x" onclick="x('tv')">×</span><h3>TV Subscription - FULL LIST</h3><div class="charge">Charge: #150 on all TV</div><div class="warn">⚠️ Must have enough balance!</div><select id="tvNet" onchange="shTV()"><option value="d">DSTV</option><option value="gt">GOTV</option><option value="st">Startimes</option></select><input id="tvSmart" placeholder="Smartcard / IUC"><div id="dP"><select id="dVal"><option value="3500">DSTV Padi - #3500 + #150 = #3650</option><option value="5000">DSTV Yanga - #5000 + #150 = #5150</option><option value="8500">DSTV Confam - #8500 + #150 = #8650</option><option value="12500">DSTV Compact - #12500 + #150 = #12650</option><option value="19000">DSTV Compact Plus - #19000 + #150 = #19150</option><option value="26500">DSTV Premium - #26500 + #150 = #26650</option><option value="3800">DSTV Great Wall Standard Bouquet - #3800 + #150 = #3950</option></select></div><div id="gtP" style="display:none"><select id="gtVal"><option value="1900">GOTV Smallie - #1900 + #150 = #2050</option><option value="2800">GOTV Jinja - #2800 + #150 = #2950</option><option value="3900">GOTV Jolli - #3900 + #150 = #4050</option><option value="5450">GOTV Max - #5450 + #150 = #5600</option><option value="12000">GOTV Supa - #12000 + #150 = #12150</option></select></div><div id="stP" style="display:none"><select id="stVal"><option value="700">Startimes Nova (Dish) 1 Week - #700 + #150 = #850</option><option value="1400">Startimes Basic (Antenna) 1 Month - #1400 + #150 = #1550</option><option value="2000">Startimes Smart (Dish) 1 Month - #2000 + #150 = #2150</option><option value="2600">Startimes Classic (Antenna) 1 Month - #2600 + #150 = #2750</option><option value="3200">Startimes Super (Dish) 1 Month - #3200 + #150 = #3350</option></select></div><button onclick="buyTV()">Pay TV</button><button class="back-btn" onclick="x('tv')">⬅️ Back</button></div></div>
 
 <div id="el" class="m" onclick="c(event,'el')"><div class="mb"><span class="close-x" onclick="x('el')">×</span><h3>Electricity Bills</h3><div class="charge">Minimum: #1000 - Charge: #100</div><div class="warn">⚠️ Must have enough balance!</div><select><option>IKEDC - Ikeja Electric</option><option>EKEDC - Eko Electric (Lagos)</option><option>AEDC - Abuja Electric</option><option>KAEDCO - Kaduna Electric</option><option>JEDC - Jos Electric</option><option>EEDC - Enugu Electric (EDDC)</option><option>KEDCO - Kano Electric</option><option>IBEDC - Ibadan Electric</option><option>BEDC - Benin Electric</option><option>PHED - Port Harcourt Electric</option><option>YEDC - Yola Electric</option></select><select><option>Prepaid</option><option>Postpaid</option></select><input id="elMeter" placeholder="Meter Number"><input id="elAmt" type="number" placeholder="Amount (Min #1000)"><button onclick="buyEL()">Pay Electricity</button><button class="back-btn" onclick="x('el')">⬅️ Back</button></div></div>
 
