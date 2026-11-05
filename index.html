@@ -14,6 +14,8 @@ body{background:#0a0f2e;color:#fff;padding:14px}
 .header img{width:55px;height:55px;border-radius:12px;object-fit:cover}
 .header h2{font-size:24px;line-height:1}
 .header h2 span{color:#00d26a;font-size:18px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.topbar button{background:#fff;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:bold;cursor:pointer}
 .nav{margin:14px 0;background:#141b45;padding:12px;border-radius:12px;text-align:center}
 .nav b{margin:0 10px;cursor:pointer}
 .hero{background:#00d26a;color:#000;padding:18px;border-radius:16px;text-align:center;margin-bottom:14px}
@@ -28,16 +30,51 @@ body{background:#0a0f2e;color:#fff;padding:14px}
 .box.dark p{color:#bbb}
 .foot{text-align:center;margin-top:20px;color:#aaa;font-size:13px;line-height:1.6}
 .foot a{color:#00d26a;text-decoration:none}
-.btn{display:block;background:#00d26a;color:#000;text-align:center;padding:14px;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:14px}
-input{width:100%;padding:12px;border-radius:10px;border:1px solid #ddd;margin:8px 0;font-size:16px}
+.btn{display:block;background:#00d26a;color:#000;text-align:center;padding:14px;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:14px;border:none;width:100%;cursor:pointer;font-size:16px}
+.btn2{display:block;background:#141b45;color:#fff;text-align:center;padding:14px;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:10px;border:1px solid #333;width:100%;cursor:pointer}
+input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #ddd;margin:8px 0;font-size:16px;background:#fff;color:#000}
+.plan{background:#fff;color:#000;padding:12px 14px;border-radius:12px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.plan b{font-size:15px}
+.plan span{font-weight:bold;color:#00a652}
+.plan small{display:block;color:#666;font-weight:normal}
+.tabs{display:flex;gap:8px;margin-top:10px;overflow-x:auto}
+.tabs button{white-space:nowrap;background:#141b45;color:#fff;border:1px solid #2a356e;padding:10px 14px;border-radius:20px;cursor:pointer}
+.tabs button.active{background:#00d26a;color:#000}
+/* LOGIN POPUP */
+#loginOverlay{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px}
+.loginBox{background:#fff;color:#000;width:100%;max-width:380px;border-radius:18px;padding:20px;text-align:center}
+.loginBox img{width:65px;height:65px;border-radius:14px;object-fit:cover}
+.loginBox h2{margin:8px 0 2px}
+.loginBox p{color:#666;font-size:13px}
+.forgot{display:block;margin-top:8px;color:#0066cc;text-decoration:none;font-size:14px;cursor:pointer}
+.small{font-size:12px;color:#888;margin-top:10px}
+#msg{color:red;font-size:13px;min-height:16px}
 </style>
 </head>
 <body>
+
+<!-- LOGIN / SIGNUP - MUST LOGIN TO USE -->
+<div id="loginOverlay">
+<div class="loginBox">
+<img src="IMG-20261105-WA3399.jpg">
+<h2>PayYou Nigeria</h2>
+<p>Login to continue - Secure Platform</p>
+<div id="msg"></div>
+<input id="phone" placeholder="Phone Number e.g 0803..." type="tel">
+<input id="pass" placeholder="Password" type="password">
+<button class="btn" onclick="doLogin()">Login</button>
+<a class="forgot" onclick="forgotPass()">Forgot Password?</a>
+<p class="small">No account? Enter phone + password and tap <b>Create Account</b></p>
+<button class="btn2" onclick="doSignup()" style="background:#000;color:#fff">Create Account</button>
+<p class="small">For security, you must login again every time you leave this site.</p>
+</div>
+</div>
 
 <div class="header">
 <img src="IMG-20261105-WA3399.jpg" alt="PayYou Nigeria">
 <div><h2>PayYou<br><span>Nigeria</span></h2></div>
 </div>
+<div class="topbar"><span id="welcome" style="font-size:13px;color:#bbb">Welcome</span><button onclick="logout()">Logout</button></div>
 
 <div class="nav"><b onclick="show('home')">🏠 Home</b><b onclick="show('fund')">💰 Fund</b><b onclick="show('ref')">👥 Refer</b></div>
 
@@ -52,77 +89,209 @@ input{width:100%;padding:12px;border-radius:10px;border:1px solid #ddd;margin:8p
 <div class="grid">
 <div class="box dark" onclick="show('fund')"><b>💰 Fund Wallet</b><p>Fund with bank transfer</p></div>
 <div class="box dark" onclick="show('bal')"><b>👛 Balance</b><p>Check your balance</p></div>
-<div class="box dark" onclick="show('ref')"><b>👥 Refer & Earn</b><p>Earn on every referral</p></div>
+<div class="box dark" onclick="show('ref')"><b>👥 Refer & Earn</b><p>Refer 10 people to get ₦1000</p></div>
 <div class="box dark" onclick="show('air')"><b>📱 Airtime</b><p>MTN, Glo, Airtel, 9mobile</p></div>
 <div class="box dark" onclick="show('data')"><b>📶 Data</b><p>Cheap data bundles</p></div>
 <div class="box dark" onclick="show('tv')"><b>📺 TV</b><p>DSTV, GOTV, Startimes</p></div>
 <div class="box dark" onclick="show('el')"><b>💡 Electricity</b><p>PHED, IKEDC & more</p></div>
-<div class="box" onclick="show('data')"><b>🔥 Today's Offer</b><p>1GB - ₦280 Only</p></div>
+<div class="box" onclick="show('data')"><b>🔥 Today's Offer</b><p>₦50 discount for first 10 to buy 1GB Data (30 days)</p></div>
 </div>
-
 <a class="btn" href="https://whatsapp.com/channel/0029VbE0cc" target="_blank">Chat On WhatsApp</a>
 </div>
 
 <div id="fund" style="display:none">
 <h2>Fund Wallet</h2>
 <p style="margin:10px 0;color:#bbb">Transfer to the account below and your wallet will be funded.</p>
-<div class="box"><b>Account Number</b><p style="font-size:22px;color:#000;font-weight:bold">Your Account Number Here</p><p>Bank: Your Bank Name<br>Name: PayYou Nigeria</p></div>
+<div class="box"><b>Account Number</b><p style="font-size:22px;font-weight:bold">Your Account Number Here</p><p>Bank: Your Bank Name<br>Name: PayYou Nigeria</p></div>
 <a class="btn" onclick="show('home')">Back Home</a>
 </div>
 
 <div id="bal" style="display:none">
 <h2>Your Balance</h2>
-<div class="box"><b>Wallet Balance</b><p style="font-size:28px;color:#000;font-weight:bold">₦0.00</p></div>
+<div class="box"><b>Wallet Balance</b><p style="font-size:28px;font-weight:bold">₦0.00</p></div>
 <a class="btn" onclick="show('home')">Back Home</a>
 </div>
 
 <div id="ref" style="display:none">
 <h2>Refer & Earn</h2>
-<div class="box"><b>Your Referral Link</b><p>https://payyou-nigeria.com/?ref=YOURCODE</p></div>
-<a class="btn" onclick="show('home')">Back Home</a>
+<div class="box"><b>Refer 10 People to Get ₦1000</b><p style="margin-top:8px">Share your link. When 10 people join and buy, you get ₦1000.</p><p style="margin-top:8px;font-weight:bold">https://payyou-nigeria.com/?ref=YOURCODE</p><p>Your Referrals: <span id="refCount">0</span> / 10</p></div>
+<button class="btn" onclick="copyRef()">Copy Referral Link</button>
+<a class="btn2" onclick="show('home')">Back Home</a>
 </div>
 
 <div id="air" style="display:none">
 <h2>Buy Airtime</h2>
+<select id="airNet"><option>MTN</option><option>Glo</option><option>Airtel</option><option>9mobile</option></select>
 <input placeholder="Phone Number">
 <input placeholder="Amount e.g 500">
-<a class="btn" href="#">Buy Airtime</a>
-<a class="btn" style="background:#141b45;color:#fff" onclick="show('home')">Back Home</a>
+<button class="btn" onclick="alert('Airtime order received. Please fund wallet first if balance is low.')">Buy Airtime</button>
+<a class="btn2" onclick="show('home')">Back Home</a>
 </div>
 
 <div id="data" style="display:none">
 <h2>Buy Data</h2>
-<input placeholder="Phone Number">
-<div class="box" style="text-align:left"><b>MTN 1GB - ₦280</b><p>30 Days • Instant</p></div>
-<div class="box" style="text-align:left;margin-top:10px"><b>MTN 2GB - ₦560</b><p>30 Days • Instant</p></div>
-<div class="box" style="text-align:left;margin-top:10px"><b>Airtel 1GB - ₦300</b><p>30 Days • Instant</p></div>
-<a class="btn" onclick="show('home')">Back Home</a>
+<p style="color:#bbb;font-size:13px">Tap any plan to buy. Today's Offer: First 10 buyers get ₦50 off 1GB (30 days)</p>
+<div class="tabs">
+<button class="active" onclick="showNet('mtn',this)">MTN</button>
+<button onclick="showNet('airtel',this)">Airtel</button>
+<button onclick="showNet('glo',this)">Glo</button>
+<button onclick="showNet('ninemobile',this)">9mobile</button>
+</div>
+<input placeholder="Phone Number for Data">
+
+<div id="net-mtn">
+<div class="plan" onclick="buyPlan('MTN 100MB Daily ₦100')"><div><b>100MB</b><small>Daily</small></div><span>₦100</span></div>
+<div class="plan" onclick="buyPlan('MTN 230MB Daily ₦200')"><div><b>230MB</b><small>Daily</small></div><span>₦200</span></div>
+<div class="plan" onclick="buyPlan('MTN 500MB 2 Days ₦350')"><div><b>500MB</b><small>2 Days</small></div><span>₦350</span></div>
+<div class="plan" onclick="buyPlan('MTN 500MB 30 Days ₦400')"><div><b>500MB</b><small>30 Days</small></div><span>₦400</span></div>
+<div class="plan" onclick="buyPlan('MTN 1GB 30 Days ₦800')"><div><b>1GB</b><small>30 Days • First 10 get ₦50 off = ₦750</small></div><span>₦800</span></div>
+<div class="plan" onclick="buyPlan('MTN 2.5GB 2 Days ₦1000')"><div><b>2.5GB</b><small>2 Days</small></div><span>₦1000</span></div>
+<div class="plan" onclick="buyPlan('MTN 2GB 7 Days ₦950')"><div><b>2GB</b><small>7 Days</small></div><span>₦950</span></div>
+<div class="plan" onclick="buyPlan('MTN 2GB 30 Days ₦1300')"><div><b>2GB</b><small>30 Days</small></div><span>₦1300</span></div>
+<div class="plan" onclick="buyPlan('MTN 3GB 30 Days ₦1500')"><div><b>3GB</b><small>30 Days</small></div><span>₦1500</span></div>
+<div class="plan" onclick="buyPlan('MTN 3.5GB 1 Day ₦1100')"><div><b>3.5GB</b><small>1 Day</small></div><span>₦1100</span></div>
+<div class="plan" onclick="buyPlan('MTN 4GB 2 Days ₦1300')"><div><b>4GB</b><small>2 Days</small></div><span>₦1300</span></div>
+<div class="plan" onclick="buyPlan('MTN 5GB 30 Days ₦2400')"><div><b>5GB</b><small>30 Days</small></div><span>₦2400</span></div>
+<div class="plan" onclick="buyPlan('MTN 6GB 7 Days ₦2600')"><div><b>6GB</b><small>7 Days</small></div><span>₦2600</span></div>
+</div>
+
+<div id="net-airtel" style="display:none">
+<div class="plan" onclick="buyPlan('Airtel 100MB 1 Day ₦100')"><div><b>100MB</b><small>1 Day</small></div><span>₦100</span></div>
+<div class="plan" onclick="buyPlan('Airtel 230MB 2 Days ₦200')"><div><b>230MB</b><small>2 Days</small></div><span>₦200</span></div>
+<div class="plan" onclick="buyPlan('Airtel 300MB 2 Days ₦300')"><div><b>300MB</b><small>2 Days</small></div><span>₦300</span></div>
+<div class="plan" onclick="buyPlan('Airtel 600MB 2 Days ₦350')"><div><b>600MB</b><small>2 Days</small></div><span>₦350</span></div>
+<div class="plan" onclick="buyPlan('Airtel 1GB Socials 1 Day ₦450')"><div><b>1GB Socials</b><small>1 Day</small></div><span>₦450</span></div>
+<div class="plan" onclick="buyPlan('Airtel 1.5GB 1 Day ₦450')"><div><b>1.5GB</b><small>1 Day</small></div><span>₦450</span></div>
+<div class="plan" onclick="buyPlan('Airtel 2GB 2 Days ₦700')"><div><b>2GB</b><small>2 Days</small></div><span>₦700</span></div>
+<div class="plan" onclick="buyPlan('Airtel 1GB 7 Days ₦800')"><div><b>1GB</b><small>7 Days</small></div><span>₦800</span></div>
+<div class="plan" onclick="buyPlan('Airtel 4GB 2 Days ₦1100')"><div><b>4GB</b><small>2 Days</small></div><span>₦1100</span></div>
+<div class="plan" onclick="buyPlan('Airtel 1.5GB 30 Days ₦1100')"><div><b>1.5GB</b><small>30 Days</small></div><span>₦1100</span></div>
+<div class="plan" onclick="buyPlan('Airtel 3.5GB 7 Days ₦1600')"><div><b>3.5GB</b><small>7 Days</small></div><span>₦1600</span></div>
+<div class="plan" onclick="buyPlan('Airtel 6GB 7 Days ₦2500')"><div><b>6GB</b><small>7 Days</small></div><span>₦2500</span></div>
+<div class="plan" onclick="buyPlan('Airtel 3GB 30 Days ₦2100')"><div><b>3GB</b><small>30 Days</small></div><span>₦2100</span></div>
+<div class="plan" onclick="buyPlan('Airtel 4GB 30 Days ₦2600')"><div><b>4GB</b><small>30 Days</small></div><span>₦2600</span></div>
+</div>
+
+<div id="net-glo" style="display:none">
+<div class="plan" onclick="buyPlan('Glo 100MB 1 Day ₦100')"><div><b>100MB</b><small>1 Day</small></div><span>₦100</span></div>
+<div class="plan" onclick="buyPlan('Glo 200MB 14 Days ₦200')"><div><b>200MB</b><small>14 Days</small></div><span>₦200</span></div>
+<div class="plan" onclick="buyPlan('Glo 750MB 1 Day ₦400')"><div><b>750MB</b><small>1 Day</small></div><span>₦400</span></div>
+<div class="plan" onclick="buyPlan('Glo 500MB 30 Days ₦500')"><div><b>500MB</b><small>30 Days</small></div><span>₦500</span></div>
+<div class="plan" onclick="buyPlan('Glo 1.5GB 1 Day ₦450')"><div><b>1.5GB</b><small>1 Day</small></div><span>₦450</span></div>
+<div class="plan" onclick="buyPlan('Glo 1GB 3 Days ₦450')"><div><b>1GB</b><small>3 Days</small></div><span>₦450</span></div>
+<div class="plan" onclick="buyPlan('Glo 1GB 30 Days ₦600')"><div><b>1GB</b><small>30 Days</small></div><span>₦600</span></div>
+<div class="plan" onclick="buyPlan('Glo 2.5GB 2 Days ₦600')"><div><b>2.5GB</b><small>2 Days</small></div><span>₦600</span></div>
+<div class="plan" onclick="buyPlan('Glo 1.5GB + 2GB Night 2 Days ₦700')"><div><b>1.5GB + 2GB Night</b><small>2 Days</small></div><span>₦700</span></div>
+<div class="plan" onclick="buyPlan('Glo 2GB 30 Days ₦900')"><div><b>2GB</b><small>30 Days</small></div><span>₦900</span></div>
+<div class="plan" onclick="buyPlan('Glo 3GB 3 Days ₦1200')"><div><b>3GB</b><small>3 Days</small></div><span>₦1200</span></div>
+<div class="plan" onclick="buyPlan('Glo 3GB 30 Days ₦1400')"><div><b>3GB</b><small>30 Days</small></div><span>₦1400</span></div>
+<div class="plan" onclick="buyPlan('Glo 5GB 7 Days ₦2000')"><div><b>5GB</b><small>7 Days</small></div><span>₦2000</span></div>
+<div class="plan" onclick="buyPlan('Glo 5GB 3 Days ₦1900')"><div><b>5GB</b><small>3 Days</small></div><span>₦1900</span></div>
+<div class="plan" onclick="buyPlan('Glo 5GB 30 Days ₦2200')"><div><b>5GB</b><small>30 Days</small></div><span>₦2200</span></div>
+<div class="plan" onclick="buyPlan('Glo 10GB 7 Days ₦2500')"><div><b>10GB</b><small>7 Days</small></div><span>₦2500</span></div>
+</div>
+
+<div id="net-ninemobile" style="display:none">
+<div class="plan" onclick="buyPlan('9mobile 100MB 1 Day ₦100')"><div><b>100MB</b><small>1 Day</small></div><span>₦100</span></div>
+<div class="plan" onclick="buyPlan('9mobile 230MB 2 Days ₦200')"><div><b>230MB</b><small>2 Days</small></div><span>₦200</span></div>
+<div class="plan" onclick="buyPlan('9mobile 300MB 2 Days ₦300')"><div><b>300MB</b><small>2 Days</small></div><span>₦300</span></div>
+<div class="plan" onclick="buyPlan('9mobile 600MB 2 Days ₦350')"><div><b>600MB</b><small>2 Days</small></div><span>₦350</span></div>
+<div class="plan" onclick="buyPlan('9mobile 1GB Socials 1 Day ₦450')"><div><b>1GB Socials</b><small>1 Day</small></div><span>₦450</span></div>
+<div class="plan" onclick="buyPlan('9mobile 1.5GB 1 Day ₦450')"><div><b>1.5GB</b><small>1 Day</small></div><span>₦450</span></div>
+<div class="plan" onclick="buyPlan('9mobile 2GB 2 Days ₦700')"><div><b>2GB</b><small>2 Days</small></div><span>₦700</span></div>
+<div class="plan" onclick="buyPlan('9mobile 1GB 7 Days ₦800')"><div><b>1GB</b><small>7 Days</small></div><span>₦800</span></div>
+<div class="plan" onclick="buyPlan('9mobile 4GB 2 Days ₦1100')"><div><b>4GB</b><small>2 Days</small></div><span>₦1100</span></div>
+<div class="plan" onclick="buyPlan('9mobile 1.5GB 30 Days ₦1100')"><div><b>1.5GB</b><small>30 Days</small></div><span>₦1100</span></div>
+<div class="plan" onclick="buyPlan('9mobile 3.5GB 7 Days ₦1600')"><div><b>3.5GB</b><small>7 Days</small></div><span>₦1600</span></div>
+<div class="plan" onclick="buyPlan('9mobile 6GB 7 Days ₦2500')"><div><b>6GB</b><small>7 Days</small></div><span>₦2500</span></div>
+<div class="plan" onclick="buyPlan('9mobile 3GB 30 Days ₦2100')"><div><b>3GB</b><small>30 Days</small></div><span>₦2100</span></div>
+<div class="plan" onclick="buyPlan('9mobile 4GB 30 Days ₦2600')"><div><b>4GB</b><small>30 Days</small></div><span>₦2600</span></div>
+</div>
+<a class="btn2" onclick="show('home')">Back Home</a>
 </div>
 
 <div id="tv" style="display:none">
-<h2>TV Subscription</h2>
+<h2>TV Subscription / Cable</h2>
+<p style="color:#bbb;font-size:13px">Service Charge: ₦150 on all TV payments</p>
 <input placeholder="Smart Card / IUC Number">
-<a class="btn" href="#">Pay TV</a>
-<a class="btn" style="background:#141b45;color:#fff" onclick="show('home')">Back Home</a>
+<div class="plan" onclick="buyPlan('DSTV Great Wall Standard Bouquet ₦3800 + ₦150 charge = ₦3950')"><div><b>DSTV Great Wall Standard Bouquet</b><small>Charge ₦150</small></div><span>₦3800</span></div>
+<div class="plan" onclick="buyPlan('GOTV Small Monthly ₦1900 + ₦150 charge = ₦2050')"><div><b>GOTV Small Monthly</b><small>Charge ₦150</small></div><span>₦1900</span></div>
+<div class="plan" onclick="buyPlan('Startimes Nova (Dish) 1 Week ₦700 + ₦150 charge = ₦850')"><div><b>Startimes Nova (Dish) 1 Week</b><small>Charge ₦150</small></div><span>₦700</span></div>
+<a class="btn2" onclick="show('home')">Back Home</a>
 </div>
 
 <div id="el" style="display:none">
-<h2>Electricity Bill</h2>
+<h2>Electricity</h2>
+<p style="color:#bbb;font-size:13px">Minimum: ₦1000 • Charge: ₦150</p>
+<select><option>PHED</option><option>IKEDC</option><option>EKEDC</option><option>AEDC</option><option>Others</option></select>
 <input placeholder="Meter Number">
-<input placeholder="Amount">
-<a class="btn" href="#">Pay Electricity</a>
-<a class="btn" style="background:#141b45;color:#fff" onclick="show('home')">Back Home</a>
+<input placeholder="Amount - Minimum ₦1000" type="number">
+<button class="btn" onclick="buyPlan('Electricity Payment - Min ₦1000 + ₦150 charge')">Pay Electricity</button>
+<a class="btn2" onclick="show('home')">Back Home</a>
 </div>
 
 <div class="foot">PayYou Nigeria<br><span style="color:#00d26a">Fast • Cheap • Reliable</span><br><a href="https://whatsapp.com/channel/0029VbE0cc">Join Our WhatsApp Channel</a></div>
 
 <script>
 function show(id){
-  ['home','fund','bal','ref','air','data','tv','el'].forEach(function(x){
-    document.getElementById(x).style.display = (x===id ? 'block' : 'none');
-  });
+  if(!sessionStorage.getItem('payyou_logged_in')){ document.getElementById('loginOverlay').style.display='flex'; return; }
+  ['home','fund','bal','ref','air','data','tv','el'].forEach(function(x){ document.getElementById(x).style.display = (x===id ? 'block' : 'none'); });
   window.scrollTo(0,0);
 }
+function showNet(net,btn){
+  ['mtn','airtel','glo','ninemobile'].forEach(function(n){ document.getElementById('net-'+n).style.display = (n===net ? 'block' : 'none'); });
+  document.querySelectorAll('.tabs button').forEach(function(b){ b.classList.remove('active'); });
+  if(btn) btn.classList.add('active');
+}
+function buyPlan(plan){ alert('You selected: '+plan+'\n\nPlease fund wallet to complete.'); }
+function copyRef(){ alert('Referral link copied! Refer 10 people to get ₦1000'); }
+function doSignup(){
+  var phone=document.getElementById('phone').value.trim();
+  var pass=document.getElementById('pass').value.trim();
+  if(!phone || !pass){ document.getElementById('msg').innerText='Enter phone and password'; return; }
+  if(pass.length<4){ document.getElementById('msg').innerText='Password must be at least 4 characters'; return; }
+  localStorage.setItem('payyou_user_'+phone, pass);
+  sessionStorage.setItem('payyou_logged_in', phone);
+  document.getElementById('loginOverlay').style.display='none';
+  document.getElementById('welcome').innerText='Welcome, '+phone;
+}
+function doLogin(){
+  var phone=document.getElementById('phone').value.trim();
+  var pass=document.getElementById('pass').value.trim();
+  if(!phone || !pass){ document.getElementById('msg').innerText='Enter phone and password'; return; }
+  var saved=localStorage.getItem('payyou_user_'+phone);
+  if(!saved){ document.getElementById('msg').innerText='No account found. Tap Create Account first.'; return; }
+  if(saved!==pass){ document.getElementById('msg').innerText='Wrong password. Try again or tap Forgot Password.'; return; }
+  sessionStorage.setItem('payyou_logged_in', phone);
+  document.getElementById('loginOverlay').style.display='none';
+  document.getElementById('welcome').innerText='Welcome, '+phone;
+}
+function forgotPass(){
+  var phone=document.getElementById('phone').value.trim();
+  if(!phone){ document.getElementById('msg').innerText='Enter your phone number first, then tap Forgot Password'; return; }
+  var newPass=prompt('Forgot Password\nEnter NEW password for '+phone);
+  if(!newPass) return;
+  if(newPass.length<4){ alert('Password must be at least 4 characters'); return; }
+  localStorage.setItem('payyou_user_'+phone, newPass);
+  document.getElementById('msg').innerText='Password changed! Now login with new password.';
+  document.getElementById('pass').value='';
+}
+function logout(){
+  sessionStorage.removeItem('payyou_logged_in');
+  document.getElementById('loginOverlay').style.display='flex';
+  document.getElementById('msg').innerText='Logged out. Login again to continue.';
+}
+// SECURITY: If user leaves site even for 2 seconds and returns, must login again
+// sessionStorage clears when tab closes, and we also force logout when page hides
+document.addEventListener('visibilitychange', function(){
+  if(document.hidden){ sessionStorage.removeItem('payyou_logged_in'); }
+});
+window.addEventListener('pagehide', function(){ sessionStorage.removeItem('payyou_logged_in'); });
+window.addEventListener('load', function(){
+  // Always show login on fresh load
+  sessionStorage.removeItem('payyou_logged_in');
+  document.getElementById('loginOverlay').style.display='flex';
+});
 </script>
 </body>
 </html>
