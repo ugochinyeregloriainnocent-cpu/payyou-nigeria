@@ -3,96 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PayYou Nigeria - Fund Wallet</title>
+<title>PayYou Nigeria</title>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <style>
-  body { background:#020a2e; color:white; font-family:Arial, sans-serif; margin:0; padding:20px; }
-  .header { display:flex; align-items:center; gap:10px; }
-  .header h2 { margin:0; }
-  .header span { color:#00c853; }
-  .nav { display:flex; gap:20px; margin:20px 0; font-size:18px; }
-  .nav b { color:white; }
-  .card { background:white; color:#000; border-radius:16px; padding:20px; text-align:center; }
-  input { width:100%; padding:14px; border-radius:10px; border:1px solid #ddd; margin:10px 0; font-size:16px; box-sizing:border-box; }
-  .btn { width:100%; padding:15px; background:#00c853; color:white; border:none; border-radius:12px; font-size:17px; font-weight:bold; cursor:pointer; }
-  .btn2 { width:100%; padding:15px; background:#020a2e; color:white; border:1px solid #00c853; border-radius:12px; font-size:16px; margin-top:10px; cursor:pointer; }
-  #transferDetails { display:none; margin-top:15px; text-align:left; background:#f0fff4; border:1px dashed #00c853; padding:15px; border-radius:12px; }
-  .footer { text-align:center; margin-top:20px; color:#ccc; }
-  .footer a { color:#00c853; text-decoration:none; }
+  body{background:#020a2e;color:white;font-family:Arial;margin:0;padding:16px;padding-bottom:80px}
+  .top{display:flex;align-items:center;gap:10px}
+  .top h2{margin:0}.top span{color:#00c853}
+  .small{font-size:12px;color:#ccc}
+  .nav{display:flex;gap:18px;margin:18px 0;font-size:17px}
+  .nav a{color:white;text-decoration:none;opacity:.7}.nav a.active{opacity:1;font-weight:bold;border-bottom:2px solid #00c853}
+  .card{background:white;color:#000;border-radius:16px;padding:18px;margin-top:14px}
+  .bal{font-size:32px;font-weight:bold;margin:5px 0}
+  input,select{width:100%;padding:14px;border-radius:10px;border:1px solid #ddd;margin:8px 0;font-size:16px;box-sizing:border-box}
+  .btn{width:100%;padding:15px;background:#00c853;color:white;border:none;border-radius:12px;font-size:17px;font-weight:bold;cursor:pointer}
+  .btn-dark{width:100%;padding:14px;background:#020a2e;color:white;border:1px solid #00c853;border-radius:12px;font-size:16px;margin-top:10px;cursor:pointer}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .service{background:#0a1a5a;border:1px solid #1e3a8a;border-radius:14px;padding:16px;text-align:center;cursor:pointer}
+  .hidden{display:none}
+  #transferDetails{display:none;background:#f0fff4;border:1px dashed #00c853;padding:12px;border-radius:12px;margin-top:12px;color:#000}
+  .footer{text-align:center;color:#ccc;margin-top:20px;font-size:13px}.footer a{color:#00c853;text-decoration:none}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <img src="logo.png" width="45" style="border-radius:50%;">
-  <div><h2>PayYou</h2><span>Nigeria</span></div>
-  <div style="margin-left:auto; font-size:13px;">Welcome,<br><span id="userEmail">ugochinyeregloriainnocent@gmail.com</span></div>
+<div class="top">
+  <div style="font-size:30px">💳</div>
+  <div><h2>PayYou <span>Nigeria</span></h2></div>
+  <div style="margin-left:auto;text-align:right"><div class="small">Welcome,</div><div class="small" id="userEmail">ugochinyeregloriainnocent@gmail.com</div></div>
 </div>
 
 <div class="nav">
-  <span>🏠 Home</span>
-  <span><b>💰 Fund</b></span>
-  <span>👥 Refer</span>
+  <a href="#" id="navHome" class="active" onclick="showTab('home');return false">🏠 Home</a>
+  <a href="#" id="navFund" onclick="showTab('fund');return false">💰 Fund</a>
+  <a href="#" id="navRefer" onclick="showTab('refer');return false">👥 Refer</a>
 </div>
 
-<h1>Fund Wallet</h1>
-<p style="color:#ccc;">Transfer to the account below and your wallet will be funded automatically. No manual approval needed.</p>
-
-<!-- 1. PAY WITH TRANSFER - WORKS NOW -->
-<div class="card">
-  <h3 style="margin:0;">Fund with Bank Transfer</h3>
-  <p style="color:#666; font-size:14px;">Enter amount, get a temporary account, transfer & wallet credits automatically.</p>
-
-  <input id="fundAmount" type="number" placeholder="Enter amount e.g. 5000" />
-  <button class="btn" onclick="payWithTransfer()">Get Transfer Account</button>
-
-  <div id="transferDetails">
-    <p>✅ <b>Account generated!</b> Transfer the EXACT amount below.</p>
-    <p><b>Amount:</b> ₦<span id="tAmount"></span></p>
-    <p><b>Reference:</b> <span id="tRef"></span></p>
-    <p style="color:#d32f2f; font-size:13px;">After you transfer, wait 1-2 mins. Your wallet will credit automatically. Don't send a different amount.</p>
+<!-- HOME -->
+<div id="tab-home">
+  <div class="card">
+    <div style="color:#666">Wallet Balance</div>
+    <div class="bal">₦<span id="balance">0</span></div>
+    <div style="color:#666;font-size:13px">PayYou Nigeria • Fast • Cheap • Reliable</div>
+    <button class="btn" onclick="showTab('fund')">+ Fund Wallet</button>
   </div>
+  <h3>Services</h3>
+  <div class="grid">
+    <div class="service" onclick="alert('Airtime coming - fund wallet first')">📱<br><b>Airtime</b></div>
+    <div class="service" onclick="alert('Data coming - fund wallet first')">🌐<br><b>Data</b></div>
+    <div class="service" onclick="alert('Cable TV coming')">📺<br><b>Cable TV</b></div>
+    <div class="service" onclick="alert('Electricity coming')">💡<br><b>Electricity</b></div>
+  </div>
+  <div class="card"><h3 style="margin:0">Recent Transactions</h3><p style="color:#666">No transactions yet. Fund your wallet to start.</p></div>
 </div>
 
-<br>
-
-<!-- 2. DVA - COMING SOON AFTER PAYSTACK ENABLES IT -->
-<div class="card" style="opacity:0.8;">
-  <h3 style="margin:0;">Your Permanent Account</h3>
-  <p style="font-size:22px; font-weight:bold; margin:10px 0;">Your Account Number Here</p>
-  <p style="color:#666; margin:0;">Bank: Your Bank Name<br>Name: PayYou Nigeria</p>
-  <p style="color:#ff9800; font-size:13px;">⏳ Coming soon - Paystack is enabling your permanent account.</p>
+<!-- FUND -->
+<div id="tab-fund" class="hidden">
+  <h1>Fund Wallet</h1>
+  <p style="color:#ccc">Transfer to the account below and your wallet will be funded automatically. No manual approval needed.</p>
+  <div class="card">
+    <h3 style="margin:0">Fund with Bank Transfer</h3>
+    <p style="color:#666;font-size:14px">Enter amount, get a temporary account, transfer & wallet credits automatically.</p>
+    <input id="fundAmount" type="number" placeholder="Enter amount e.g. 5000" value="100">
+    <button class="btn" onclick="payWithTransfer()">Get Transfer Account</button>
+    <div id="transferDetails">
+      <b>✅ Account generated!</b><br>
+      Amount: ₦<span id="tAmount"></span><br>
+      Reference: <span id="tRef"></span><br>
+      <span style="color:#d32f2f;font-size:13px">Complete the transfer in the Paystack window. Wait 1-2 mins, wallet credits automatically.</span>
+    </div>
+  </div>
+  <div class="card" style="opacity:.85">
+    <h3 style="margin:0">Your Permanent Account</h3>
+    <p style="font-size:20px;font-weight:bold">Your Account Number Here</p>
+    <p style="color:#666">Bank: Your Bank Name<br>Name: PayYou Nigeria</p>
+    <p style="color:#ff9800;font-size:13px">⏳ Coming soon - Paystack is enabling your permanent account.</p>
+  </div>
+  <button class="btn-dark" onclick="showTab('home')">Back Home</button>
 </div>
 
-<button class="btn2" onclick="window.location.href='index.html'">Back Home</button>
-
-<div class="footer">
-  <p>PayYou Nigeria<br>Fast • Cheap • Reliable<br><a href="#">Join Our WhatsApp Channel</a></p>
+<!-- REFER -->
+<div id="tab-refer" class="hidden">
+  <div class="card"><h3>Refer & Earn</h3><p>Share your link and earn when your friends fund.</p>
+  <input id="refLink" value="https://ent-cpu.github.io/?ref=payyou" readonly>
+  <button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('refLink').value);alert('Link copied!')">Copy Referral Link</button></div>
 </div>
+
+<div class="footer">PayYou Nigeria<br>Fast • Cheap • Reliable<br><a href="#">Join Our WhatsApp Channel</a></div>
 
 <script>
-function payWithTransfer() {
-  const amount = document.getElementById('fundAmount').value;
-  const email = document.getElementById('userEmail').innerText.trim();
-  if (!amount || amount < 100) { alert("Enter amount of at least ₦100"); return; }
-
-  let handler = PaystackPop.setup({
-    key: 'pk_live_396260246880808f62d55065ac73694bc5a9b17c,
+function showTab(t){
+  document.getElementById('tab-home').classList.add('hidden');
+  document.getElementById('tab-fund').classList.add('hidden');
+  document.getElementById('tab-refer').classList.add('hidden');
+  document.getElementById('tab-'+t).classList.remove('hidden');
+  document.getElementById('navHome').classList.remove('active');
+  document.getElementById('navFund').classList.remove('active');
+  document.getElementById('navRefer').classList.remove('active');
+  if(t==='home') document.getElementById('navHome').classList.add('active');
+  if(t==='fund') document.getElementById('navFund').classList.add('active');
+  if(t==='refer') document.getElementById('navRefer').classList.add('active');
+}
+function payWithTransfer(){
+  var amount = document.getElementById('fundAmount').value;
+  var email = document.getElementById('userEmail').innerText.trim();
+  if(!amount || amount < 100){ alert("Enter amount of at least ₦100"); return; }
+  if(!email || email.indexOf('@')===-1){ alert("Login email not found"); return; }
+  var handler = PaystackPop.setup({
+    key: 'pk_live_396260246880808f62d55065ac73694bc5a9b17c',
     email: email,
     amount: amount * 100,
     currency: 'NGN',
     channels: ['bank_transfer'],
-    callback: function(response) {
-      document.getElementById('transferDetails').style.display = 'block';
-      document.getElementById('tAmount').innerText = amount;
-      document.getElementById('tRef').innerText = response.reference;
-      alert("Transfer account created! Complete the transfer in the Paystack window. Ref: " + response.reference);
+    callback: function(response){
+      document.getElementById('transferDetails').style.display='block';
+      document.getElementById('tAmount').innerText=amount;
+      document.getElementById('tRef').innerText=response.reference;
+      alert("Transfer started! Complete it in the Paystack window. Ref: "+response.reference);
     },
-    onClose: function() {}
+    onClose: function(){}
   });
   handler.openIframe();
 }
 </script>
-
 </body>
 </html>
