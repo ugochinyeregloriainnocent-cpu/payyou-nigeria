@@ -38,10 +38,9 @@ button.link{background:none;color:#00a651;text-decoration:underline}
 <div class="top">
 <div class="logo"><img src="IMG-20261105-WA3399.jpg" alt="PayYou"></div>
 <h1>PayYou 💸</h1>
-<p>Fast Data & Airtime • Port Harcourt</p>
+<p>Fast Data & Airtime</p>
 <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;text-align:left">
 <div><div class="small" style="color:#eafff0">Wallet Balance</div><div id="balance" style="font-size:26px;font-weight:800">₦0.00</div><div id="userPhone" class="small">Not logged in</div></div>
-<span style="background:#fff;color:#00a651;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:800">LIVE</span>
 </div>
 </div>
 
@@ -108,7 +107,6 @@ document.getElementById('loginBtn').addEventListener('click',async()=>{
  let pw=document.getElementById('passInput').value.trim();
  if(ph.length<10||pw.length<4){ document.getElementById('loginMsg').innerText="Enter phone + password (min 4)"; return; }
  document.getElementById('loginMsg').innerText="Checking...";
- // Try Supabase first
  if(supa){
   try{
    let {data,error}=await supa.from('wallets').select('*').eq('phone',ph).maybeSingle();
@@ -119,7 +117,6 @@ document.getElementById('loginBtn').addEventListener('click',async()=>{
    }
   }catch(e){ console.log("Supabase failed, using offline login", e); }
  }
- // OFFLINE FALLBACK - NEVER FAILS
  let savedPw=localStorage.getItem('payyou_pw_'+ph);
  if(!savedPw){ localStorage.setItem('payyou_pw_'+ph,pw); localStorage.setItem('payyou_bal_'+ph, localStorage.getItem('payyou_bal_'+ph)||"0"); phone=ph; document.getElementById('loginMsg').innerText="Offline mode - Supabase paused, logged in locally."; loginSuccess(); return; }
  if(savedPw!==pw){ alert("Wrong password! Tap Forgot Password."); return; }
