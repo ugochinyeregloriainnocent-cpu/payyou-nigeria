@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>PayYou</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0A8A3E">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <style>
 *{box-sizing:border-box;font-family:Arial,sans-serif}
 html,body{margin:0;padding:0;background:#f2f2f2!important;color:#222;overflow:hidden;height:100dvh}
 body{padding:10px 12px 8px 12px;display:flex;flex-direction:column}
-/* PAYYOU LOGO + NAME - LEFT SIDE, TOP, ABOVE GREEN BANNER - NOT MIDDLE, NOT CENTER */
 .header{display:flex!important;align-items:center!important;justify-content:flex-start!important;text-align:left!important;gap:10px!important;padding:0 0 8px 0!important;margin:0!important;flex-shrink:0!important;width:100%!important}
 .logo{width:52px!important;height:52px!important;background:transparent!important;border-radius:12px!important;overflow:hidden!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;flex-shrink:0!important;margin:0!important;padding:0!important}
 .logo img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important}
@@ -24,7 +25,9 @@ body{padding:10px 12px 8px 12px;display:flex;flex-direction:column}
 input,select,button{width:100%;padding:13px;margin-top:8px;border-radius:10px;border:1px solid #ddd;font-size:15px;color:#222;background:#fff}
 button{background:#0A8A3E;color:#fff;border:none;font-weight:700;cursor:pointer}
 button.link{background:none;color:#0A8A3E;text-decoration:underline}
-#loginCard{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;width:calc(100% - 24px)!important;max-width:420px!important;margin:0!important;z-index:100;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+/* LOGIN POPUP - ALWAYS SHOWS FIRST, OVERLAY */
+#loginOverlay{position:fixed!important;inset:0!important;background:rgba(0,0,0,.55)!important;display:flex!important;align-items:center!important;justify-content:center!important;z-index:200!important;padding:16px!important}
+#loginCard{position:relative!important;top:auto!important;left:auto!important;transform:none!important;width:100%!important;max-width:420px!important;margin:0!important;z-index:201!important;box-shadow:0 10px 30px rgba(0,0,0,.25)!important}
 .pass-wrap{position:relative}
 .pass-wrap input{padding-right:48px}
 .pass-eye{position:absolute!important;right:6px!important;top:50%!important;transform:translateY(-35%)!important;width:38px!important;height:38px!important;padding:0!important;margin:0!important;background:transparent!important;border:none!important;display:flex;align-items:center;justify-content:center;cursor:pointer}
@@ -71,6 +74,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 </head>
 <body>
 
+<div id="loginOverlay">
 <div class="card" id="loginCard">
 <h3 style="margin:0;color:#222">Login / Create Account</h3>
 <input id="phoneInput" placeholder="Phone e.g 08031234567" type="tel">
@@ -83,9 +87,9 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <button id="loginBtn">Login / Sign Up</button>
 <button class="link" id="forgotBtn">Forgot Password?</button>
 </div>
+</div>
 
 <div id="app" class="hidden">
-<!-- YOUR REAL PAYYOU LOGO FROM GITHUB - IMG-20261105-WA3399.jpg - LEFT SIDE, ABOVE GREEN BANNER -->
 <div class="header" id="payyouHeader">
   <div class="logo"><img src="IMG-20261105-WA3399.jpg" alt="PayYou"></div>
   <div><h1>PayYou</h1><p>Fast Data & Airtime</p></div>
@@ -172,10 +176,11 @@ async function refreshBalance(){ if(!phone) return; var balTxt="₦"+getLocalBal
 async function loadHistory(){ var h=JSON.parse(localStorage.getItem('payyou_hist_'+phone)||'[]'); document.getElementById('history').innerHTML=h.length?h.map(function(t){ return '<div style="font-size:13px;border-bottom:1px solid #eee;padding:8px 0"><b>'+t.type+'</b> • ₦'+t.amount+' • '+t.status+'</div>'; }).join(''):"No transactions yet"; }
 function saveHist(type,amount){ var h=JSON.parse(localStorage.getItem('payyou_hist_'+phone)||'[]'); h.unshift({type:type,amount:amount,status:'pending'}); localStorage.setItem('payyou_hist_'+phone,JSON.stringify(h.slice(0,20))); }
 async function doBuy(type,amount,planLabel,recipient,network){ var is1GB=type==='data' && planLabel.indexOf("1GB")!==-1; if(!is1GB && type==='data' && amount<MIN_AMOUNT) return pAlert("Minimum data is ₦1000. 1GB Data is the only exception."); var bal=getLocalBal(); if(bal<amount){ return pAlert("Balance is low, fund wallet with ₦500"); } if(!confirm("Buy "+planLabel+" - ₦"+amount+"?")) return; setLocalBal(bal-amount); saveHist(type,amount); if(is1GB) creditReferrerIfNeeded(); await refreshBalance(); await loadHistory(); updateReferUI(); if(supa){ supa.from('wallets').select('*').eq('phone',phone).maybeSingle().then(function(w){ if(w.data) supa.from('wallets').update({balance:Number(w.data.balance)-amount}).eq('phone',phone); }).catch(function(){}); supa.from('orders').insert([{phone:phone,recipient:recipient,network:network,plan:planLabel,amount:amount,status:'pending',referral_code:localStorage.getItem('payyou_referred_by_'+phone)||null}]).then(function(){}).catch(function(){}); } pAlert("Order saved! We will deliver it."); }
-function loginSuccess(showWelcome){ document.getElementById('userPhone').innerText=phone; document.getElementById('myReferCode').innerText=myCode(); localStorage.setItem('payyou_phone_for_code_'+myCode(), phone); localStorage.setItem('payyou_session', phone); document.getElementById('loginCard').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); showPage('Home'); refreshBalance(); loadHistory(); claimPendingRewards(); updateReferUI(); if(showWelcome!==false) pAlert("Welcome "+phone); }
+function showLoginPopup(){ document.getElementById('loginOverlay').classList.remove('hidden'); document.getElementById('app').classList.add('hidden'); }
+function loginSuccess(showWelcome){ document.getElementById('userPhone').innerText=phone; document.getElementById('myReferCode').innerText=myCode(); localStorage.setItem('payyou_phone_for_code_'+myCode(), phone); localStorage.setItem('payyou_session', phone); document.getElementById('loginOverlay').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); showPage('Home'); refreshBalance(); loadHistory(); claimPendingRewards(); updateReferUI(); if(showWelcome!==false) pAlert("Welcome "+phone); }
 document.getElementById('loginBtn').addEventListener('click', async function(){ var ph=document.getElementById('phoneInput').value.trim(); var pw=document.getElementById('passInput').value.trim(); var refCode=document.getElementById('signupReferInput').value.trim().toUpperCase(); if(ph.length<10||pw.length<4){ pAlert("Enter phone + password (min 4)"); return; } if(supa){ try{ var supaPromise=supa.from('wallets').select('*').eq('phone',ph).maybeSingle(); var timeoutPromise=new Promise(function(resolve){ setTimeout(function(){ resolve({timedOut:true}); },3000); }); var res=await Promise.race([supaPromise,timeoutPromise]); if(res && !res.timedOut && !res.error){ if(!res.data){ var insPromise=supa.from('wallets').insert([{phone:ph,balance:0,password:pw,referral_code:"PY"+ph.slice(-4),referred_by:refCode||null}]); var insTimeout=new Promise(function(resolve){ setTimeout(function(){ resolve({timedOut:true}); },3000); }); var ins=await Promise.race([insPromise,insTimeout]); if(ins && ins.error) throw ins.error; phone=ph; if(refCode) saveReferralForNewUser(ph,refCode); loginSuccess(); return; } else if(res.data.password && res.data.password!==pw){ pAlert("Wrong password! Tap Forgot Password."); return; } phone=ph; if(refCode) saveReferralForNewUser(ph,refCode); loginSuccess(); return; } }catch(e){ console.log("Supabase failed, using offline login",e); } } var savedPw=localStorage.getItem('payyou_pw_'+ph); if(!savedPw){ localStorage.setItem('payyou_pw_'+ph,pw); localStorage.setItem('payyou_bal_'+ph, localStorage.getItem('payyou_bal_'+ph)||"0"); phone=ph; if(refCode) saveReferralForNewUser(ph,refCode); loginSuccess(); return; } if(savedPw!==pw){ pAlert("Wrong password! Tap Forgot Password."); return; } phone=ph; loginSuccess(); });
 document.getElementById('forgotBtn').addEventListener('click',async function(){ var ph=document.getElementById('phoneInput').value.trim(); if(ph.length<10) return pAlert("Enter phone first"); var np=prompt("Enter NEW password:"); if(!np||np.length<4) return pAlert("Too short"); localStorage.setItem('payyou_pw_'+ph,np); if(supa){ try{ await supa.from('wallets').update({password:np}).eq('phone',ph); }catch(e){} } pAlert("Password changed! Login again."); });
-document.getElementById('logoutBtn').addEventListener('click',function(){ phone=""; localStorage.removeItem('payyou_session'); document.getElementById('app').classList.add('hidden'); document.getElementById('loginCard').classList.remove('hidden'); document.getElementById('passInput').value=""; });
+document.getElementById('logoutBtn').addEventListener('click',function(){ phone=""; localStorage.removeItem('payyou_session'); document.getElementById('app').classList.add('hidden'); document.getElementById('passInput').value=""; showLoginPopup(); });
 function handlePaystackSuccess(response){ var amount=Number(document.getElementById('fundAmount').value); document.getElementById('fundMsg').innerText="Verifying payment... "+(response.reference||""); setLocalBal(getLocalBal()+amount); saveHist('funding',amount); if(supa){ supa.from('wallets').select('*').eq('phone',phone).maybeSingle().then(function(r){ if(r.data){ supa.from('wallets').update({balance:Number(r.data.balance)+amount}).eq('phone',phone); } else { supa.from('wallets').insert([{phone:phone,balance:amount}]); } }); } refreshBalance(); document.getElementById('fundMsg').innerText="Funded ₦"+amount; pAlert("Funded ₦"+amount+" Ref: "+(response.reference||"")); }
 function doFund(){ if(!phone) return pAlert("Login first"); var amount=Number(document.getElementById('fundAmount').value); if(!amount||amount<MIN_FUNDING) return pAlert("Minimum funding is ₦500 on PayYou."); if(typeof PaystackPop==="undefined"){ document.getElementById('fundMsg').innerText="Paystack failed to load. Check internet and try again."; return pAlert("Paystack failed to load. Check internet, close and reopen."); } document.getElementById('fundMsg').innerText="Opening Paystack..."; try{ var payConfig={key:PAYSTACK_PUBLIC,email:phone+"@payyou.ng",amount:amount*100,currency:"NGN",ref:"PY-"+Date.now(),callback:function(response){ handlePaystackSuccess(response); },onSuccess:function(response){ handlePaystackSuccess(response); },onClose:function(){ document.getElementById('fundMsg').innerText="Payment cancelled."; },onCancel:function(){ document.getElementById('fundMsg').innerText="Payment cancelled."; }}; if(PaystackPop.newTransaction){ PaystackPop.newTransaction(payConfig); } else { var handler=PaystackPop.setup(payConfig); handler.openIframe(); } }catch(e){ document.getElementById('fundMsg').innerText="Paystack error: "+e.message; pAlert("Paystack error: "+e.message); } }
 document.getElementById('fundBtn').addEventListener('click',doFund);
@@ -190,7 +195,7 @@ document.getElementById('applyReferBtn').onclick=function(){ if(!phone) return p
 (function(){ var params=new URLSearchParams(location.search); var ref=params.get('ref'); if(ref){ ref=ref.toUpperCase(); document.getElementById('signupReferInput').value=ref; document.getElementById('refInviteMsg').innerText="You were invited with code "+ref+" — Register to count for them!"; } })();
 document.getElementById('network').onchange=function(){ renderPlans(); };
 renderPlans(); renderPricing(); updateEyeIcons();
-(function(){ var saved=localStorage.getItem('payyou_session'); if(saved && saved.length>=10){ phone=saved; document.getElementById('phoneInput').value=saved; loginSuccess(false); } })();
+showLoginPopup();
 </script>
 </body>
 </html>
