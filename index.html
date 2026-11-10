@@ -1,3 +1,4 @@
+<!-- PayYou v1007 - ELECTRIC CHARGE 100 - AIRTIME MIN 100 - FUNDING MIN 500 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +48,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 .progress{background:#eee;border-radius:10px;overflow:hidden;height:18px;margin-top:8px}
 .progress-fill{background:#0A8A3E;height:100%;width:0%;transition:width .3s}
 .ref-person{padding:8px 0;border-bottom:1px solid #eee;font-size:13px;display:flex;justify-content:space-between}
+.live-total{background:#fff3cd;padding:10px;border-radius:10px;font-weight:700;margin-top:8px;border:1px solid #ffcc00}
 </style>
 </head>
 <body>
@@ -54,7 +56,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <div class="top">
   <div class="top-row">
     <div class="logo"><img src="IMG-20261105-WA3399.jpg" alt="PayYou"></div>
-    <div><h1>PayYou</h1><p>Fast Data & Airtime</p></div>
+    <div><h1>PayYou</h1><p>Fast Data & Airtime</p><p style="font-size:11px;background:#fff;color:#0A8A3E;display:inline-block;padding:2px 8px;border-radius:10px;font-weight:800">v1007 - NEW</p></div>
   </div>
   <div class="offer-in-green"><b>🔥 Today's Offer:</b> ₦50 OFF first 10 to buy 1GB (30 Days)! MTN 1GB now <b>₦750</b> not ₦800. <b><span id="offerLeft">10 left</span></b></div>
   <div class="balance-row"><div><div class="small" style="color:#eafff0">Wallet Balance</div><div id="balance" style="font-size:26px;font-weight:800">₦0.00</div><div id="userPhone" class="small">Not logged in</div></div></div>
@@ -78,8 +80,8 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <div class="sub-nav"><button id="btnHome" class="active">🏠 Home</button><button id="btnWhatsApp" class="wa">💬 WhatsApp Channel</button><button id="btnCare" class="care">🎧 Customer Care</button></div>
 
 <div class="card" id="pageHome">
-<h3>Welcome to PayYou</h3>
-<p style="font-size:14px;line-height:1.5">Buy Data, Airtime, Electricity & TV fast and cheap.<br>Funding min <b>₦500</b>. Airtime min <b>₦100</b>. Electricity min <b>₦1000 + ₦100 charge</b>.<br>Refer 10 people who buy 1GB = <b>₦1,000</b> for you!</p>
+<h3>Welcome to PayYou - v1007 NEW</h3>
+<p style="font-size:14px;line-height:1.5">Buy Data, Airtime, Electricity & TV fast and cheap.<br>Funding min <b>₦500</b>. Airtime min <b>₦100 ONLY</b>. Electricity min <b>₦1000 + ₦100 charge = ₦1100 total</b>.<br>Refer 10 people who buy 1GB = <b>₦1,000</b> for you!</p>
 <p style="font-size:13px;background:#f0fdf4;padding:10px;border-radius:10px">🔥 Offer: MTN 1GB (30 Days) now <b>₦750</b> — <span id="offerLeft2">10 left</span></p>
 <button id="homeFundBtn" style="background:#ff9800">💳 Fund Wallet Now (Min ₦500)</button>
 <button id="homeDataBtn">📶 Buy Data Now</button>
@@ -90,9 +92,9 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 
 <div class="card hidden" id="pageData"><h3>Buy Data</h3><select id="network"><option value="MTN">MTN</option><option value="Airtel">Airtel</option><option value="Glo">Glo</option><option value="9mobile">9mobile</option></select><input id="recipientData" placeholder="Recipient phone" type="tel"><div id="plans"></div><button id="buyDataBtn">Buy Data Now</button><p class="small" id="buyMsg">If balance is low, fund wallet with ₦500</p></div>
 
-<div class="card hidden" id="pageAirtime"><h3>Buy Airtime - Min ₦100 ONLY</h3><select id="networkAirtime"><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select><input id="recipientAirtime" placeholder="Recipient phone" type="tel"><input id="airtimeAmount" type="number" placeholder="Amount - Min ₦100 e.g 100" min="100"><button id="buyAirtimeBtn">Buy Airtime</button><p class="small">Minimum airtime is ₦100 only. You only pay what you buy. If balance is low, fund wallet with ₦500</p></div>
+<div class="card hidden" id="pageAirtime"><h3>Buy Airtime - Min ₦100 ONLY (NOT ₦1000)</h3><select id="networkAirtime"><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select><input id="recipientAirtime" placeholder="Recipient phone" type="tel"><input id="airtimeAmount" type="number" placeholder="Amount - Min ₦100 e.g 100" min="100"><button id="buyAirtimeBtn">Buy Airtime</button><p class="small">Minimum airtime is ₦100 only. You only pay what you buy. If balance is low, fund wallet with ₦500</p></div>
 
-<div class="card hidden" id="pageElectric"><h3>Electricity - All States - Min ₦1000 + ₦100 Charge</h3>
+<div class="card hidden" id="pageElectric"><h3>Electricity - Min ₦1000 + ₦100 Charge = ₦1100</h3>
 <select id="electricProvider">
 <option value="AEDC">AEDC - Abuja FCT, Niger, Kogi, Nasarawa</option>
 <option value="BEDC">BEDC - Edo, Delta, Ondo, Ekiti</option>
@@ -107,7 +109,9 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <option value="YEDC">YEDC - Adamawa, Taraba, Borno, Yobe</option>
 </select>
 <p class="small" id="electricStateInfo">Covers: Abuja FCT, Niger, Kogi, Nasarawa</p>
-<input id="meterNo" placeholder="Meter Number"><input id="electricAmount" type="number" placeholder="Min ₦1000" min="1000"><p class="small">Total = Amount + ₦100 charge. Minimum ₦1000</p><button id="buyElectricBtn">Pay Electricity</button></div>
+<input id="meterNo" placeholder="Meter Number"><input id="electricAmount" type="number" placeholder="Min ₦1000 - type 1000 to see total" min="1000">
+<div class="live-total" id="electricLiveTotal">Type amount to see total: Amount + ₦100 charge</div>
+<p class="small">Total = Amount + ₦100 charge. Minimum ₦1000. Example: ₦1000 + ₦100 = ₦1100</p><button id="buyElectricBtn">Pay Electricity</button></div>
 
 <div class="card hidden" id="pageTV"><h3>TV / Cable - Min ₦1000</h3><select id="tvProvider"><option value="DStv Great Wall standard bouquet (3800)">DStv - Great Wall - ₦3800 + ₦150 = ₦3950</option><option value="GOtv small monthly (1900)">GOtv - Small monthly - ₦1900 + ₦150 = ₦2050</option><option value="Startimes Nova (Dish) 1 week (700)">Startimes - Nova 1 week - ₦700 + ₦150 = ₦850 - Below Min, will be blocked</option></select><input id="smartcard" placeholder="Smartcard / IUC Number"><button id="buyTvBtn">Pay TV</button><p class="small">Minimum TV payment is ₦1000</p></div>
 
@@ -134,7 +138,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <p class="small" id="referApplyMsg"></p>
 </div>
 
-<div class="card hidden" id="pagePricing"><h3>💲 PayYou Complete Price List</h3><div id="priceList"></div></div>
+<div class="card hidden" id="pagePricing"><h3>💲 PayYou Complete Price List - v1007</h3><div id="priceList"></div></div>
 </div>
 
 <div id="payyouModal"><div class="modal-box"><div class="modal-head">PayYou</div><div class="modal-body"><div id="payyouModalText"></div><button id="payyouModalOk">OK</button></div></div></div>
@@ -149,7 +153,7 @@ const WHATSAPP_NUMBER="2349063772447";
 const MIN_FUNDING=500;
 const MIN_AIRTIME=100;
 const MIN_AMOUNT=1000;
-const ELECTRIC_CHARGE=100;
+const ELECTRIC_CHARGE=100; // CHANGED FROM 150 TO 100 - v1007
 const DISCO_STATES={AEDC:"Covers: Abuja FCT, Niger, Kogi, Nasarawa",BEDC:"Covers: Edo, Delta, Ondo, Ekiti",EKEDC:"Covers: Lagos (Eko)",EEDC:"Covers: Enugu, Anambra, Imo, Abia, Ebonyi",IBEDC:"Covers: Oyo, Ogun, Osun, Kwara",IKEDC:"Covers: Lagos (Ikeja)",JEDC:"Covers: Plateau, Bauchi, Gombe, Benue",KAEDCO:"Covers: Kaduna, Sokoto, Zamfara, Kebbi",KEDCO:"Covers: Kano, Katsina, Jigawa",PHED:"Covers: Rivers, Akwa Ibom, Cross River, Bayelsa",YEDC:"Covers: Adamawa, Taraba, Borno, Yobe"};
 let supa=null;
 try{ supa=supabase.createClient(SUPABASE_URL,SUPABASE_KEY); }catch(e){ supa=null; }
@@ -248,8 +252,9 @@ document.getElementById('homeReferBtn').onclick=()=>showPage('Refer');
 document.getElementById('btnWhatsApp').onclick=()=>{ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text=Hello%20PayYou%20I%20want%20to%20join%20your%20WhatsApp%20Channel","_blank"); };
 document.getElementById('btnCare').onclick=()=>{ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text=Hello%20PayYou%20Customer%20Care%20I%20need%20help","_blank"); };
 document.getElementById('electricProvider').onchange=(e)=>{ document.getElementById('electricStateInfo').innerText=DISCO_STATES[e.target.value]||""; };
+document.getElementById('electricAmount').oninput=(e)=>{ let v=Number(e.target.value||0); let el=document.getElementById('electricLiveTotal'); if(!v) el.innerText="Type amount to see total: Amount + ₦100 charge"; else el.innerText="You will pay: ₦"+(v+100).toLocaleString()+" total ( ₦"+v.toLocaleString()+" + ₦100 charge )"; };
 function renderPlans(){ let net=document.getElementById('network').value; let html=""; PLANS[net].forEach((p,i)=>{ let price=getPrice(p); let tag=p.offer&&offerCount<10?` <span style="background:#ffcc00;color:#222;padding:2px 6px;border-radius:10px;font-size:10px">OFFER ₦${price}</span>`:""; html+=`<div class="plan ${i===0?'active':''}" data-i="${i}"><span>${p.l}${tag}</span><b>₦${price}</b></div>`; }); document.getElementById('plans').innerHTML=html; selectedPlan=PLANS[net][0]; document.querySelectorAll('.plan').forEach(el=>el.onclick=()=>{selectedPlan=PLANS[net][Number(el.dataset.i)];document.querySelectorAll('.plan').forEach(e=>e.classList.remove('active'));el.classList.add('active');}); }
-function renderPricing(){ let html=""; Object.keys(PLANS).forEach(net=>{ html+=`<div class="price-group"><h4>${net} Data</h4>`; PLANS[net].forEach(p=>{ html+=`<div class="price-row"><span>${p.l}</span><b>₦${getPrice(p)}</b></div>`; }); html+=`</div>`; }); html+=`<div class="price-group"><h4>Electricity - All States</h4><div class="price-row"><span>All 11 DISCOs</span><b>Min ₦1000 + ₦100</b></div></div><div class="price-group"><h4>TV / Cable</h4><div class="price-row"><span>DStv Great Wall</span><b>₦3950</b></div><div class="price-row"><span>GOtv Small monthly</span><b>₦2050</b></div><div class="price-row"><span>Startimes Nova 1 week</span><b>₦850 - Below Min</b></div></div>`; document.getElementById('priceList').innerHTML=html; }
+function renderPricing(){ let html=""; Object.keys(PLANS).forEach(net=>{ html+=`<div class="price-group"><h4>${net} Data</h4>`; PLANS[net].forEach(p=>{ html+=`<div class="price-row"><span>${p.l}</span><b>₦${getPrice(p)}</b></div>`; }); html+=`</div>`; }); html+=`<div class="price-group"><h4>Electricity - All States - NEW CHARGE ₦100</h4><div class="price-row"><span>All 11 DISCOs - Min ₦1000</span><b>₦1000 + ₦100 = ₦1100</b></div></div><div class="price-group"><h4>TV / Cable</h4><div class="price-row"><span>DStv Great Wall</span><b>₦3950</b></div><div class="price-row"><span>GOtv Small monthly</span><b>₦2050</b></div><div class="price-row"><span>Startimes Nova 1 week</span><b>₦850 - Below Min</b></div></div>`; document.getElementById('priceList').innerHTML=html; }
 function getLocalBal(){ return Number(localStorage.getItem('payyou_bal_'+phone)||0); }
 function setLocalBal(v){ localStorage.setItem('payyou_bal_'+phone, v); }
 async function refreshBalance(){ if(!phone) return; document.getElementById('balance').innerText="₦"+getLocalBal().toLocaleString('en-NG',{minimumFractionDigits:2}); if(supa){ try{ let {data}=await supa.from('wallets').select('*').eq('phone',phone).maybeSingle(); if(data) document.getElementById('balance').innerText="₦"+Number(data.balance).toLocaleString('en-NG',{minimumFractionDigits:2}); }catch(e){} } }
