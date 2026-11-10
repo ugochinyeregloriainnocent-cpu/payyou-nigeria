@@ -1,4 +1,4 @@
-<!-- PayYou v1007 - ELECTRIC CHARGE 100 - AIRTIME MIN 100 - FUNDING MIN 500 -->
+<!-- PayYou v1008 - PAYSTACK CALLBACK FIXED - ELECTRIC 100 - AIRTIME 100 - FUNDING 500 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +56,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <div class="top">
   <div class="top-row">
     <div class="logo"><img src="IMG-20261105-WA3399.jpg" alt="PayYou"></div>
-    <div><h1>PayYou</h1><p>Fast Data & Airtime</p><p style="font-size:11px;background:#fff;color:#0A8A3E;display:inline-block;padding:2px 8px;border-radius:10px;font-weight:800">v1007 - NEW</p></div>
+    <div><h1>PayYou</h1><p>Fast Data & Airtime</p><p style="font-size:11px;background:#fff;color:#0A8A3E;display:inline-block;padding:2px 8px;border-radius:10px;font-weight:800">v1008 - NEW</p></div>
   </div>
   <div class="offer-in-green"><b>🔥 Today's Offer:</b> ₦50 OFF first 10 to buy 1GB (30 Days)! MTN 1GB now <b>₦750</b> not ₦800. <b><span id="offerLeft">10 left</span></b></div>
   <div class="balance-row"><div><div class="small" style="color:#eafff0">Wallet Balance</div><div id="balance" style="font-size:26px;font-weight:800">₦0.00</div><div id="userPhone" class="small">Not logged in</div></div></div>
@@ -80,7 +80,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <div class="sub-nav"><button id="btnHome" class="active">🏠 Home</button><button id="btnWhatsApp" class="wa">💬 WhatsApp Channel</button><button id="btnCare" class="care">🎧 Customer Care</button></div>
 
 <div class="card" id="pageHome">
-<h3>Welcome to PayYou - v1007 NEW</h3>
+<h3>Welcome to PayYou - v1008 NEW</h3>
 <p style="font-size:14px;line-height:1.5">Buy Data, Airtime, Electricity & TV fast and cheap.<br>Funding min <b>₦500</b>. Airtime min <b>₦100 ONLY</b>. Electricity min <b>₦1000 + ₦100 charge = ₦1100 total</b>.<br>Refer 10 people who buy 1GB = <b>₦1,000</b> for you!</p>
 <p style="font-size:13px;background:#f0fdf4;padding:10px;border-radius:10px">🔥 Offer: MTN 1GB (30 Days) now <b>₦750</b> — <span id="offerLeft2">10 left</span></p>
 <button id="homeFundBtn" style="background:#ff9800">💳 Fund Wallet Now (Min ₦500)</button>
@@ -88,7 +88,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <button id="homeReferBtn" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E">👥 Refer & Earn ₦1,000</button>
 </div>
 
-<div class="card hidden" id="pageWallet"><h3>Fund Wallet - Min ₦500</h3><input id="fundAmount" type="number" value="500" min="500"><button id="fundBtn">Fund with Paystack 💳</button><p class="small" id="fundMsg">Minimum funding is ₦500</p><button id="logoutBtn" style="background:#ff4444">Logout</button></div>
+<div class="card hidden" id="pageWallet"><h3>Fund Wallet - Min ₦500</h3><input id="fundAmount" type="number" value="500" min="500"><button id="fundBtn">Fund with Paystack 💳</button><p class="small" id="fundMsg">Minimum funding is ₦500 - Paystack Public Key Added</p><button id="logoutBtn" style="background:#ff4444">Logout</button></div>
 
 <div class="card hidden" id="pageData"><h3>Buy Data</h3><select id="network"><option value="MTN">MTN</option><option value="Airtel">Airtel</option><option value="Glo">Glo</option><option value="9mobile">9mobile</option></select><input id="recipientData" placeholder="Recipient phone" type="tel"><div id="plans"></div><button id="buyDataBtn">Buy Data Now</button><p class="small" id="buyMsg">If balance is low, fund wallet with ₦500</p></div>
 
@@ -138,14 +138,14 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <p class="small" id="referApplyMsg"></p>
 </div>
 
-<div class="card hidden" id="pagePricing"><h3>💲 PayYou Complete Price List - v1007</h3><div id="priceList"></div></div>
+<div class="card hidden" id="pagePricing"><h3>💲 PayYou Complete Price List - v1008</h3><div id="priceList"></div></div>
 </div>
 
 <div id="payyouModal"><div class="modal-box"><div class="modal-head">PayYou</div><div class="modal-body"><div id="payyouModalText"></div><button id="payyouModalOk">OK</button></div></div></div>
 
 <script>
 function pAlert(msg){ document.getElementById('payyouModalText').innerText=msg; document.getElementById('payyouModal').classList.add('show'); }
-document.getElementById('payyouModalOk').onclick=()=>document.getElementById('payyouModal').classList.remove('show');
+document.getElementById('payyouModalOk').onclick=function(){ document.getElementById('payyouModal').classList.remove('show'); };
 const SUPABASE_URL="https://phookhwnnqvld1sdabxl.supabase.co";
 const SUPABASE_KEY="sb_publishable_XtUW05kuHhrTeMZ3NOCBBg_zNecT4c0";
 const PAYSTACK_PUBLIC="pk_live_396260246880808f62d55065ac73694bc5a9b17c";
@@ -169,20 +169,20 @@ function myCode(){ return "PY"+phone.slice(-4); }
 function getBaseUrl(){ return location.origin + location.pathname; }
 function updateReferUI(){
   if(!phone) return;
-  let code=myCode();
+  var code=myCode();
   document.getElementById('myReferCode').innerText=code;
-  let link=getBaseUrl()+"?ref="+code;
+  var link=getBaseUrl()+"?ref="+code;
   document.getElementById('myReferLink').value=link;
-  let all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}');
-  let mine=all[code]||[];
-  let qualified=mine.filter(r=>r.bought1GB).length;
-  let earned=Math.floor(qualified/10)*1000;
-  let progress=qualified%10;
+  var all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}');
+  var mine=all[code]||[];
+  var qualified=mine.filter(function(r){return r.bought1GB;}).length;
+  var earned=Math.floor(qualified/10)*1000;
+  var progress=qualified%10;
   document.getElementById('referCount').innerText=qualified;
   document.getElementById('referEarned').innerText="₦"+earned.toLocaleString();
   document.getElementById('referNext').innerText=(10-progress);
   document.getElementById('referProgress').style.width=(progress*10)+"%";
-  document.getElementById('referList').innerHTML=mine.length?mine.map(r=>`<div class="ref-person"><span>***${r.phone.slice(-4)}</span><b>${r.bought1GB?'✅ Bought 1GB':'⏳ Registered, no 1GB yet'}</b></div>`).join(''):"<p class='small'>No referrals yet. Share your link!</p>";
+  document.getElementById('referList').innerHTML=mine.length?mine.map(function(r){return '<div class="ref-person"><span>***'+r.phone.slice(-4)+'</span><b>'+(r.bought1GB?'✅ Bought 1GB':'⏳ Registered, no 1GB yet')+'</b></div>';}).join(''):"<p class='small'>No referrals yet. Share your link!</p>";
 }
 function saveReferralForNewUser(newPhone, refCode){
   if(!refCode) return;
@@ -190,32 +190,32 @@ function saveReferralForNewUser(newPhone, refCode){
   if(!refCode) return;
   if(refCode==="PY"+newPhone.slice(-4)) return;
   localStorage.setItem('payyou_referred_by_'+newPhone, refCode);
-  let all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}');
+  var all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}');
   if(!all[refCode]) all[refCode]=[];
-  if(!all[refCode].some(r=>r.phone===newPhone)){
+  if(!all[refCode].some(function(r){return r.phone===newPhone;})){
     all[refCode].push({phone:newPhone,bought1GB:false});
     localStorage.setItem('payyou_referrals',JSON.stringify(all));
   }
 }
 function creditReferrerIfNeeded(){
-  let refCode=localStorage.getItem('payyou_referred_by_'+phone);
+  var refCode=localStorage.getItem('payyou_referred_by_'+phone);
   if(!refCode) return;
   if(localStorage.getItem('payyou_1gb_counted_'+phone)==="1") return;
   localStorage.setItem('payyou_1gb_counted_'+phone,"1");
-  let all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}');
-  let list=all[refCode]||[];
-  let entry=list.find(r=>r.phone===phone);
+  var all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}');
+  var list=all[refCode]||[];
+  var entry=null; for(var i=0;i<list.length;i++){ if(list[i].phone===phone) entry=list[i]; }
   if(entry) entry.bought1GB=true;
   all[refCode]=list;
   localStorage.setItem('payyou_referrals',JSON.stringify(all));
-  let qualified=list.filter(r=>r.bought1GB).length;
+  var qualified=list.filter(function(r){return r.bought1GB;}).length;
   if(qualified>0 && qualified%10===0){
-    let pending=JSON.parse(localStorage.getItem('payyou_pending_rewards')||'{}');
+    var pending=JSON.parse(localStorage.getItem('payyou_pending_rewards')||'{}');
     pending[refCode]=(pending[refCode]||0)+1000;
     localStorage.setItem('payyou_pending_rewards',JSON.stringify(pending));
-    let referrerPhone=localStorage.getItem('payyou_phone_for_code_'+refCode);
+    var referrerPhone=localStorage.getItem('payyou_phone_for_code_'+refCode);
     if(referrerPhone){
-      let bal=Number(localStorage.getItem('payyou_bal_'+referrerPhone)||0);
+      var bal=Number(localStorage.getItem('payyou_bal_'+referrerPhone)||0);
       localStorage.setItem('payyou_bal_'+referrerPhone, bal+1000);
       if(referrerPhone===phone) pAlert("Referral reward! You earned ₦1,000");
     }
@@ -225,11 +225,11 @@ function creditReferrerIfNeeded(){
 }
 function claimPendingRewards(){
   if(!phone) return;
-  let code=myCode();
-  let pending=JSON.parse(localStorage.getItem('payyou_pending_rewards')||'{}');
+  var code=myCode();
+  var pending=JSON.parse(localStorage.getItem('payyou_pending_rewards')||'{}');
   if(pending[code] && pending[code]>0){
-    let amt=pending[code];
-    let bal=Number(localStorage.getItem('payyou_bal_'+phone)||0);
+    var amt=pending[code];
+    var bal=Number(localStorage.getItem('payyou_bal_'+phone)||0);
     localStorage.setItem('payyou_bal_'+phone, bal+amt);
     pending[code]=0;
     localStorage.setItem('payyou_pending_rewards',JSON.stringify(pending));
@@ -237,93 +237,113 @@ function claimPendingRewards(){
   }
 }
 function showPage(name){
-  ['Home','Data','Airtime','Electric','TV','History','Refer','Pricing','Wallet'].forEach(p=>{ document.getElementById('page'+p).classList.add('hidden'); });
-  document.querySelectorAll('.nav button, .sub-nav button').forEach(b=>b.classList.remove('active'));
+  ['Home','Data','Airtime','Electric','TV','History','Refer','Pricing','Wallet'].forEach(function(p){ document.getElementById('page'+p).classList.add('hidden'); });
+  document.querySelectorAll('.nav button, .sub-nav button').forEach(function(b){ b.classList.remove('active'); });
   document.getElementById('page'+name).classList.remove('hidden');
-  let btn=document.getElementById('btn'+name); if(btn) btn.classList.add('active');
+  var btn=document.getElementById('btn'+name); if(btn) btn.classList.add('active');
   if(name==='History') loadHistory();
   if(name==='Refer') updateReferUI();
 }
-['Data','Airtime','Electric','TV','History','Refer','Pricing','Wallet'].forEach(n=>{ document.getElementById('btn'+n).onclick=()=>showPage(n); });
-document.getElementById('btnHome').onclick=()=>showPage('Home');
-document.getElementById('homeFundBtn').onclick=()=>showPage('Wallet');
-document.getElementById('homeDataBtn').onclick=()=>showPage('Data');
-document.getElementById('homeReferBtn').onclick=()=>showPage('Refer');
-document.getElementById('btnWhatsApp').onclick=()=>{ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text=Hello%20PayYou%20I%20want%20to%20join%20your%20WhatsApp%20Channel","_blank"); };
-document.getElementById('btnCare').onclick=()=>{ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text=Hello%20PayYou%20Customer%20Care%20I%20need%20help","_blank"); };
-document.getElementById('electricProvider').onchange=(e)=>{ document.getElementById('electricStateInfo').innerText=DISCO_STATES[e.target.value]||""; };
-document.getElementById('electricAmount').oninput=(e)=>{ let v=Number(e.target.value||0); let el=document.getElementById('electricLiveTotal'); if(!v) el.innerText="Type amount to see total: Amount + ₦100 charge"; else el.innerText="You will pay: ₦"+(v+100).toLocaleString()+" total ( ₦"+v.toLocaleString()+" + ₦100 charge )"; };
-function renderPlans(){ let net=document.getElementById('network').value; let html=""; PLANS[net].forEach((p,i)=>{ let price=getPrice(p); let tag=p.offer&&offerCount<10?` <span style="background:#ffcc00;color:#222;padding:2px 6px;border-radius:10px;font-size:10px">OFFER ₦${price}</span>`:""; html+=`<div class="plan ${i===0?'active':''}" data-i="${i}"><span>${p.l}${tag}</span><b>₦${price}</b></div>`; }); document.getElementById('plans').innerHTML=html; selectedPlan=PLANS[net][0]; document.querySelectorAll('.plan').forEach(el=>el.onclick=()=>{selectedPlan=PLANS[net][Number(el.dataset.i)];document.querySelectorAll('.plan').forEach(e=>e.classList.remove('active'));el.classList.add('active');}); }
-function renderPricing(){ let html=""; Object.keys(PLANS).forEach(net=>{ html+=`<div class="price-group"><h4>${net} Data</h4>`; PLANS[net].forEach(p=>{ html+=`<div class="price-row"><span>${p.l}</span><b>₦${getPrice(p)}</b></div>`; }); html+=`</div>`; }); html+=`<div class="price-group"><h4>Electricity - All States - NEW CHARGE ₦100</h4><div class="price-row"><span>All 11 DISCOs - Min ₦1000</span><b>₦1000 + ₦100 = ₦1100</b></div></div><div class="price-group"><h4>TV / Cable</h4><div class="price-row"><span>DStv Great Wall</span><b>₦3950</b></div><div class="price-row"><span>GOtv Small monthly</span><b>₦2050</b></div><div class="price-row"><span>Startimes Nova 1 week</span><b>₦850 - Below Min</b></div></div>`; document.getElementById('priceList').innerHTML=html; }
+['Data','Airtime','Electric','TV','History','Refer','Pricing','Wallet'].forEach(function(n){ document.getElementById('btn'+n).onclick=function(){ showPage(n); }; });
+document.getElementById('btnHome').onclick=function(){ showPage('Home'); };
+document.getElementById('homeFundBtn').onclick=function(){ showPage('Wallet'); };
+document.getElementById('homeDataBtn').onclick=function(){ showPage('Data'); };
+document.getElementById('homeReferBtn').onclick=function(){ showPage('Refer'); };
+document.getElementById('btnWhatsApp').onclick=function(){ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text=Hello%20PayYou%20I%20want%20to%20join%20your%20WhatsApp%20Channel","_blank"); };
+document.getElementById('btnCare').onclick=function(){ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text=Hello%20PayYou%20Customer%20Care%20I%20need%20help","_blank"); };
+document.getElementById('electricProvider').onchange=function(e){ document.getElementById('electricStateInfo').innerText=DISCO_STATES[e.target.value]||""; };
+document.getElementById('electricAmount').oninput=function(e){ var v=Number(e.target.value||0); var el=document.getElementById('electricLiveTotal'); if(!v) el.innerText="Type amount to see total: Amount + ₦100 charge"; else el.innerText="You will pay: ₦"+(v+100).toLocaleString()+" total ( ₦"+v.toLocaleString()+" + ₦100 charge )"; };
+function renderPlans(){ var net=document.getElementById('network').value; var html=""; PLANS[net].forEach(function(p,i){ var price=getPrice(p); var tag=p.offer&&offerCount<10?' <span style="background:#ffcc00;color:#222;padding:2px 6px;border-radius:10px;font-size:10px">OFFER ₦'+price+'</span>':""; html+='<div class="plan '+(i===0?'active':'')+'" data-i="'+i+'"><span>'+p.l+tag+'</span><b>₦'+price+'</b></div>'; }); document.getElementById('plans').innerHTML=html; selectedPlan=PLANS[net][0]; document.querySelectorAll('.plan').forEach(function(el){ el.onclick=function(){ selectedPlan=PLANS[net][Number(el.dataset.i)]; document.querySelectorAll('.plan').forEach(function(e){ e.classList.remove('active'); }); el.classList.add('active'); }; }); }
+function renderPricing(){ var html=""; Object.keys(PLANS).forEach(function(net){ html+='<div class="price-group"><h4>'+net+' Data</h4>'; PLANS[net].forEach(function(p){ html+='<div class="price-row"><span>'+p.l+'</span><b>₦'+getPrice(p)+'</b></div>'; }); html+='</div>'; }); html+='<div class="price-group"><h4>Electricity - All States - NEW CHARGE ₦100</h4><div class="price-row"><span>All 11 DISCOs - Min ₦1000</span><b>₦1000 + ₦100 = ₦1100</b></div></div><div class="price-group"><h4>TV / Cable</h4><div class="price-row"><span>DStv Great Wall</span><b>₦3950</b></div><div class="price-row"><span>GOtv Small monthly</span><b>₦2050</b></div><div class="price-row"><span>Startimes Nova 1 week</span><b>₦850 - Below Min</b></div></div>'; document.getElementById('priceList').innerHTML=html; }
 function getLocalBal(){ return Number(localStorage.getItem('payyou_bal_'+phone)||0); }
 function setLocalBal(v){ localStorage.setItem('payyou_bal_'+phone, v); }
-async function refreshBalance(){ if(!phone) return; document.getElementById('balance').innerText="₦"+getLocalBal().toLocaleString('en-NG',{minimumFractionDigits:2}); if(supa){ try{ let {data}=await supa.from('wallets').select('*').eq('phone',phone).maybeSingle(); if(data) document.getElementById('balance').innerText="₦"+Number(data.balance).toLocaleString('en-NG',{minimumFractionDigits:2}); }catch(e){} } }
-async function loadHistory(){ let h=JSON.parse(localStorage.getItem('payyou_hist_'+phone)||'[]'); document.getElementById('history').innerHTML=h.length?h.map(t=>`<div style="font-size:13px;border-bottom:1px solid #eee;padding:8px 0"><b>${t.type}</b> • ₦${t.amount} • ${t.status}</div>`).join(''):"No transactions yet"; }
-function saveHist(type,amount){ let h=JSON.parse(localStorage.getItem('payyou_hist_'+phone)||'[]'); h.unshift({type,amount,status:'pending'}); localStorage.setItem('payyou_hist_'+phone,JSON.stringify(h.slice(0,20))); }
+async function refreshBalance(){ if(!phone) return; document.getElementById('balance').innerText="₦"+getLocalBal().toLocaleString('en-NG',{minimumFractionDigits:2}); if(supa){ try{ var d=await supa.from('wallets').select('*').eq('phone',phone).maybeSingle(); if(d.data) document.getElementById('balance').innerText="₦"+Number(d.data.balance).toLocaleString('en-NG',{minimumFractionDigits:2}); }catch(e){} } }
+async function loadHistory(){ var h=JSON.parse(localStorage.getItem('payyou_hist_'+phone)||'[]'); document.getElementById('history').innerHTML=h.length?h.map(function(t){ return '<div style="font-size:13px;border-bottom:1px solid #eee;padding:8px 0"><b>'+t.type+'</b> • ₦'+t.amount+' • '+t.status+'</div>'; }).join(''):"No transactions yet"; }
+function saveHist(type,amount){ var h=JSON.parse(localStorage.getItem('payyou_hist_'+phone)||'[]'); h.unshift({type:type,amount:amount,status:'pending'}); localStorage.setItem('payyou_hist_'+phone,JSON.stringify(h.slice(0,20))); }
 async function doBuy(type,amount,planLabel,recipient,network){
-  let is1GB = type==='data' && planLabel.includes("1GB");
+  var is1GB = type==='data' && planLabel.indexOf("1GB")!==-1;
   if(!is1GB && type==='data' && amount<MIN_AMOUNT) return pAlert("Minimum data is ₦1000. 1GB Data is the only exception.");
-  let bal=getLocalBal();
+  var bal=getLocalBal();
   if(bal<amount){
     if(type==='data') return pAlert("Balance is low, fund wallet with ₦500");
     if(type==='airtime') return pAlert("Balance is low, fund wallet with ₦500");
     return pAlert("Balance is low, fund wallet with ₦500");
   }
-  if(!confirm(`Buy ${planLabel} - ₦${amount}?`)) return;
+  if(!confirm("Buy "+planLabel+" - ₦"+amount+"?")) return;
   setLocalBal(bal-amount); saveHist(type,amount);
   if(is1GB) creditReferrerIfNeeded();
-  if(supa){ try{ let {data:w}=await supa.from('wallets').select('*').eq('phone',phone).maybeSingle(); if(w) await supa.from('wallets').update({balance:Number(w.balance)-amount}).eq('phone',phone); await supa.from('orders').insert([{phone,recipient,network,plan:planLabel,amount,status:'pending',referral_code:localStorage.getItem('payyou_referred_by_'+phone)||null}]); }catch(e){} }
+  if(supa){ try{ var w=await supa.from('wallets').select('*').eq('phone',phone).maybeSingle(); if(w.data) await supa.from('wallets').update({balance:Number(w.data.balance)-amount}).eq('phone',phone); await supa.from('orders').insert([{phone:phone,recipient:recipient,network:network,plan:planLabel,amount:amount,status:'pending',referral_code:localStorage.getItem('payyou_referred_by_'+phone)||null}]); }catch(e){} }
   document.getElementById('buyMsg').innerText="Order saved!"; await refreshBalance(); await loadHistory(); updateReferUI();
 }
 function loginSuccess(){ document.getElementById('userPhone').innerText=phone; document.getElementById('myReferCode').innerText=myCode(); localStorage.setItem('payyou_phone_for_code_'+myCode(), phone); document.getElementById('loginCard').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); showPage('Home'); refreshBalance(); loadHistory(); claimPendingRewards(); updateReferUI(); pAlert("Welcome "+phone); }
-document.getElementById('loginBtn').addEventListener('click',async()=>{
- let ph=document.getElementById('phoneInput').value.trim();
- let pw=document.getElementById('passInput').value.trim();
- let refCode=document.getElementById('signupReferInput').value.trim().toUpperCase();
+document.getElementById('loginBtn').addEventListener('click',async function(){
+ var ph=document.getElementById('phoneInput').value.trim();
+ var pw=document.getElementById('passInput').value.trim();
+ var refCode=document.getElementById('signupReferInput').value.trim().toUpperCase();
  if(ph.length<10||pw.length<4){ document.getElementById('loginMsg').innerText="Enter phone + password (min 4)"; return; }
  document.getElementById('loginMsg').innerText="Checking...";
- let isNew=false;
+ var isNew=false;
  if(supa){
   try{
-   let {data,error}=await supa.from('wallets').select('*').eq('phone',ph).maybeSingle();
-   if(!error){
-     if(!data){ isNew=true; let {error:insErr}=await supa.from('wallets').insert([{phone:ph,balance:0,password:pw,referral_code:"PY"+ph.slice(-4),referred_by:refCode||null}]); if(insErr) throw insErr; }
-     else if(data.password && data.password!==pw){ pAlert("Wrong password! Tap Forgot Password."); return; }
+   var res=await supa.from('wallets').select('*').eq('phone',ph).maybeSingle();
+   if(!res.error){
+     if(!res.data){ isNew=true; var ins=await supa.from('wallets').insert([{phone:ph,balance:0,password:pw,referral_code:"PY"+ph.slice(-4),referred_by:refCode||null}]); if(ins.error) throw ins.error; }
+     else if(res.data.password && res.data.password!==pw){ pAlert("Wrong password! Tap Forgot Password."); return; }
      phone=ph; if(isNew && refCode) saveReferralForNewUser(ph, refCode); loginSuccess(); return;
    }
   }catch(e){ console.log("Supabase failed, using offline login", e); }
  }
- let savedPw=localStorage.getItem('payyou_pw_'+ph);
+ var savedPw=localStorage.getItem('payyou_pw_'+ph);
  if(!savedPw){ localStorage.setItem('payyou_pw_'+ph,pw); localStorage.setItem('payyou_bal_'+ph, localStorage.getItem('payyou_bal_'+ph)||"0"); phone=ph; if(refCode) saveReferralForNewUser(ph, refCode); document.getElementById('loginMsg').innerText="Offline mode - logged in locally."; loginSuccess(); return; }
  if(savedPw!==pw){ pAlert("Wrong password! Tap Forgot Password."); return; }
  phone=ph; loginSuccess();
 });
-document.getElementById('forgotBtn').addEventListener('click',async()=>{ let ph=document.getElementById('phoneInput').value.trim(); if(ph.length<10) return pAlert("Enter phone first"); let np=prompt("Enter NEW password:"); if(!np||np.length<4) return pAlert("Too short"); localStorage.setItem('payyou_pw_'+ph,np); if(supa){ try{ await supa.from('wallets').update({password:np}).eq('phone',ph); }catch(e){} } pAlert("Password changed! Login again."); });
-document.getElementById('logoutBtn').addEventListener('click',()=>{ phone=""; document.getElementById('app').classList.add('hidden'); document.getElementById('loginCard').classList.remove('hidden'); document.getElementById('passInput').value=""; });
+document.getElementById('forgotBtn').addEventListener('click',async function(){ var ph=document.getElementById('phoneInput').value.trim(); if(ph.length<10) return pAlert("Enter phone first"); var np=prompt("Enter NEW password:"); if(!np||np.length<4) return pAlert("Too short"); localStorage.setItem('payyou_pw_'+ph,np); if(supa){ try{ await supa.from('wallets').update({password:np}).eq('phone',ph); }catch(e){} } pAlert("Password changed! Login again."); });
+document.getElementById('logoutBtn').addEventListener('click',function(){ phone=""; document.getElementById('app').classList.add('hidden'); document.getElementById('loginCard').classList.remove('hidden'); document.getElementById('passInput').value=""; });
 function doFund(){
  if(!phone) return pAlert("Login first");
- let amount=Number(document.getElementById('fundAmount').value);
+ var amount=Number(document.getElementById('fundAmount').value);
  if(!amount||amount<MIN_FUNDING) return pAlert("Minimum funding is ₦500 on PayYou.");
  if(typeof PaystackPop==="undefined"){ document.getElementById('fundMsg').innerText="Paystack failed to load. Check internet and try again."; return pAlert("Paystack failed to load. Check internet, close and reopen."); }
  document.getElementById('fundMsg').innerText="Opening Paystack...";
  try{
-  let h=PaystackPop.setup({key:PAYSTACK_PUBLIC,email:phone+"@payyou.ng",amount:amount*100,currency:"NGN",ref:"PY-"+Date.now(),
-  callback:async(res)=>{ setLocalBal(getLocalBal()+amount); saveHist('funding',amount); if(supa){ try{ let {data}=await supa.from('wallets').select('*').eq('phone',phone).maybeSingle(); if(data) await supa.from('wallets').update({balance:Number(data.balance)+amount}).eq('phone',phone); else await supa.from('wallets').insert([{phone,balance:amount}]); }catch(e){} } await refreshBalance(); document.getElementById('fundMsg').innerText="Funded ₦"+amount; pAlert("Funded ₦"+amount); },
-  onClose:()=>{ document.getElementById('fundMsg').innerText="Payment cancelled."; }});
-  h.openIframe();
+  var handler = PaystackPop.setup({
+    key: PAYSTACK_PUBLIC,
+    email: phone+"@payyou.ng",
+    amount: amount*100,
+    currency: "NGN",
+    ref: "PY-"+Date.now(),
+    callback: function(response){
+      // FIXED: normal function, not async arrow - Paystack accepts this
+      document.getElementById('fundMsg').innerText="Verifying payment... "+response.reference;
+      setLocalBal(getLocalBal()+amount);
+      saveHist('funding',amount);
+      if(supa){
+        supa.from('wallets').select('*').eq('phone',phone).maybeSingle().then(function(r){
+          if(r.data){ supa.from('wallets').update({balance:Number(r.data.balance)+amount}).eq('phone',phone); }
+          else { supa.from('wallets').insert([{phone:phone,balance:amount}]); }
+        });
+      }
+      refreshBalance();
+      document.getElementById('fundMsg').innerText="Funded ₦"+amount;
+      pAlert("Funded ₦"+amount+" Ref: "+response.reference);
+    },
+    onClose: function(){ document.getElementById('fundMsg').innerText="Payment cancelled."; }
+  });
+  handler.openIframe();
  }catch(e){ document.getElementById('fundMsg').innerText="Paystack error: "+e.message; pAlert("Paystack error: "+e.message); }
 }
 document.getElementById('fundBtn').addEventListener('click',doFund);
-document.getElementById('buyDataBtn').addEventListener('click',async()=>{ let rec=document.getElementById('recipientData').value.trim(); if(!rec) return pAlert("Enter recipient"); let amt=getPrice(selectedPlan); let is1GB=selectedPlan.l.includes("1GB"); if(!is1GB && amt<MIN_AMOUNT) return pAlert("Minimum data is ₦1000. 1GB plans are allowed."); if(selectedPlan.offer&&offerCount<10){offerCount++; document.getElementById('offerLeft').innerText=(10-offerCount)+" left"; document.getElementById('offerLeft2').innerText=(10-offerCount)+" left";} await doBuy('data',amt,selectedPlan.l,rec,document.getElementById('network').value); });
-document.getElementById('buyAirtimeBtn').addEventListener('click',async()=>{ let rec=document.getElementById('recipientAirtime').value.trim(); let amt=Number(document.getElementById('airtimeAmount').value); if(!rec||!amt) return pAlert("Enter recipient + amount"); if(amt<MIN_AIRTIME) return pAlert("Minimum airtime purchase should be ₦100."); await doBuy('airtime',amt,"Airtime ₦"+amt,rec,document.getElementById('networkAirtime').value); });
-document.getElementById('buyElectricBtn').addEventListener('click',async()=>{ let amt=Number(document.getElementById('electricAmount').value); let meter=document.getElementById('meterNo').value.trim(); if(!amt||amt<MIN_AMOUNT) return pAlert("Minimum electricity is ₦1000 on PayYou."); if(!meter) return pAlert("Enter meter"); await doBuy('electric',amt+ELECTRIC_CHARGE,"Electricity "+document.getElementById('electricProvider').value+" Meter:"+meter,meter,"Electric"); });
-document.getElementById('buyTvBtn').addEventListener('click',async()=>{ let tv=document.getElementById('tvProvider').value; let sc=document.getElementById('smartcard').value.trim(); if(!sc) return pAlert("Enter smartcard"); let base=Number(tv.match(/\((\d+)\)/)[1]); let total=base+150; if(total<MIN_AMOUNT) return pAlert("Minimum TV payment is ₦1000 on PayYou."); await doBuy('tv',total,"TV "+tv,sc,"TV"); });
-document.getElementById('refreshHist').onclick=()=>loadHistory();
-document.getElementById('copyReferBtn').onclick=()=>{ let link=document.getElementById('myReferLink').value; navigator.clipboard.writeText(link).then(()=>pAlert("Referral link copied! Share it."),()=>pAlert(link)); };
-document.getElementById('shareReferBtn').onclick=()=>{ let link=document.getElementById('myReferLink').value; window.open("https://wa.me/?text="+encodeURIComponent("Join PayYou with my code "+myCode()+" and buy 1GB Data! I earn ₦1000 for every 10 people. Link: "+link),"_blank"); };
-document.getElementById('applyReferBtn').onclick=()=>{
+document.getElementById('buyDataBtn').addEventListener('click',async function(){ var rec=document.getElementById('recipientData').value.trim(); if(!rec) return pAlert("Enter recipient"); var amt=getPrice(selectedPlan); var is1GB=selectedPlan.l.indexOf("1GB")!==-1; if(!is1GB && amt<MIN_AMOUNT) return pAlert("Minimum data is ₦1000. 1GB plans are allowed."); if(selectedPlan.offer&&offerCount<10){offerCount++; document.getElementById('offerLeft').innerText=(10-offerCount)+" left"; document.getElementById('offerLeft2').innerText=(10-offerCount)+" left";} await doBuy('data',amt,selectedPlan.l,rec,document.getElementById('network').value); });
+document.getElementById('buyAirtimeBtn').addEventListener('click',async function(){ var rec=document.getElementById('recipientAirtime').value.trim(); var amt=Number(document.getElementById('airtimeAmount').value); if(!rec||!amt) return pAlert("Enter recipient + amount"); if(amt<MIN_AIRTIME) return pAlert("Minimum airtime purchase should be ₦100."); await doBuy('airtime',amt,"Airtime ₦"+amt,rec,document.getElementById('networkAirtime').value); });
+document.getElementById('buyElectricBtn').addEventListener('click',async function(){ var amt=Number(document.getElementById('electricAmount').value); var meter=document.getElementById('meterNo').value.trim(); if(!amt||amt<MIN_AMOUNT) return pAlert("Minimum electricity is ₦1000 on PayYou."); if(!meter) return pAlert("Enter meter"); await doBuy('electric',amt+ELECTRIC_CHARGE,"Electricity "+document.getElementById('electricProvider').value+" Meter:"+meter,meter,"Electric"); });
+document.getElementById('buyTvBtn').addEventListener('click',async function(){ var tv=document.getElementById('tvProvider').value; var sc=document.getElementById('smartcard').value.trim(); if(!sc) return pAlert("Enter smartcard"); var base=Number(tv.match(/\((\d+)\)/)[1]); var total=base+150; if(total<MIN_AMOUNT) return pAlert("Minimum TV payment is ₦1000 on PayYou."); await doBuy('tv',total,"TV "+tv,sc,"TV"); });
+document.getElementById('refreshHist').onclick=function(){ loadHistory(); };
+document.getElementById('copyReferBtn').onclick=function(){ var link=document.getElementById('myReferLink').value; navigator.clipboard.writeText(link).then(function(){ pAlert("Referral link copied! Share it."); },function(){ pAlert(link); }); };
+document.getElementById('shareReferBtn').onclick=function(){ var link=document.getElementById('myReferLink').value; window.open("https://wa.me/?text="+encodeURIComponent("Join PayYou with my code "+myCode()+" and buy 1GB Data! I earn ₦1000 for every 10 people. Link: "+link),"_blank"); };
+document.getElementById('applyReferBtn').onclick=function(){
   if(!phone) return pAlert("Login first");
-  let code=document.getElementById('referInput').value.trim().toUpperCase();
+  var code=document.getElementById('referInput').value.trim().toUpperCase();
   if(!code) return pAlert("Enter a referral code");
   if(code===myCode()) return pAlert("You cannot use your own code");
   if(localStorage.getItem('payyou_referred_by_'+phone)) return pAlert("You already used a referral code: "+localStorage.getItem('payyou_referred_by_'+phone));
@@ -333,15 +353,15 @@ document.getElementById('applyReferBtn').onclick=()=>{
   updateReferUI();
 };
 (function(){
-  let params=new URLSearchParams(location.search);
-  let ref=params.get('ref');
+  var params=new URLSearchParams(location.search);
+  var ref=params.get('ref');
   if(ref){
     ref=ref.toUpperCase();
     document.getElementById('signupReferInput').value=ref;
     document.getElementById('refInviteMsg').innerText="You were invited with code "+ref+" — Register to count for them!";
   }
 })();
-document.getElementById('network').onchange=()=>renderPlans();
+document.getElementById('network').onchange=function(){ renderPlans(); };
 renderPlans(); renderPricing();
 </script>
 </body>
