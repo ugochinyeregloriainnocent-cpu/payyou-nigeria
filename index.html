@@ -153,7 +153,7 @@ const WHATSAPP_NUMBER="2349063772447";
 const MIN_FUNDING=500;
 const MIN_AIRTIME=100;
 const MIN_AMOUNT=1000;
-const ELECTRIC_CHARGE=100; // CHANGED FROM 150 TO 100 - v1007
+const ELECTRIC_CHARGE=100;
 const DISCO_STATES={AEDC:"Covers: Abuja FCT, Niger, Kogi, Nasarawa",BEDC:"Covers: Edo, Delta, Ondo, Ekiti",EKEDC:"Covers: Lagos (Eko)",EEDC:"Covers: Enugu, Anambra, Imo, Abia, Ebonyi",IBEDC:"Covers: Oyo, Ogun, Osun, Kwara",IKEDC:"Covers: Lagos (Ikeja)",JEDC:"Covers: Plateau, Bauchi, Gombe, Benue",KAEDCO:"Covers: Kaduna, Sokoto, Zamfara, Kebbi",KEDCO:"Covers: Kano, Katsina, Jigawa",PHED:"Covers: Rivers, Akwa Ibom, Cross River, Bayelsa",YEDC:"Covers: Adamawa, Taraba, Borno, Yobe"};
 let supa=null;
 try{ supa=supabase.createClient(SUPABASE_URL,SUPABASE_KEY); }catch(e){ supa=null; }
