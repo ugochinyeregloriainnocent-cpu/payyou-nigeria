@@ -1,4 +1,4 @@
-<!-- PayYou v1008 - PAYSTACK CALLBACK FIXED - ELECTRIC 100 - AIRTIME 100 - FUNDING 500 -->
+<!-- PayYou v1009 - PAYSTACK onSuccess FIX - NOTHING ELSE CHANGED -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +56,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <div class="top">
   <div class="top-row">
     <div class="logo"><img src="IMG-20261105-WA3399.jpg" alt="PayYou"></div>
-    <div><h1>PayYou</h1><p>Fast Data & Airtime</p><p style="font-size:11px;background:#fff;color:#0A8A3E;display:inline-block;padding:2px 8px;border-radius:10px;font-weight:800">v1008 - NEW</p></div>
+    <div><h1>PayYou</h1><p>Fast Data & Airtime</p><p style="font-size:11px;background:#fff;color:#0A8A3E;display:inline-block;padding:2px 8px;border-radius:10px;font-weight:800">v1009 - NEW</p></div>
   </div>
   <div class="offer-in-green"><b>🔥 Today's Offer:</b> ₦50 OFF first 10 to buy 1GB (30 Days)! MTN 1GB now <b>₦750</b> not ₦800. <b><span id="offerLeft">10 left</span></b></div>
   <div class="balance-row"><div><div class="small" style="color:#eafff0">Wallet Balance</div><div id="balance" style="font-size:26px;font-weight:800">₦0.00</div><div id="userPhone" class="small">Not logged in</div></div></div>
@@ -80,7 +80,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <div class="sub-nav"><button id="btnHome" class="active">🏠 Home</button><button id="btnWhatsApp" class="wa">💬 WhatsApp Channel</button><button id="btnCare" class="care">🎧 Customer Care</button></div>
 
 <div class="card" id="pageHome">
-<h3>Welcome to PayYou - v1008 NEW</h3>
+<h3>Welcome to PayYou - v1009 NEW</h3>
 <p style="font-size:14px;line-height:1.5">Buy Data, Airtime, Electricity & TV fast and cheap.<br>Funding min <b>₦500</b>. Airtime min <b>₦100 ONLY</b>. Electricity min <b>₦1000 + ₦100 charge = ₦1100 total</b>.<br>Refer 10 people who buy 1GB = <b>₦1,000</b> for you!</p>
 <p style="font-size:13px;background:#f0fdf4;padding:10px;border-radius:10px">🔥 Offer: MTN 1GB (30 Days) now <b>₦750</b> — <span id="offerLeft2">10 left</span></p>
 <button id="homeFundBtn" style="background:#ff9800">💳 Fund Wallet Now (Min ₦500)</button>
@@ -138,7 +138,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 <p class="small" id="referApplyMsg"></p>
 </div>
 
-<div class="card hidden" id="pagePricing"><h3>💲 PayYou Complete Price List - v1008</h3><div id="priceList"></div></div>
+<div class="card hidden" id="pagePricing"><h3>💲 PayYou Complete Price List - v1009</h3><div id="priceList"></div></div>
 </div>
 
 <div id="payyouModal"><div class="modal-box"><div class="modal-head">PayYou</div><div class="modal-body"><div id="payyouModalText"></div><button id="payyouModalOk">OK</button></div></div></div>
@@ -300,6 +300,21 @@ document.getElementById('loginBtn').addEventListener('click',async function(){
 });
 document.getElementById('forgotBtn').addEventListener('click',async function(){ var ph=document.getElementById('phoneInput').value.trim(); if(ph.length<10) return pAlert("Enter phone first"); var np=prompt("Enter NEW password:"); if(!np||np.length<4) return pAlert("Too short"); localStorage.setItem('payyou_pw_'+ph,np); if(supa){ try{ await supa.from('wallets').update({password:np}).eq('phone',ph); }catch(e){} } pAlert("Password changed! Login again."); });
 document.getElementById('logoutBtn').addEventListener('click',function(){ phone=""; document.getElementById('app').classList.add('hidden'); document.getElementById('loginCard').classList.remove('hidden'); document.getElementById('passInput').value=""; });
+function handlePaystackSuccess(response){
+  var amount=Number(document.getElementById('fundAmount').value);
+  document.getElementById('fundMsg').innerText="Verifying payment... "+(response.reference||"");
+  setLocalBal(getLocalBal()+amount);
+  saveHist('funding',amount);
+  if(supa){
+    supa.from('wallets').select('*').eq('phone',phone).maybeSingle().then(function(r){
+      if(r.data){ supa.from('wallets').update({balance:Number(r.data.balance)+amount}).eq('phone',phone); }
+      else { supa.from('wallets').insert([{phone:phone,balance:amount}]); }
+    });
+  }
+  refreshBalance();
+  document.getElementById('fundMsg').innerText="Funded ₦"+amount;
+  pAlert("Funded ₦"+amount+" Ref: "+(response.reference||""));
+}
 function doFund(){
  if(!phone) return pAlert("Login first");
  var amount=Number(document.getElementById('fundAmount').value);
@@ -307,30 +322,24 @@ function doFund(){
  if(typeof PaystackPop==="undefined"){ document.getElementById('fundMsg').innerText="Paystack failed to load. Check internet and try again."; return pAlert("Paystack failed to load. Check internet, close and reopen."); }
  document.getElementById('fundMsg').innerText="Opening Paystack...";
  try{
-  var handler = PaystackPop.setup({
+  // NEW Paystack API uses onSuccess, OLD uses callback - we send BOTH
+  var payConfig = {
     key: PAYSTACK_PUBLIC,
     email: phone+"@payyou.ng",
     amount: amount*100,
     currency: "NGN",
     ref: "PY-"+Date.now(),
-    callback: function(response){
-      // FIXED: normal function, not async arrow - Paystack accepts this
-      document.getElementById('fundMsg').innerText="Verifying payment... "+response.reference;
-      setLocalBal(getLocalBal()+amount);
-      saveHist('funding',amount);
-      if(supa){
-        supa.from('wallets').select('*').eq('phone',phone).maybeSingle().then(function(r){
-          if(r.data){ supa.from('wallets').update({balance:Number(r.data.balance)+amount}).eq('phone',phone); }
-          else { supa.from('wallets').insert([{phone:phone,balance:amount}]); }
-        });
-      }
-      refreshBalance();
-      document.getElementById('fundMsg').innerText="Funded ₦"+amount;
-      pAlert("Funded ₦"+amount+" Ref: "+response.reference);
-    },
-    onClose: function(){ document.getElementById('fundMsg').innerText="Payment cancelled."; }
-  });
-  handler.openIframe();
+    callback: function(response){ handlePaystackSuccess(response); },
+    onSuccess: function(response){ handlePaystackSuccess(response); },
+    onClose: function(){ document.getElementById('fundMsg').innerText="Payment cancelled."; },
+    onCancel: function(){ document.getElementById('fundMsg').innerText="Payment cancelled."; }
+  };
+  if(PaystackPop.newTransaction){
+    PaystackPop.newTransaction(payConfig);
+  } else {
+    var handler = PaystackPop.setup(payConfig);
+    handler.openIframe();
+  }
  }catch(e){ document.getElementById('fundMsg').innerText="Paystack error: "+e.message; pAlert("Paystack error: "+e.message); }
 }
 document.getElementById('fundBtn').addEventListener('click',doFund);
