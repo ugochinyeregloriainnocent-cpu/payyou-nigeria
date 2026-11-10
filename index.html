@@ -10,11 +10,12 @@
 *{box-sizing:border-box;font-family:Arial,sans-serif}
 html,body{margin:0;padding:0;background:#f2f2f2!important;color:#222;overflow:hidden;height:100dvh}
 body{padding:10px 12px 8px 12px;display:flex;flex-direction:column}
-.header{display:flex;align-items:center;gap:10px;padding:2px 2px 8px 2px;flex-shrink:0}
-.logo{width:52px;height:52px;background:#0A8A3E;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-weight:900;font-size:18px;text-align:center;line-height:1}
-.logo img{width:100%;height:100%;object-fit:cover;display:block}
-.header h1{margin:0;font-size:28px;color:#0A8A3E;line-height:1}
-.header p{margin:2px 0 0 0;color:#555;font-size:13px;font-weight:600}
+/* PAYYOU LOGO + NAME - LEFT SIDE, TOP, ABOVE GREEN BANNER - NOT MIDDLE, NOT CENTER */
+.header{display:flex!important;align-items:center!important;justify-content:flex-start!important;text-align:left!important;gap:10px!important;padding:0 0 8px 0!important;margin:0!important;flex-shrink:0!important;width:100%!important}
+.logo{width:52px!important;height:52px!important;background:transparent!important;border-radius:12px!important;overflow:hidden!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;flex-shrink:0!important;margin:0!important;padding:0!important}
+.logo img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important}
+.header h1{margin:0!important;font-size:28px!important;color:#0A8A3E!important;line-height:1!important;text-align:left!important}
+.header p{margin:2px 0 0 0!important;color:#555!important;font-size:13px!important;font-weight:600!important;text-align:left!important}
 .top{background:#0A8A3E!important;color:#fff!important;padding:12px 14px;border-radius:16px;flex-shrink:0}
 .top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .balance-wrap{flex:1}
@@ -30,8 +31,9 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 .pass-eye svg{width:24px;height:24px}
 .services-bar{background:#0A8A3E;color:#fff;text-align:center;font-size:26px;font-weight:800;padding:7px 10px;border-radius:20px;margin:10px 0 0 0;flex-shrink:0}
 .services-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 4px;margin-top:6px;flex:1;align-content:space-evenly;min-height:0}
-.svc{background:none!important;border:none!important;padding:6px 2px!important;margin:0!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:#000!important;min-height:0}
-.svc .ic{font-size:32px;line-height:1}
+.svc{background:none!important;border:none!important;padding:6px 2px!important;margin:0!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#000!important;min-height:0}
+.svc .ic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;line-height:1}
+.svc .ic svg{width:36px;height:36px}
 .svc .lb{font-size:15px;font-weight:800;line-height:1.1;text-align:center;color:#000!important}
 .svc.two-line .lb{font-size:14px}
 .svc.active{background:#e8f8ec!important;border-radius:12px}
@@ -83,9 +85,9 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 </div>
 
 <div id="app" class="hidden">
+<!-- YOUR REAL PAYYOU LOGO FROM GITHUB - IMG-20261105-WA3399.jpg - LEFT SIDE, ABOVE GREEN BANNER -->
 <div class="header" id="payyouHeader">
-  <!-- YOUR REAL LOGO - IMG-20261105-WA3399.jpg - NOT the common P -->
-  <div class="logo"><span id="logoFallback" style="display:none">PayYou</span><img src="IMG-20261105-WA3399.jpg" alt="PayYou" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block'"></div>
+  <div class="logo"><img src="IMG-20261105-WA3399.jpg" alt="PayYou"></div>
   <div><h1>PayYou</h1><p>Fast Data & Airtime</p></div>
 </div>
 <div class="top">
@@ -100,15 +102,15 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 </div>
 <div class="services-bar">Our services</div>
 <div class="services-grid" id="homeGrid">
-  <button class="svc" id="btnData"><span class="ic">📶</span><span class="lb">Data</span></button>
-  <button class="svc" id="btnAirtime"><span class="ic">📞</span><span class="lb">Airtime</span></button>
-  <button class="svc" id="btnElectric"><span class="ic">💡</span><span class="lb">Electricity</span></button>
-  <button class="svc" id="btnTV"><span class="ic">📺</span><span class="lb">TV / Cable</span></button>
-  <button class="svc" id="btnHistory"><span class="ic">🧾</span><span class="lb">History</span></button>
-  <button class="svc" id="btnRefer"><span class="ic">👥</span><span class="lb">Refer</span></button>
-  <button class="svc" id="btnPricing"><span class="ic">💲</span><span class="lb">Pricing</span></button>
-  <button class="svc two-line" id="btnOffer"><span class="ic">🔥</span><span class="lb">Today's<br>Offer</span></button>
-  <button class="svc" id="btnWallet"><span class="ic">💳</span><span class="lb">Fund</span></button>
+  <button class="svc" id="btnData"><span class="ic"><svg viewBox="0 0 24 24" fill="#0A8A3E"><path d="M4 20h3v-7H4v7zm5 0h3V9h-3v11zm5 0h3V4h-3v16zm5 0h3v-13h-3v13z"/></svg></span><span class="lb">Data</span></button>
+  <button class="svc" id="btnAirtime"><span class="ic"><svg viewBox="0 0 24 24" fill="#0A8A3E"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span><span class="lb">Airtime</span></button>
+  <button class="svc" id="btnElectric"><span class="ic"><svg viewBox="0 0 24 24" fill="#0A8A3E"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1h-6v1zm3-19C8.14 2 5 4.14 5 7c0 2.38 1.19 4.47 3 5.74V17h8v-4.26c1.81-1.27 3-3.36 3-5.74 0-2.86-3.14-5-7-5zm2.85 11.1l-.85.6V16h-4v-2.5l-.85-.6A4.99 4.99 0 0 1 7 9c0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.42-.74 2.67-1.85 3.4zM12 6c-1.1 0-2 .9-2 2 0 .55.45 1 1 1s1-.45 1-1c0-.55.45-1 1-1 .55 0 1-.45 1-1s-.45-1-1-1z"/></svg></span><span class="lb">Electricity</span></button>
+  <button class="svc" id="btnTV"><span class="ic"><svg viewBox="0 0 24 24" fill="#0A8A3E"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5l-2 2v1h12v-1l-2-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12zM8 15h8v1H8z"/></svg></span><span class="lb">TV / Cable</span></button>
+  <button class="svc" id="btnHistory"><span class="ic"><svg viewBox="0 0 24 24" fill="#0A8A3E"><path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg></span><span class="lb">History</span></button>
+  <button class="svc" id="btnRefer"><span class="ic"><svg viewBox="0 0 24 24" fill="#0A8A3E"><path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></span><span class="lb">Refer</span></button>
+  <button class="svc" id="btnPricing"><span class="ic" style="font-size:32px">💲</span><span class="lb">Pricing</span></button>
+  <button class="svc two-line" id="btnOffer"><span class="ic" style="font-size:32px">🔥</span><span class="lb">Today's<br>Offer</span></button>
+  <button class="svc" id="btnWallet"><span class="ic" style="font-size:32px">💳</span><span class="lb">Fund</span></button>
 </div>
 <div class="sub-nav"><button id="btnHome" class="active"><span class="ic2">🏠</span> Home</button><button id="btnWhatsApp" class="wa"><span class="ic2">💬</span> WhatsApp<br>Channel</button><button id="btnCare" class="care"><span class="ic2">🎧</span> Customer<br>Care</button></div>
 <div class="page-scroll hidden" id="pagesWrap">
@@ -132,6 +134,7 @@ const SUPABASE_URL="https://phookhwnnqvld1sdabxl.supabase.co";
 const SUPABASE_KEY="sb_publishable_XtUW05kuHhrTeMZ3NOCBBg_zNecT4c0";
 const PAYSTACK_PUBLIC="pk_live_396260246880808f62d55065ac73694bc5a9b17c";
 const WHATSAPP_NUMBER="2349063772447";
+const WHATSAPP_CHANNEL="https://whatsapp.com/channel/0029VbE0cqgGZNCmqSGvcw3f";
 const MIN_FUNDING=500; const MIN_AIRTIME=100; const MIN_AMOUNT=1000; const ELECTRIC_CHARGE=100;
 const DISCO_STATES={AEDC:"Covers: Abuja FCT, Niger, Kogi, Nasarawa",BEDC:"Covers: Edo, Delta, Ondo, Ekiti",EKEDC:"Covers: Lagos (Eko)",EEDC:"Covers: Enugu, Anambra, Imo, Abia, Ebonyi",IBEDC:"Covers: Oyo, Ogun, Osun, Kwara",IKEDC:"Covers: Lagos (Ikeja)",JEDC:"Covers: Plateau, Bauchi, Gombe, Benue",KAEDCO:"Covers: Kaduna, Sokoto, Zamfara, Kebbi",KEDCO:"Covers: Kano, Katsina, Jigawa",PHED:"Covers: Rivers, Akwa Ibom, Cross River, Bayelsa",YEDC:"Covers: Adamawa, Taraba, Borno, Yobe"};
 let supa=null; try{ supa=supabase.createClient(SUPABASE_URL,SUPABASE_KEY); }catch(e){ supa=null; }
@@ -155,7 +158,7 @@ document.getElementById('offerBuyBtn').onclick=function(){ showPage('Data'); };
 document.querySelectorAll('.backHome').forEach(function(b){ b.onclick=function(){ showPage('Home'); }; });
 var b1=document.getElementById('backHome1'); if(b1) b1.onclick=function(){ showPage('Home'); };
 var b2=document.getElementById('backHome2'); if(b2) b2.onclick=function(){ showPage('Home'); };
-document.getElementById('btnWhatsApp').onclick=function(){ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text=Hello%20PayYou%20I%20want%20to%20join%20your%20WhatsApp%20Channel","_blank"); };
+document.getElementById('btnWhatsApp').onclick=function(){ window.location.href=WHATSAPP_CHANNEL; };
 document.getElementById('btnCare').onclick=function(){ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text=Hello%20PayYou%20Customer%20Care%20I%20need%20help","_blank"); };
 document.getElementById('eyeBtn').onclick=function(){ balHidden=!balHidden; updateEyeIcons(); refreshBalance(); };
 document.getElementById('passEyeBtn').onclick=function(){ passHidden=!passHidden; var inp=document.getElementById('passInput'); inp.type = passHidden ? 'password' : 'text'; updateEyeIcons(); };
