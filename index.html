@@ -2,34 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>PayYou</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <style>
 *{box-sizing:border-box;font-family:Arial,sans-serif}
-body{margin:0;background:#f2f2f2!important;padding:12px;padding-bottom:90px;color:#222}
-.header{display:flex;align-items:center;gap:10px;padding:6px 2px 12px 2px}
-.logo{width:48px;height:48px;background:#fff;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #eee}
-.logo img{width:100%;height:100%;object-fit:cover}
-.header h1{margin:0;font-size:26px;color:#0A8A3E;line-height:1}
-.header p{margin:2px 0 0 0;color:#666;font-size:12px}
-.top{background:#0A8A3E!important;color:#fff!important;padding:14px;border-radius:10px}
+html,body{margin:0;padding:0;background:#f2f2f2!important;color:#222;overflow:hidden;height:100dvh}
+body{padding:10px 12px 8px 12px;display:flex;flex-direction:column}
+.header{display:flex;align-items:center;gap:10px;padding:2px 2px 8px 2px;flex-shrink:0}
+.logo{width:52px;height:52px;background:#0A8A3E;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-weight:900;font-size:18px;text-align:center;line-height:1}
+.logo img{width:100%;height:100%;object-fit:cover;display:block}
+.header h1{margin:0;font-size:28px;color:#0A8A3E;line-height:1}
+.header p{margin:2px 0 0 0;color:#555;font-size:13px;font-weight:600}
+.top{background:#0A8A3E!important;color:#fff!important;padding:12px 14px;border-radius:16px;flex-shrink:0}
 .top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .balance-wrap{flex:1}
-.fund-top{width:auto!important;flex-shrink:0;background:#ff9800!important;color:#fff!important;padding:11px 14px!important;font-size:13px;border-radius:10px;margin-top:0!important}
+.withdraw-btn{width:auto!important;flex-shrink:0;background:#fff!important;color:#0A8A3E!important;padding:10px 14px!important;font-size:15px;font-weight:800;border-radius:20px;margin-top:0!important;white-space:nowrap}
 .card{background:#fff;padding:16px;border-radius:16px;margin-top:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 input,select,button{width:100%;padding:13px;margin-top:8px;border-radius:10px;border:1px solid #ddd;font-size:15px;color:#222;background:#fff}
 button{background:#0A8A3E;color:#fff;border:none;font-weight:700;cursor:pointer}
 button.link{background:none;color:#0A8A3E;text-decoration:underline}
-.nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.nav button{background:#fff;color:#0A8A3E;border:2px solid #0A8A3E;width:auto;flex:1 1 30%;padding:12px 6px;font-size:13px;border-radius:12px}
-.nav button.active{background:#0A8A3E;color:#fff}
-.sub-nav{display:flex;gap:8px;margin-top:10px}
-.sub-nav button{flex:1;padding:12px 6px;font-size:13px;border-radius:12px;border:2px solid #0A8A3E;background:#fff;color:#0A8A3E}
+#loginCard{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;width:calc(100% - 24px)!important;max-width:420px!important;margin:0!important;z-index:100;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.pass-wrap{position:relative}
+.pass-wrap input{padding-right:48px}
+.pass-eye{position:absolute!important;right:6px!important;top:50%!important;transform:translateY(-35%)!important;width:38px!important;height:38px!important;padding:0!important;margin:0!important;background:transparent!important;border:none!important;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.pass-eye svg{width:24px;height:24px}
+.services-bar{background:#0A8A3E;color:#fff;text-align:center;font-size:26px;font-weight:800;padding:7px 10px;border-radius:20px;margin:10px 0 0 0;flex-shrink:0}
+.services-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 4px;margin-top:6px;flex:1;align-content:space-evenly;min-height:0}
+.svc{background:none!important;border:none!important;padding:6px 2px!important;margin:0!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:#000!important;min-height:0}
+.svc .ic{font-size:32px;line-height:1}
+.svc .lb{font-size:15px;font-weight:800;line-height:1.1;text-align:center;color:#000!important}
+.svc.two-line .lb{font-size:14px}
+.svc.active{background:#e8f8ec!important;border-radius:12px}
+.sub-nav{display:flex;gap:8px;margin-top:8px;flex-shrink:0;padding-bottom:2px}
+.sub-nav button{flex:1;padding:12px 4px;font-size:14px;font-weight:800;border-radius:14px;border:none;background:#0A8A3E;color:#fff;margin-top:0;display:flex;align-items:center;justify-content:center;gap:6px}
+.sub-nav button.wa{background:#0A8A3E;color:#fff}
+.sub-nav button.care{background:#0A8A3E;color:#fff}
 .sub-nav button.active{background:#0A8A3E;color:#fff}
-.sub-nav button.wa{background:#25D366;border-color:#25D366;color:#fff}
-.sub-nav button.care{background:#fff;color:#0A8A3E}
+.sub-nav .ic2{font-size:20px}
+.page-scroll{overflow-y:auto;flex:1;min-height:0}
 .plan{display:flex;justify-content:space-between;padding:12px;border:1px solid #eee;border-radius:12px;margin-top:8px;cursor:pointer;color:#222}
 .plan.active{border:2px solid #0A8A3E;background:#f0fdf4}
 .small{font-size:12px;color:#666}
@@ -37,7 +49,7 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 .price-row{display:flex;justify-content:space-between;padding:9px;border-bottom:1px solid #eee;font-size:13px;color:#222}
 .price-group h4{background:#0A8A3E;color:#fff;padding:8px;border-radius:8px}
 #balance{color:#fff!important}
-#userPhone{color:#eafff0!important}
+#userPhone{color:#fff!important}
 #payyouModal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px}
 #payyouModal.show{display:flex}
 .modal-box{background:#fff;border-radius:16px;width:100%;max-width:360px;overflow:hidden}
@@ -48,17 +60,22 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 .progress-fill{background:#0A8A3E;height:100%;width:0%;transition:width .3s}
 .ref-person{padding:8px 0;border-bottom:1px solid #eee;font-size:13px;display:flex;justify-content:space-between}
 .live-total{background:#fff3cd;padding:10px;border-radius:10px;font-weight:700;margin-top:8px;border:1px solid #ffcc00}
-.eye-btn{width:auto!important;display:inline-block;background:transparent!important;color:#fff!important;padding:0 0 0 8px!important;font-size:18px;margin-top:0!important}
+.eye-btn{width:38px!important;height:38px!important;display:inline-flex!important;align-items:center;justify-content:center;background:transparent!important;color:#fff!important;padding:0!important;font-size:18px;margin:0!important;border:none!important}
+.eye-btn svg{width:30px;height:30px}
 .balance-line{display:flex;align-items:center;gap:4px}
+#app{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0}
+#app.hidden{display:none!important}
 </style>
 </head>
 <body>
 
-<!-- LOGIN ONLY - Shown before login. NO LOGO, NO BANNER, NO HOME here -->
 <div class="card" id="loginCard">
 <h3 style="margin:0;color:#222">Login / Create Account</h3>
 <input id="phoneInput" placeholder="Phone e.g 08031234567" type="tel">
+<div class="pass-wrap">
 <input id="passInput" placeholder="Password" type="password">
+<button type="button" class="pass-eye" id="passEyeBtn" title="Show / Hide password"></button>
+</div>
 <input id="signupReferInput" placeholder="Referral Code (Optional) e.g PY1234">
 <p class="small" id="refInviteMsg" style="color:#0A8A3E;font-weight:700"></p>
 <button id="loginBtn">Login / Sign Up</button>
@@ -66,99 +83,48 @@ button.link{background:none;color:#0A8A3E;text-decoration:underline}
 </div>
 
 <div id="app" class="hidden">
-<!-- HEADER: Logo + Name - ONLY AFTER LOGIN -->
 <div class="header" id="payyouHeader">
-  <div class="logo"><img src="IMG-20261105-WA3399.jpg" alt="PayYou"></div>
+  <!-- YOUR REAL LOGO - IMG-20261105-WA3399.jpg - NOT the common P -->
+  <div class="logo"><span id="logoFallback" style="display:none">PayYou</span><img src="IMG-20261105-WA3399.jpg" alt="PayYou" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='block'"></div>
   <div><h1>PayYou</h1><p>Fast Data & Airtime</p></div>
 </div>
-
-<!-- GREEN BANNER - Rectangular, Wallet ONLY, Fund at top-right -->
 <div class="top">
   <div class="top-row">
     <div class="balance-wrap">
-      <div id="userPhone" class="small">Not logged in</div>
-      <div class="small" style="color:#eafff0;margin-top:6px">Wallet Balance</div>
-      <div class="balance-line"><div id="balance" style="font-size:26px;font-weight:800">₦0.00</div><button class="eye-btn" id="eyeBtn">👁️</button></div>
+      <div id="userPhone" class="small" style="font-size:17px;font-weight:700">Not logged in</div>
+      <div class="small" style="color:#fff;margin-top:3px;font-size:15px;font-weight:700">Wallet Balance</div>
+      <div class="balance-line"><div id="balance" style="font-size:32px;font-weight:800">₦0.00</div><span style="font-size:22px;color:#fff;padding:0 6px">|</span><button class="eye-btn" id="eyeBtn"></button></div>
     </div>
-    <button id="topFundBtn" class="fund-top">💳 Fund Wallet</button>
+    <button id="topFundBtn" class="withdraw-btn">⬇ Withdrawal</button>
   </div>
 </div>
-
-<div class="nav">
-<button id="btnData">📶 Data</button><button id="btnAirtime">📞 Airtime</button><button id="btnElectric">💡 Electricity</button><button id="btnTV">📺 TV / Cable</button><button id="btnHistory">🧾 History</button><button id="btnRefer">👥 Refer</button><button id="btnPricing">💲 Pricing</button><button id="btnOffer">🔥 Today's Offer</button><button id="btnWallet" style="background:#ff9800;border-color:#ff9800;color:#fff">💳 Fund Wallet</button>
+<div class="services-bar">Our services</div>
+<div class="services-grid" id="homeGrid">
+  <button class="svc" id="btnData"><span class="ic">📶</span><span class="lb">Data</span></button>
+  <button class="svc" id="btnAirtime"><span class="ic">📞</span><span class="lb">Airtime</span></button>
+  <button class="svc" id="btnElectric"><span class="ic">💡</span><span class="lb">Electricity</span></button>
+  <button class="svc" id="btnTV"><span class="ic">📺</span><span class="lb">TV / Cable</span></button>
+  <button class="svc" id="btnHistory"><span class="ic">🧾</span><span class="lb">History</span></button>
+  <button class="svc" id="btnRefer"><span class="ic">👥</span><span class="lb">Refer</span></button>
+  <button class="svc" id="btnPricing"><span class="ic">💲</span><span class="lb">Pricing</span></button>
+  <button class="svc two-line" id="btnOffer"><span class="ic">🔥</span><span class="lb">Today's<br>Offer</span></button>
+  <button class="svc" id="btnWallet"><span class="ic">💳</span><span class="lb">Fund</span></button>
 </div>
-<div class="sub-nav"><button id="btnHome" class="active">🏠 Home</button><button id="btnWhatsApp" class="wa">💬 WhatsApp Channel</button><button id="btnCare" class="care">🎧 Customer Care</button></div>
-
-<div class="card" id="pageHome">
-<h3 style="margin:0">Choose a service</h3>
-<p style="font-size:14px;line-height:1.5;color:#555">Tap any button above to open that service on a new page.<br>Funding min <b>₦500</b>. Airtime min <b>₦100</b>. Electricity min <b>₦1000 + ₦100 charge</b>.</p>
-<button id="homeFundBtn" style="background:#ff9800">💳 Fund Wallet Now (Min ₦500)</button>
-<button id="homeDataBtn">📶 Buy Data Now</button>
-<button id="homeOfferBtn" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E">🔥 Today's Offer</button>
+<div class="sub-nav"><button id="btnHome" class="active"><span class="ic2">🏠</span> Home</button><button id="btnWhatsApp" class="wa"><span class="ic2">💬</span> WhatsApp<br>Channel</button><button id="btnCare" class="care"><span class="ic2">🎧</span> Customer<br>Care</button></div>
+<div class="page-scroll hidden" id="pagesWrap">
+<div class="card hidden" id="pageHome"></div>
+<div class="card hidden" id="pageOffer"><h3>🔥 Today's Offer</h3><p style="font-size:14px;line-height:1.6">₦50 OFF first 10 to buy 1GB (30 Days)!<br>MTN 1GB now <b>₦750</b> not ₦800.<br><b><span id="offerLeft">10 left</span></b></p><p style="font-size:13px;background:#f0fdf4;padding:10px;border-radius:10px">MTN 1GB (30 Days) now <b>₦750</b> — <span id="offerLeft2">10 left</span></p><button id="offerBuyBtn">📶 Buy 1GB Now</button><button id="backHome1" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E;margin-top:8px">← Back to Home</button></div>
+<div class="card hidden" id="pageWallet"><h3>Fund Wallet - Min ₦500</h3><input id="fundAmount" type="number" value="500" min="500"><button id="fundBtn">Fund with Paystack 💳</button><p class="small" id="fundMsg">Minimum funding is ₦500</p><button id="backHome2" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E">← Back to Home</button><button id="logoutBtn" style="background:#ff4444">Logout</button></div>
+<div class="card hidden" id="pageData"><h3>Buy Data</h3><select id="network"><option value="MTN">MTN</option><option value="Airtel">Airtel</option><option value="Glo">Glo</option><option value="9mobile">9mobile</option></select><input id="recipientData" placeholder="Recipient phone" type="tel"><div id="plans"></div><button id="buyDataBtn">Buy Data Now</button><p class="small" id="buyMsg">If balance is low, fund wallet with ₦500</p><button class="backHome" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E">← Back to Home</button></div>
+<div class="card hidden" id="pageAirtime"><h3>Buy Airtime - Min ₦100 ONLY</h3><select id="networkAirtime"><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select><input id="recipientAirtime" placeholder="Recipient phone" type="tel"><input id="airtimeAmount" type="number" placeholder="Amount - Min ₦100 e.g 100" min="100"><button id="buyAirtimeBtn">Buy Airtime</button><p class="small">Minimum airtime is ₦100 only. You only pay what you buy. If balance is low, fund wallet with ₦500</p><button class="backHome" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E">← Back to Home</button></div>
+<div class="card hidden" id="pageElectric"><h3>Electricity - Min ₦1000 + ₦100 Charge = ₦1100</h3><select id="electricProvider"><option value="AEDC">AEDC - Abuja FCT, Niger, Kogi, Nasarawa</option><option value="BEDC">BEDC - Edo, Delta, Ondo, Ekiti</option><option value="EKEDC">EKEDC - Lagos (Eko)</option><option value="EEDC">EEDC - Enugu, Anambra, Imo, Abia, Ebonyi</option><option value="IBEDC">IBEDC - Oyo, Ogun, Osun, Kwara</option><option value="IKEDC">IKEDC - Lagos (Ikeja)</option><option value="JEDC">JEDC - Plateau, Bauchi, Gombe, Benue</option><option value="KAEDCO">KAEDCO - Kaduna, Sokoto, Zamfara, Kebbi</option><option value="KEDCO">KEDCO - Kano, Katsina, Jigawa</option><option value="PHED">PHED - Rivers, Akwa Ibom, Cross River, Bayelsa</option><option value="YEDC">YEDC - Adamawa, Taraba, Borno, Yobe</option></select><p class="small" id="electricStateInfo">Covers: Abuja FCT, Niger, Kogi, Nasarawa</p><input id="meterNo" placeholder="Meter Number"><input id="electricAmount" type="number" placeholder="Min ₦1000 - type 1000 to see total" min="1000"><div class="live-total" id="electricLiveTotal">Type amount to see total: Amount + ₦100 charge</div><p class="small">Total = Amount + ₦100 charge. Minimum ₦1000. Example: ₦1000 + ₦100 = ₦1100</p><button id="buyElectricBtn">Pay Electricity</button><button class="backHome" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E">← Back to Home</button></div>
+<div class="card hidden" id="pageTV"><h3>TV / Cable - Min ₦1000 - No Extra Charge</h3><select id="tvProvider"><option value="DStv Great Wall standard bouquet (3800)">DStv - Great Wall - ₦3800</option><option value="GOtv small monthly (1900)">GOtv - Small monthly - ₦1900</option><option value="Startimes Nova (Dish) 1 week (700)">Startimes - Nova 1 week - ₦700 - Below Min, will be blocked</option></select><input id="smartcard" placeholder="Smartcard / IUC Number"><button id="buyTvBtn">Pay TV</button><p class="small">Minimum TV payment is ₦1000. No extra charge.</p><button class="backHome" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E">← Back to Home</button></div>
+<div class="card hidden" id="pageHistory"><h3>History</h3><div id="history">No transactions yet</div><button id="refreshHist">Refresh ↻</button><button class="backHome" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E">← Back to Home</button></div>
+<div class="card hidden" id="pageRefer"><h3>👥 Refer & Earn ₦1,000</h3><p style="font-size:13px;line-height:1.5">Invite 10 <b>different</b> people. When each of them registers with your code/link <b>AND buys 1GB Data (any network)</b>, you earn.<br><b>Every 10 = ₦1,000</b> to your wallet. No limit.</p><p>Your code: <b id="myReferCode" style="font-size:20px">Login to see</b></p><p class="small">Your link:</p><input id="myReferLink" readonly style="font-size:12px"><button id="copyReferBtn">📋 Copy Referral Link</button><button id="shareReferBtn" style="background:#25D366">💬 Share on WhatsApp</button><div style="margin-top:14px;background:#f0fdf4;padding:12px;border-radius:12px"><b>Your Progress: <span id="referCount">0</span> / 10 qualified</b><div class="progress"><div class="progress-fill" id="referProgress"></div></div><p class="small" style="margin-top:8px">Total earned from referral: <b id="referEarned">₦0</b><br>Next reward in: <b><span id="referNext">10</span> more people</b></p></div><h4 style="margin-top:14px">People You Referred</h4><div id="referList"><p class="small">No referrals yet. Share your link!</p></div><p style="margin-top:12px">Have a code?</p><input id="referInput" placeholder="Enter referral code"><button id="applyReferBtn">Apply Referral Code</button><p class="small" id="referApplyMsg"></p><button class="backHome" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E">← Back to Home</button></div>
+<div class="card hidden" id="pagePricing"><h3>💲 PayYou Complete Price List</h3><div id="priceList"></div><button class="backHome" style="background:#fff;color:#0A8A3E;border:2px solid #0A8A3E">← Back to Home</button></div>
 </div>
-
-<div class="card hidden" id="pageOffer">
-<h3>🔥 Today's Offer</h3>
-<p style="font-size:14px;line-height:1.6">₦50 OFF first 10 to buy 1GB (30 Days)!<br>MTN 1GB now <b>₦750</b> not ₦800.<br><b><span id="offerLeft">10 left</span></b></p>
-<p style="font-size:13px;background:#f0fdf4;padding:10px;border-radius:10px">MTN 1GB (30 Days) now <b>₦750</b> — <span id="offerLeft2">10 left</span></p>
-<button id="offerBuyBtn">📶 Buy 1GB Now</button>
 </div>
-
-<div class="card hidden" id="pageWallet"><h3>Fund Wallet - Min ₦500</h3><input id="fundAmount" type="number" value="500" min="500"><button id="fundBtn">Fund with Paystack 💳</button><p class="small" id="fundMsg">Minimum funding is ₦500</p><button id="logoutBtn" style="background:#ff4444">Logout</button></div>
-
-<div class="card hidden" id="pageData"><h3>Buy Data</h3><select id="network"><option value="MTN">MTN</option><option value="Airtel">Airtel</option><option value="Glo">Glo</option><option value="9mobile">9mobile</option></select><input id="recipientData" placeholder="Recipient phone" type="tel"><div id="plans"></div><button id="buyDataBtn">Buy Data Now</button><p class="small" id="buyMsg">If balance is low, fund wallet with ₦500</p></div>
-
-<div class="card hidden" id="pageAirtime"><h3>Buy Airtime - Min ₦100 ONLY</h3><select id="networkAirtime"><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option></select><input id="recipientAirtime" placeholder="Recipient phone" type="tel"><input id="airtimeAmount" type="number" placeholder="Amount - Min ₦100 e.g 100" min="100"><button id="buyAirtimeBtn">Buy Airtime</button><p class="small">Minimum airtime is ₦100 only. You only pay what you buy. If balance is low, fund wallet with ₦500</p></div>
-
-<div class="card hidden" id="pageElectric"><h3>Electricity - Min ₦1000 + ₦100 Charge = ₦1100</h3>
-<select id="electricProvider">
-<option value="AEDC">AEDC - Abuja FCT, Niger, Kogi, Nasarawa</option>
-<option value="BEDC">BEDC - Edo, Delta, Ondo, Ekiti</option>
-<option value="EKEDC">EKEDC - Lagos (Eko)</option>
-<option value="EEDC">EEDC - Enugu, Anambra, Imo, Abia, Ebonyi</option>
-<option value="IBEDC">IBEDC - Oyo, Ogun, Osun, Kwara</option>
-<option value="IKEDC">IKEDC - Lagos (Ikeja)</option>
-<option value="JEDC">JEDC - Plateau, Bauchi, Gombe, Benue</option>
-<option value="KAEDCO">KAEDCO - Kaduna, Sokoto, Zamfara, Kebbi</option>
-<option value="KEDCO">KEDCO - Kano, Katsina, Jigawa</option>
-<option value="PHED">PHED - Rivers, Akwa Ibom, Cross River, Bayelsa</option>
-<option value="YEDC">YEDC - Adamawa, Taraba, Borno, Yobe</option>
-</select>
-<p class="small" id="electricStateInfo">Covers: Abuja FCT, Niger, Kogi, Nasarawa</p>
-<input id="meterNo" placeholder="Meter Number"><input id="electricAmount" type="number" placeholder="Min ₦1000 - type 1000 to see total" min="1000">
-<div class="live-total" id="electricLiveTotal">Type amount to see total: Amount + ₦100 charge</div>
-<p class="small">Total = Amount + ₦100 charge. Minimum ₦1000. Example: ₦1000 + ₦100 = ₦1100</p><button id="buyElectricBtn">Pay Electricity</button></div>
-
-<div class="card hidden" id="pageTV"><h3>TV / Cable - Min ₦1000 - No Extra Charge</h3><select id="tvProvider"><option value="DStv Great Wall standard bouquet (3800)">DStv - Great Wall - ₦3800</option><option value="GOtv small monthly (1900)">GOtv - Small monthly - ₦1900</option><option value="Startimes Nova (Dish) 1 week (700)">Startimes - Nova 1 week - ₦700 - Below Min, will be blocked</option></select><input id="smartcard" placeholder="Smartcard / IUC Number"><button id="buyTvBtn">Pay TV</button><p class="small">Minimum TV payment is ₦1000. No extra charge.</p></div>
-
-<div class="card hidden" id="pageHistory"><h3>History</h3><div id="history">No transactions yet</div><button id="refreshHist">Refresh ↻</button></div>
-
-<div class="card hidden" id="pageRefer">
-<h3>👥 Refer & Earn ₦1,000</h3>
-<p style="font-size:13px;line-height:1.5">Invite 10 <b>different</b> people. When each of them registers with your code/link <b>AND buys 1GB Data (any network)</b>, you earn.<br><b>Every 10 = ₦1,000</b> to your wallet. No limit.</p>
-<p>Your code: <b id="myReferCode" style="font-size:20px">Login to see</b></p>
-<p class="small">Your link:</p>
-<input id="myReferLink" readonly style="font-size:12px">
-<button id="copyReferBtn">📋 Copy Referral Link</button>
-<button id="shareReferBtn" style="background:#25D366">💬 Share on WhatsApp</button>
-<div style="margin-top:14px;background:#f0fdf4;padding:12px;border-radius:12px">
-<b>Your Progress: <span id="referCount">0</span> / 10 qualified</b>
-<div class="progress"><div class="progress-fill" id="referProgress"></div></div>
-<p class="small" style="margin-top:8px">Total earned from referral: <b id="referEarned">₦0</b><br>Next reward in: <b><span id="referNext">10</span> more people</b></p>
-</div>
-<h4 style="margin-top:14px">People You Referred</h4>
-<div id="referList"><p class="small">No referrals yet. Share your link!</p></div>
-<p style="margin-top:12px">Have a code?</p>
-<input id="referInput" placeholder="Enter referral code">
-<button id="applyReferBtn">Apply Referral Code</button>
-<p class="small" id="referApplyMsg"></p>
-</div>
-
-<div class="card hidden" id="pagePricing"><h3>💲 PayYou Complete Price List</h3><div id="priceList"></div></div>
-</div>
-
 <div id="payyouModal"><div class="modal-box"><div class="modal-head">PayYou</div><div class="modal-body"><div id="payyouModalText"></div><button id="payyouModalOk">OK</button></div></div></div>
-
 <script>
 function pAlert(msg){ document.getElementById('payyouModalText').innerText=msg; document.getElementById('payyouModal').classList.add('show'); }
 document.getElementById('payyouModalOk').onclick=function(){ document.getElementById('payyouModal').classList.remove('show'); };
@@ -166,234 +132,49 @@ const SUPABASE_URL="https://phookhwnnqvld1sdabxl.supabase.co";
 const SUPABASE_KEY="sb_publishable_XtUW05kuHhrTeMZ3NOCBBg_zNecT4c0";
 const PAYSTACK_PUBLIC="pk_live_396260246880808f62d55065ac73694bc5a9b17c";
 const WHATSAPP_NUMBER="2349063772447";
-const MIN_FUNDING=500;
-const MIN_AIRTIME=100;
-const MIN_AMOUNT=1000;
-const ELECTRIC_CHARGE=100;
+const MIN_FUNDING=500; const MIN_AIRTIME=100; const MIN_AMOUNT=1000; const ELECTRIC_CHARGE=100;
 const DISCO_STATES={AEDC:"Covers: Abuja FCT, Niger, Kogi, Nasarawa",BEDC:"Covers: Edo, Delta, Ondo, Ekiti",EKEDC:"Covers: Lagos (Eko)",EEDC:"Covers: Enugu, Anambra, Imo, Abia, Ebonyi",IBEDC:"Covers: Oyo, Ogun, Osun, Kwara",IKEDC:"Covers: Lagos (Ikeja)",JEDC:"Covers: Plateau, Bauchi, Gombe, Benue",KAEDCO:"Covers: Kaduna, Sokoto, Zamfara, Kebbi",KEDCO:"Covers: Kano, Katsina, Jigawa",PHED:"Covers: Rivers, Akwa Ibom, Cross River, Bayelsa",YEDC:"Covers: Adamawa, Taraba, Borno, Yobe"};
-let supa=null;
-try{ supa=supabase.createClient(SUPABASE_URL,SUPABASE_KEY); }catch(e){ supa=null; }
-let phone="",selectedPlan=null,offerCount=0,balHidden=false;
-const PLANS={
-MTN:[{l:"100MB - Daily",p:100},{l:"230MB - Daily",p:200},{l:"500MB - 2 Days",p:350},{l:"500MB - 30 Days",p:400},{l:"1GB - 30 Days",p:800,offer:true},{l:"2.5GB - 2 Days",p:100},{l:"2GB - 7 Days",p:950},{l:"2GB - 30 Days",p:1300},{l:"3GB - 30 Days",p:1500},{l:"3.5GB - 1 Day",p:1100},{l:"4GB - 2 Days",p:1300},{l:"5GB - 30 Days",p:2400},{l:"6GB - 7 Days",p:2600}],
-Airtel:[{l:"100MB - 1 Day",p:100},{l:"230MB - 2 Days",p:200},{l:"300MB - 2 Days",p:300},{l:"600MB - 2 Days",p:350},{l:"1GB Socials - 1 Day",p:450},{l:"1.5GB - 1 Day",p:450},{l:"2GB - 2 Days",p:700},{l:"1GB - 7 Days",p:800},{l:"4GB - 2 Days",p:1100},{l:"1.5GB - 30 Days",p:1100},{l:"3.5GB - 7 Days",p:1600},{l:"6GB - 7 Days",p:2500},{l:"3GB - 30 Days",p:2100},{l:"4GB - 30 Days",p:2600}],
-Glo:[{l:"100MB - 1 Day",p:100},{l:"200MB - 14 Days",p:200},{l:"750MB - 1 Day",p:400},{l:"500MB - 30 Days",p:500},{l:"1.5GB - 1 Day",p:450},{l:"1GB - 3 Days",p:450},{l:"1GB - 30 Days",p:600},{l:"2.5GB - 2 Days",p:600},{l:"1.5GB + 2GB Night - 2 Days",p:700},{l:"2GB - 30 Days",p:900},{l:"3GB - 3 Days",p:1200},{l:"3GB - 30 Days",p:1400},{l:"5GB - 7 Days",p:2000},{l:"5GB - 3 Days",p:1900},{l:"5GB - 30 Days",p:2200},{l:"10GB - 7 Days",p:2500}],
-"9mobile":[{l:"100MB - 1 Day",p:100},{l:"230MB - 2 Days",p:200},{l:"300MB - 2 Days",p:300},{l:"600MB - 2 Days",p:350},{l:"1GB Socials - 1 Day",p:450},{l:"1.5GB - 1 Day",p:450},{l:"2GB - 2 Days",p:700},{l:"1GB - 7 Days",p:800},{l:"4GB - 2 Days",p:1100},{l:"1.5GB - 30 Days",p:1100},{l:"3.5GB - 7 Days",p:1600},{l:"6GB - 7 Days",p:2500},{l:"3GB - 30 Days",p:2100},{l:"4GB - 30 Days",p:2600}]
-};
+let supa=null; try{ supa=supabase.createClient(SUPABASE_URL,SUPABASE_KEY); }catch(e){ supa=null; }
+let phone="",selectedPlan=null,offerCount=0,balHidden=false,passHidden=true;
+const PLANS={MTN:[{l:"100MB - Daily",p:100},{l:"230MB - Daily",p:200},{l:"500MB - 2 Days",p:350},{l:"500MB - 30 Days",p:400},{l:"1GB - 30 Days",p:800,offer:true},{l:"2.5GB - 2 Days",p:100},{l:"2GB - 7 Days",p:950},{l:"2GB - 30 Days",p:1300},{l:"3GB - 30 Days",p:1500},{l:"3.5GB - 1 Day",p:1100},{l:"4GB - 2 Days",p:1300},{l:"5GB - 30 Days",p:2400},{l:"6GB - 7 Days",p:2600}],Airtel:[{l:"100MB - 1 Day",p:100},{l:"230MB - 2 Days",p:200},{l:"300MB - 2 Days",p:300},{l:"600MB - 2 Days",p:350},{l:"1GB Socials - 1 Day",p:450},{l:"1.5GB - 1 Day",p:450},{l:"2GB - 2 Days",p:700},{l:"1GB - 7 Days",p:800},{l:"4GB - 2 Days",p:1100},{l:"1.5GB - 30 Days",p:1100},{l:"3.5GB - 7 Days",p:1600},{l:"6GB - 7 Days",p:2500},{l:"3GB - 30 Days",p:2100},{l:"4GB - 30 Days",p:2600}],Glo:[{l:"100MB - 1 Day",p:100},{l:"200MB - 14 Days",p:200},{l:"750MB - 1 Day",p:400},{l:"500MB - 30 Days",p:500},{l:"1.5GB - 1 Day",p:450},{l:"1GB - 3 Days",p:450},{l:"1GB - 30 Days",p:600},{l:"2.5GB - 2 Days",p:600},{l:"1.5GB + 2GB Night - 2 Days",p:700},{l:"2GB - 30 Days",p:900},{l:"3GB - 3 Days",p:1200},{l:"3GB - 30 Days",p:1400},{l:"5GB - 7 Days",p:2000},{l:"5GB - 3 Days",p:1900},{l:"5GB - 30 Days",p:2200},{l:"10GB - 7 Days",p:2500}],"9mobile":[{l:"100MB - 1 Day",p:100},{l:"230MB - 2 Days",p:200},{l:"300MB - 2 Days",p:300},{l:"600MB - 2 Days",p:350},{l:"1GB Socials - 1 Day",p:450},{l:"1.5GB - 1 Day",p:450},{l:"2GB - 2 Days",p:700},{l:"1GB - 7 Days",p:800},{l:"4GB - 2 Days",p:1100},{l:"1.5GB - 30 Days",p:1100},{l:"3.5GB - 7 Days",p:1600},{l:"6GB - 7 Days",p:2500},{l:"3GB - 30 Days",p:2100},{l:"4GB - 30 Days",p:2600}]};
 function getPrice(p){ if(p.offer && offerCount<10) return p.p-50; return p.p; }
 function myCode(){ return "PY"+phone.slice(-4); }
 function getBaseUrl(){ return location.origin + location.pathname; }
-function updateReferUI(){
-  if(!phone) return;
-  var code=myCode();
-  document.getElementById('myReferCode').innerText=code;
-  var link=getBaseUrl()+"?ref="+code;
-  document.getElementById('myReferLink').value=link;
-  var all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}');
-  var mine=all[code]||[];
-  var qualified=mine.filter(function(r){return r.bought1GB;}).length;
-  var earned=Math.floor(qualified/10)*1000;
-  var progress=qualified%10;
-  document.getElementById('referCount').innerText=qualified;
-  document.getElementById('referEarned').innerText="₦"+earned.toLocaleString();
-  document.getElementById('referNext').innerText=(10-progress);
-  document.getElementById('referProgress').style.width=(progress*10)+"%";
-  document.getElementById('referList').innerHTML=mine.length?mine.map(function(r){return '<div class="ref-person"><span>***'+r.phone.slice(-4)+'</span><b>'+(r.bought1GB?'✅ Bought 1GB':'⏳ Registered, no 1GB yet')+'</b></div>';}).join(''):"<p class='small'>No referrals yet. Share your link!</p>";
-}
-function saveReferralForNewUser(newPhone, refCode){
-  if(!refCode) return;
-  refCode=refCode.trim().toUpperCase();
-  if(!refCode) return;
-  if(refCode==="PY"+newPhone.slice(-4)) return;
-  localStorage.setItem('payyou_referred_by_'+newPhone, refCode);
-  var all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}');
-  if(!all[refCode]) all[refCode]=[];
-  if(!all[refCode].some(function(r){return r.phone===newPhone;})){
-    all[refCode].push({phone:newPhone,bought1GB:false});
-    localStorage.setItem('payyou_referrals',JSON.stringify(all));
-  }
-}
-function creditReferrerIfNeeded(){
-  var refCode=localStorage.getItem('payyou_referred_by_'+phone);
-  if(!refCode) return;
-  if(localStorage.getItem('payyou_1gb_counted_'+phone)==="1") return;
-  localStorage.setItem('payyou_1gb_counted_'+phone,"1");
-  var all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}');
-  var list=all[refCode]||[];
-  var entry=null; for(var i=0;i<list.length;i++){ if(list[i].phone===phone) entry=list[i]; }
-  if(entry) entry.bought1GB=true;
-  all[refCode]=list;
-  localStorage.setItem('payyou_referrals',JSON.stringify(all));
-  var qualified=list.filter(function(r){return r.bought1GB;}).length;
-  if(qualified>0 && qualified%10===0){
-    var pending=JSON.parse(localStorage.getItem('payyou_pending_rewards')||'{}');
-    pending[refCode]=(pending[refCode]||0)+1000;
-    localStorage.setItem('payyou_pending_rewards',JSON.stringify(pending));
-    var referrerPhone=localStorage.getItem('payyou_phone_for_code_'+refCode);
-    if(referrerPhone){
-      var bal=Number(localStorage.getItem('payyou_bal_'+referrerPhone)||0);
-      localStorage.setItem('payyou_bal_'+referrerPhone, bal+1000);
-      if(referrerPhone===phone) pAlert("Referral reward! You earned ₦1,000");
-    }
-    pAlert("Your referrer just earned ₦1,000 because 10 people bought 1GB with their code! Keep sharing.");
-  }
-  updateReferUI();
-}
-function claimPendingRewards(){
-  if(!phone) return;
-  var code=myCode();
-  var pending=JSON.parse(localStorage.getItem('payyou_pending_rewards')||'{}');
-  if(pending[code] && pending[code]>0){
-    var amt=pending[code];
-    var bal=Number(localStorage.getItem('payyou_bal_'+phone)||0);
-    localStorage.setItem('payyou_bal_'+phone, bal+amt);
-    pending[code]=0;
-    localStorage.setItem('payyou_pending_rewards',JSON.stringify(pending));
-    pAlert("Referral reward claimed! ₦"+amt.toLocaleString()+" added to your wallet.");
-  }
-}
-function showPage(name){
-  ['Home','Data','Airtime','Electric','TV','History','Refer','Pricing','Wallet','Offer'].forEach(function(p){ document.getElementById('page'+p).classList.add('hidden'); });
-  document.querySelectorAll('.nav button, .sub-nav button').forEach(function(b){ b.classList.remove('active'); });
-  document.getElementById('page'+name).classList.remove('hidden');
-  var btn=document.getElementById('btn'+name); if(btn) btn.classList.add('active');
-  if(name==='History') loadHistory();
-  if(name==='Refer') updateReferUI();
-  window.scrollTo(0,0);
-}
+function eyeOpenSVG(color){ return '<svg viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3" fill="'+color+'" stroke="none"/></svg>'; }
+function eyeClosedSVG(color){ return '<svg viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19M14.12 14.12A3 3 0 1 1 9.88 9.88"/><line x1="1" y1="1" x2="23" y2="23"/></svg>'; }
+function updateEyeIcons(){ document.getElementById('eyeBtn').innerHTML = balHidden ? eyeClosedSVG('#ffffff') : eyeOpenSVG('#ffffff'); document.getElementById('passEyeBtn').innerHTML = passHidden ? eyeClosedSVG('#555555') : eyeOpenSVG('#0A8A3E'); }
+function updateReferUI(){ if(!phone) return; var code=myCode(); document.getElementById('myReferCode').innerText=code; var link=getBaseUrl()+"?ref="+code; document.getElementById('myReferLink').value=link; var all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}'); var mine=all[code]||[]; var qualified=mine.filter(function(r){return r.bought1GB;}).length; var earned=Math.floor(qualified/10)*1000; var progress=qualified%10; document.getElementById('referCount').innerText=qualified; document.getElementById('referEarned').innerText="₦"+earned.toLocaleString(); document.getElementById('referNext').innerText=(10-progress); document.getElementById('referProgress').style.width=(progress*10)+"%"; document.getElementById('referList').innerHTML=mine.length?mine.map(function(r){return '<div class="ref-person"><span>***'+r.phone.slice(-4)+'</span><b>'+(r.bought1GB?'✅ Bought 1GB':'⏳ Registered, no 1GB yet')+'</b></div>';}).join(''):"<p class='small'>No referrals yet. Share your link!</p>"; }
+function saveReferralForNewUser(newPhone, refCode){ if(!refCode) return; refCode=refCode.trim().toUpperCase(); if(!refCode) return; if(refCode==="PY"+newPhone.slice(-4)) return; localStorage.setItem('payyou_referred_by_'+newPhone, refCode); var all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}'); if(!all[refCode]) all[refCode]=[]; if(!all[refCode].some(function(r){return r.phone===newPhone;})){ all[refCode].push({phone:newPhone,bought1GB:false}); localStorage.setItem('payyou_referrals',JSON.stringify(all)); } }
+function creditReferrerIfNeeded(){ var refCode=localStorage.getItem('payyou_referred_by_'+phone); if(!refCode) return; if(localStorage.getItem('payyou_1gb_counted_'+phone)==="1") return; localStorage.setItem('payyou_1gb_counted_'+phone,"1"); var all=JSON.parse(localStorage.getItem('payyou_referrals')||'{}'); var list=all[refCode]||[]; var entry=null; for(var i=0;i<list.length;i++){ if(list[i].phone===phone) entry=list[i]; } if(entry) entry.bought1GB=true; all[refCode]=list; localStorage.setItem('payyou_referrals',JSON.stringify(all)); var qualified=list.filter(function(r){return r.bought1GB;}).length; if(qualified>0 && qualified%10===0){ var pending=JSON.parse(localStorage.getItem('payyou_pending_rewards')||'{}'); pending[refCode]=(pending[refCode]||0)+1000; localStorage.setItem('payyou_pending_rewards',JSON.stringify(pending)); var referrerPhone=localStorage.getItem('payyou_phone_for_code_'+refCode); if(referrerPhone){ var bal=Number(localStorage.getItem('payyou_bal_'+referrerPhone)||0); localStorage.setItem('payyou_bal_'+referrerPhone, bal+1000); if(referrerPhone===phone) pAlert("Referral reward! You earned ₦1,000"); } pAlert("Your referrer just earned ₦1,000 because 10 people bought 1GB with their code! Keep sharing."); } updateReferUI(); }
+function claimPendingRewards(){ if(!phone) return; var code=myCode(); var pending=JSON.parse(localStorage.getItem('payyou_pending_rewards')||'{}'); if(pending[code] && pending[code]>0){ var amt=pending[code]; var bal=Number(localStorage.getItem('payyou_bal_'+phone)||0); localStorage.setItem('payyou_bal_'+phone, bal+amt); pending[code]=0; localStorage.setItem('payyou_pending_rewards',JSON.stringify(pending)); pAlert("Referral reward claimed! ₦"+amt.toLocaleString()+" added to your wallet."); } }
+function showPage(name){ var isHome=(name==='Home'); document.getElementById('homeGrid').style.display=isHome?'grid':'none'; document.querySelector('.services-bar').style.display=isHome?'block':'none'; document.getElementById('pagesWrap').classList.toggle('hidden',isHome); ['Home','Data','Airtime','Electric','TV','History','Refer','Pricing','Wallet','Offer'].forEach(function(p){ var el=document.getElementById('page'+p); if(el) el.classList.add('hidden'); }); document.querySelectorAll('.svc, .sub-nav button').forEach(function(b){ b.classList.remove('active'); }); if(!isHome){ document.getElementById('page'+name).classList.remove('hidden'); } var btn=document.getElementById('btn'+name); if(btn) btn.classList.add('active'); if(name==='History') loadHistory(); if(name==='Refer') updateReferUI(); window.scrollTo(0,0); }
 ['Data','Airtime','Electric','TV','History','Refer','Pricing','Wallet','Offer'].forEach(function(n){ document.getElementById('btn'+n).onclick=function(){ showPage(n); }; });
 document.getElementById('btnHome').onclick=function(){ showPage('Home'); };
-document.getElementById('topFundBtn').onclick=function(){ showPage('Wallet'); };
-document.getElementById('homeFundBtn').onclick=function(){ showPage('Wallet'); };
-document.getElementById('homeDataBtn').onclick=function(){ showPage('Data'); };
-document.getElementById('homeOfferBtn').onclick=function(){ showPage('Offer'); };
+document.getElementById('topFundBtn').onclick=function(){ pAlert("Withdrawal coming soon. Contact Customer Care on WhatsApp to withdraw."); };
 document.getElementById('offerBuyBtn').onclick=function(){ showPage('Data'); };
+document.querySelectorAll('.backHome').forEach(function(b){ b.onclick=function(){ showPage('Home'); }; });
+var b1=document.getElementById('backHome1'); if(b1) b1.onclick=function(){ showPage('Home'); };
+var b2=document.getElementById('backHome2'); if(b2) b2.onclick=function(){ showPage('Home'); };
 document.getElementById('btnWhatsApp').onclick=function(){ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text=Hello%20PayYou%20I%20want%20to%20join%20your%20WhatsApp%20Channel","_blank"); };
 document.getElementById('btnCare').onclick=function(){ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text=Hello%20PayYou%20Customer%20Care%20I%20need%20help","_blank"); };
-document.getElementById('eyeBtn').onclick=function(){ balHidden=!balHidden; document.getElementById('eyeBtn').innerText=balHidden?"🙈":"👁️"; refreshBalance(); };
+document.getElementById('eyeBtn').onclick=function(){ balHidden=!balHidden; updateEyeIcons(); refreshBalance(); };
+document.getElementById('passEyeBtn').onclick=function(){ passHidden=!passHidden; var inp=document.getElementById('passInput'); inp.type = passHidden ? 'password' : 'text'; updateEyeIcons(); };
 document.getElementById('electricProvider').onchange=function(e){ document.getElementById('electricStateInfo').innerText=DISCO_STATES[e.target.value]||""; };
 document.getElementById('electricAmount').oninput=function(e){ var v=Number(e.target.value||0); var el=document.getElementById('electricLiveTotal'); if(!v) el.innerText="Type amount to see total: Amount + ₦100 charge"; else el.innerText="You will pay: ₦"+(v+100).toLocaleString()+" total ( ₦"+v.toLocaleString()+" + ₦100 charge )"; };
 function renderPlans(){ var net=document.getElementById('network').value; var html=""; PLANS[net].forEach(function(p,i){ var price=getPrice(p); var tag=p.offer&&offerCount<10?' <span style="background:#ffcc00;color:#222;padding:2px 6px;border-radius:10px;font-size:10px">OFFER ₦'+price+'</span>':""; html+='<div class="plan '+(i===0?'active':'')+'" data-i="'+i+'"><span>'+p.l+tag+'</span><b>₦'+price+'</b></div>'; }); document.getElementById('plans').innerHTML=html; selectedPlan=PLANS[net][0]; document.querySelectorAll('.plan').forEach(function(el){ el.onclick=function(){ selectedPlan=PLANS[net][Number(el.dataset.i)]; document.querySelectorAll('.plan').forEach(function(e){ e.classList.remove('active'); }); el.classList.add('active'); }; }); }
 function renderPricing(){ var html=""; Object.keys(PLANS).forEach(function(net){ html+='<div class="price-group"><h4>'+net+' Data</h4>'; PLANS[net].forEach(function(p){ html+='<div class="price-row"><span>'+p.l+'</span><b>₦'+getPrice(p)+'</b></div>'; }); html+='</div>'; }); html+='<div class="price-group"><h4>Electricity - All States</h4><div class="price-row"><span>All 11 DISCOs - Min ₦1000</span><b>₦1000 + ₦100 = ₦1100</b></div></div><div class="price-group"><h4>TV / Cable - No Extra Charge</h4><div class="price-row"><span>DStv Great Wall</span><b>₦3800</b></div><div class="price-row"><span>GOtv Small monthly</span><b>₦1900</b></div><div class="price-row"><span>Startimes Nova 1 week</span><b>₦700 - Below Min</b></div></div>'; document.getElementById('priceList').innerHTML=html; }
 function getLocalBal(){ return Number(localStorage.getItem('payyou_bal_'+phone)||0); }
 function setLocalBal(v){ localStorage.setItem('payyou_bal_'+phone, v); }
-async function refreshBalance(){
-  if(!phone) return;
-  var balTxt="₦"+getLocalBal().toLocaleString('en-NG',{minimumFractionDigits:2});
-  if(balHidden) balTxt="₦****";
-  document.getElementById('balance').innerText=balTxt;
-  if(!balHidden && supa){
-    try{
-      var timeout = new Promise(function(r){ setTimeout(function(){ r({timedOut:true}); }, 2000); });
-      var res = await Promise.race([supa.from('wallets').select('*').eq('phone',phone).maybeSingle(), timeout]);
-      if(res && !res.timedOut && res.data){
-        var onlineBal = Number(res.data.balance);
-        var localBal = getLocalBal();
-        if(onlineBal > localBal){
-          setLocalBal(onlineBal);
-          document.getElementById('balance').innerText="₦"+onlineBal.toLocaleString('en-NG',{minimumFractionDigits:2});
-        }
-      }
-    }catch(e){}
-  }
-}
+async function refreshBalance(){ if(!phone) return; var balTxt="₦"+getLocalBal().toLocaleString('en-NG',{minimumFractionDigits:2}); if(balHidden) balTxt="₦****"; document.getElementById('balance').innerText=balTxt; if(!balHidden && supa){ try{ var timeout=new Promise(function(r){ setTimeout(function(){ r({timedOut:true}); },2000); }); var res=await Promise.race([supa.from('wallets').select('*').eq('phone',phone).maybeSingle(),timeout]); if(res && !res.timedOut && res.data){ var onlineBal=Number(res.data.balance); var localBal=getLocalBal(); if(onlineBal>localBal){ setLocalBal(onlineBal); document.getElementById('balance').innerText="₦"+onlineBal.toLocaleString('en-NG',{minimumFractionDigits:2}); } } }catch(e){} } }
 async function loadHistory(){ var h=JSON.parse(localStorage.getItem('payyou_hist_'+phone)||'[]'); document.getElementById('history').innerHTML=h.length?h.map(function(t){ return '<div style="font-size:13px;border-bottom:1px solid #eee;padding:8px 0"><b>'+t.type+'</b> • ₦'+t.amount+' • '+t.status+'</div>'; }).join(''):"No transactions yet"; }
 function saveHist(type,amount){ var h=JSON.parse(localStorage.getItem('payyou_hist_'+phone)||'[]'); h.unshift({type:type,amount:amount,status:'pending'}); localStorage.setItem('payyou_hist_'+phone,JSON.stringify(h.slice(0,20))); }
-async function doBuy(type,amount,planLabel,recipient,network){
-  var is1GB = type==='data' && planLabel.indexOf("1GB")!==-1;
-  if(!is1GB && type==='data' && amount<MIN_AMOUNT) return pAlert("Minimum data is ₦1000. 1GB Data is the only exception.");
-  var bal=getLocalBal();
-  if(bal<amount){ return pAlert("Balance is low, fund wallet with ₦500"); }
-  if(!confirm("Buy "+planLabel+" - ₦"+amount+"?")) return;
-  setLocalBal(bal-amount);
-  saveHist(type,amount);
-  if(is1GB) creditReferrerIfNeeded();
-  await refreshBalance(); await loadHistory(); updateReferUI();
-  if(supa){
-    supa.from('wallets').select('*').eq('phone',phone).maybeSingle().then(function(w){
-      if(w.data) supa.from('wallets').update({balance:Number(w.data.balance)-amount}).eq('phone',phone);
-    }).catch(function(){});
-    supa.from('orders').insert([{phone:phone,recipient:recipient,network:network,plan:planLabel,amount:amount,status:'pending',referral_code:localStorage.getItem('payyou_referred_by_'+phone)||null}]).then(function(){}).catch(function(){});
-  }
-  pAlert("Order saved! We will deliver it.");
-}
-function loginSuccess(){ document.getElementById('userPhone').innerText=phone; document.getElementById('myReferCode').innerText=myCode(); localStorage.setItem('payyou_phone_for_code_'+myCode(), phone); document.getElementById('loginCard').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); showPage('Home'); refreshBalance(); loadHistory(); claimPendingRewards(); updateReferUI(); pAlert("Welcome "+phone); }
-document.getElementById('loginBtn').addEventListener('click', async function(){
- var ph=document.getElementById('phoneInput').value.trim();
- var pw=document.getElementById('passInput').value.trim();
- var refCode=document.getElementById('signupReferInput').value.trim().toUpperCase();
- if(ph.length<10||pw.length<4){ pAlert("Enter phone + password (min 4)"); return; }
- if(supa){
-  try{
-   var supaPromise = supa.from('wallets').select('*').eq('phone',ph).maybeSingle();
-   var timeoutPromise = new Promise(function(resolve){ setTimeout(function(){ resolve({timedOut:true}); }, 3000); });
-   var res = await Promise.race([supaPromise, timeoutPromise]);
-   if(res && !res.timedOut && !res.error){
-     if(!res.data){
-       var insPromise = supa.from('wallets').insert([{phone:ph,balance:0,password:pw,referral_code:"PY"+ph.slice(-4),referred_by:refCode||null}]);
-       var insTimeout = new Promise(function(resolve){ setTimeout(function(){ resolve({timedOut:true}); }, 3000); });
-       var ins = await Promise.race([insPromise, insTimeout]);
-       if(ins && ins.error) throw ins.error;
-       phone=ph; if(refCode) saveReferralForNewUser(ph, refCode); loginSuccess(); return;
-     }
-     else if(res.data.password && res.data.password!==pw){ pAlert("Wrong password! Tap Forgot Password."); return; }
-     phone=ph; if(refCode) saveReferralForNewUser(ph, refCode); loginSuccess(); return;
-   }
-  }catch(e){ console.log("Supabase failed, using offline login", e); }
- }
- var savedPw=localStorage.getItem('payyou_pw_'+ph);
- if(!savedPw){
-   localStorage.setItem('payyou_pw_'+ph,pw);
-   localStorage.setItem('payyou_bal_'+ph, localStorage.getItem('payyou_bal_'+ph)||"0");
-   phone=ph; if(refCode) saveReferralForNewUser(ph, refCode);
-   loginSuccess(); return;
- }
- if(savedPw!==pw){ pAlert("Wrong password! Tap Forgot Password."); return; }
- phone=ph; loginSuccess();
-});
+async function doBuy(type,amount,planLabel,recipient,network){ var is1GB=type==='data' && planLabel.indexOf("1GB")!==-1; if(!is1GB && type==='data' && amount<MIN_AMOUNT) return pAlert("Minimum data is ₦1000. 1GB Data is the only exception."); var bal=getLocalBal(); if(bal<amount){ return pAlert("Balance is low, fund wallet with ₦500"); } if(!confirm("Buy "+planLabel+" - ₦"+amount+"?")) return; setLocalBal(bal-amount); saveHist(type,amount); if(is1GB) creditReferrerIfNeeded(); await refreshBalance(); await loadHistory(); updateReferUI(); if(supa){ supa.from('wallets').select('*').eq('phone',phone).maybeSingle().then(function(w){ if(w.data) supa.from('wallets').update({balance:Number(w.data.balance)-amount}).eq('phone',phone); }).catch(function(){}); supa.from('orders').insert([{phone:phone,recipient:recipient,network:network,plan:planLabel,amount:amount,status:'pending',referral_code:localStorage.getItem('payyou_referred_by_'+phone)||null}]).then(function(){}).catch(function(){}); } pAlert("Order saved! We will deliver it."); }
+function loginSuccess(showWelcome){ document.getElementById('userPhone').innerText=phone; document.getElementById('myReferCode').innerText=myCode(); localStorage.setItem('payyou_phone_for_code_'+myCode(), phone); localStorage.setItem('payyou_session', phone); document.getElementById('loginCard').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); showPage('Home'); refreshBalance(); loadHistory(); claimPendingRewards(); updateReferUI(); if(showWelcome!==false) pAlert("Welcome "+phone); }
+document.getElementById('loginBtn').addEventListener('click', async function(){ var ph=document.getElementById('phoneInput').value.trim(); var pw=document.getElementById('passInput').value.trim(); var refCode=document.getElementById('signupReferInput').value.trim().toUpperCase(); if(ph.length<10||pw.length<4){ pAlert("Enter phone + password (min 4)"); return; } if(supa){ try{ var supaPromise=supa.from('wallets').select('*').eq('phone',ph).maybeSingle(); var timeoutPromise=new Promise(function(resolve){ setTimeout(function(){ resolve({timedOut:true}); },3000); }); var res=await Promise.race([supaPromise,timeoutPromise]); if(res && !res.timedOut && !res.error){ if(!res.data){ var insPromise=supa.from('wallets').insert([{phone:ph,balance:0,password:pw,referral_code:"PY"+ph.slice(-4),referred_by:refCode||null}]); var insTimeout=new Promise(function(resolve){ setTimeout(function(){ resolve({timedOut:true}); },3000); }); var ins=await Promise.race([insPromise,insTimeout]); if(ins && ins.error) throw ins.error; phone=ph; if(refCode) saveReferralForNewUser(ph,refCode); loginSuccess(); return; } else if(res.data.password && res.data.password!==pw){ pAlert("Wrong password! Tap Forgot Password."); return; } phone=ph; if(refCode) saveReferralForNewUser(ph,refCode); loginSuccess(); return; } }catch(e){ console.log("Supabase failed, using offline login",e); } } var savedPw=localStorage.getItem('payyou_pw_'+ph); if(!savedPw){ localStorage.setItem('payyou_pw_'+ph,pw); localStorage.setItem('payyou_bal_'+ph, localStorage.getItem('payyou_bal_'+ph)||"0"); phone=ph; if(refCode) saveReferralForNewUser(ph,refCode); loginSuccess(); return; } if(savedPw!==pw){ pAlert("Wrong password! Tap Forgot Password."); return; } phone=ph; loginSuccess(); });
 document.getElementById('forgotBtn').addEventListener('click',async function(){ var ph=document.getElementById('phoneInput').value.trim(); if(ph.length<10) return pAlert("Enter phone first"); var np=prompt("Enter NEW password:"); if(!np||np.length<4) return pAlert("Too short"); localStorage.setItem('payyou_pw_'+ph,np); if(supa){ try{ await supa.from('wallets').update({password:np}).eq('phone',ph); }catch(e){} } pAlert("Password changed! Login again."); });
-document.getElementById('logoutBtn').addEventListener('click',function(){ phone=""; document.getElementById('app').classList.add('hidden'); document.getElementById('loginCard').classList.remove('hidden'); document.getElementById('passInput').value=""; });
-function handlePaystackSuccess(response){
-  var amount=Number(document.getElementById('fundAmount').value);
-  document.getElementById('fundMsg').innerText="Verifying payment... "+(response.reference||"");
-  setLocalBal(getLocalBal()+amount);
-  saveHist('funding',amount);
-  if(supa){
-    supa.from('wallets').select('*').eq('phone',phone).maybeSingle().then(function(r){
-      if(r.data){ supa.from('wallets').update({balance:Number(r.data.balance)+amount}).eq('phone',phone); }
-      else { supa.from('wallets').insert([{phone:phone,balance:amount}]); }
-    });
-  }
-  refreshBalance();
-  document.getElementById('fundMsg').innerText="Funded ₦"+amount;
-  pAlert("Funded ₦"+amount+" Ref: "+(response.reference||""));
-}
-function doFund(){
- if(!phone) return pAlert("Login first");
- var amount=Number(document.getElementById('fundAmount').value);
- if(!amount||amount<MIN_FUNDING) return pAlert("Minimum funding is ₦500 on PayYou.");
- if(typeof PaystackPop==="undefined"){ document.getElementById('fundMsg').innerText="Paystack failed to load. Check internet and try again."; return pAlert("Paystack failed to load. Check internet, close and reopen."); }
- document.getElementById('fundMsg').innerText="Opening Paystack...";
- try{
-  var payConfig = {
-    key: PAYSTACK_PUBLIC,
-    email: phone+"@payyou.ng",
-    amount: amount*100,
-    currency: "NGN",
-    ref: "PY-"+Date.now(),
-    callback: function(response){ handlePaystackSuccess(response); },
-    onSuccess: function(response){ handlePaystackSuccess(response); },
-    onClose: function(){ document.getElementById('fundMsg').innerText="Payment cancelled."; },
-    onCancel: function(){ document.getElementById('fundMsg').innerText="Payment cancelled."; }
-  };
-  if(PaystackPop.newTransaction){
-    PaystackPop.newTransaction(payConfig);
-  } else {
-    var handler = PaystackPop.setup(payConfig);
-    handler.openIframe();
-  }
- }catch(e){ document.getElementById('fundMsg').innerText="Paystack error: "+e.message; pAlert("Paystack error: "+e.message); }
-}
+document.getElementById('logoutBtn').addEventListener('click',function(){ phone=""; localStorage.removeItem('payyou_session'); document.getElementById('app').classList.add('hidden'); document.getElementById('loginCard').classList.remove('hidden'); document.getElementById('passInput').value=""; });
+function handlePaystackSuccess(response){ var amount=Number(document.getElementById('fundAmount').value); document.getElementById('fundMsg').innerText="Verifying payment... "+(response.reference||""); setLocalBal(getLocalBal()+amount); saveHist('funding',amount); if(supa){ supa.from('wallets').select('*').eq('phone',phone).maybeSingle().then(function(r){ if(r.data){ supa.from('wallets').update({balance:Number(r.data.balance)+amount}).eq('phone',phone); } else { supa.from('wallets').insert([{phone:phone,balance:amount}]); } }); } refreshBalance(); document.getElementById('fundMsg').innerText="Funded ₦"+amount; pAlert("Funded ₦"+amount+" Ref: "+(response.reference||"")); }
+function doFund(){ if(!phone) return pAlert("Login first"); var amount=Number(document.getElementById('fundAmount').value); if(!amount||amount<MIN_FUNDING) return pAlert("Minimum funding is ₦500 on PayYou."); if(typeof PaystackPop==="undefined"){ document.getElementById('fundMsg').innerText="Paystack failed to load. Check internet and try again."; return pAlert("Paystack failed to load. Check internet, close and reopen."); } document.getElementById('fundMsg').innerText="Opening Paystack..."; try{ var payConfig={key:PAYSTACK_PUBLIC,email:phone+"@payyou.ng",amount:amount*100,currency:"NGN",ref:"PY-"+Date.now(),callback:function(response){ handlePaystackSuccess(response); },onSuccess:function(response){ handlePaystackSuccess(response); },onClose:function(){ document.getElementById('fundMsg').innerText="Payment cancelled."; },onCancel:function(){ document.getElementById('fundMsg').innerText="Payment cancelled."; }}; if(PaystackPop.newTransaction){ PaystackPop.newTransaction(payConfig); } else { var handler=PaystackPop.setup(payConfig); handler.openIframe(); } }catch(e){ document.getElementById('fundMsg').innerText="Paystack error: "+e.message; pAlert("Paystack error: "+e.message); } }
 document.getElementById('fundBtn').addEventListener('click',doFund);
 document.getElementById('buyDataBtn').addEventListener('click',async function(){ var rec=document.getElementById('recipientData').value.trim(); if(!rec) return pAlert("Enter recipient"); var amt=getPrice(selectedPlan); var is1GB=selectedPlan.l.indexOf("1GB")!==-1; if(!is1GB && amt<MIN_AMOUNT) return pAlert("Minimum data is ₦1000. 1GB plans are allowed."); if(selectedPlan.offer&&offerCount<10){offerCount++; document.getElementById('offerLeft').innerText=(10-offerCount)+" left"; document.getElementById('offerLeft2').innerText=(10-offerCount)+" left";} await doBuy('data',amt,selectedPlan.l,rec,document.getElementById('network').value); });
 document.getElementById('buyAirtimeBtn').addEventListener('click',async function(){ var rec=document.getElementById('recipientAirtime').value.trim(); var amt=Number(document.getElementById('airtimeAmount').value); if(!rec||!amt) return pAlert("Enter recipient + amount"); if(amt<MIN_AIRTIME) return pAlert("Minimum airtime purchase should be ₦100."); await doBuy('airtime',amt,"Airtime ₦"+amt,rec,document.getElementById('networkAirtime').value); });
@@ -402,28 +183,11 @@ document.getElementById('buyTvBtn').addEventListener('click',async function(){ v
 document.getElementById('refreshHist').onclick=function(){ loadHistory(); };
 document.getElementById('copyReferBtn').onclick=function(){ var link=document.getElementById('myReferLink').value; navigator.clipboard.writeText(link).then(function(){ pAlert("Referral link copied! Share it."); },function(){ pAlert(link); }); };
 document.getElementById('shareReferBtn').onclick=function(){ var link=document.getElementById('myReferLink').value; window.open("https://wa.me/?text="+encodeURIComponent("Join PayYou with my code "+myCode()+" and buy 1GB Data! I earn ₦1000 for every 10 people. Link: "+link),"_blank"); };
-document.getElementById('applyReferBtn').onclick=function(){
-  if(!phone) return pAlert("Login first");
-  var code=document.getElementById('referInput').value.trim().toUpperCase();
-  if(!code) return pAlert("Enter a referral code");
-  if(code===myCode()) return pAlert("You cannot use your own code");
-  if(localStorage.getItem('payyou_referred_by_'+phone)) return pAlert("You already used a referral code: "+localStorage.getItem('payyou_referred_by_'+phone));
-  saveReferralForNewUser(phone, code);
-  document.getElementById('referApplyMsg').innerText="Referral code "+code+" applied! Buy 1GB Data to give your referrer credit.";
-  pAlert("Referral code applied! Now buy 1GB Data to count for your referrer.");
-  updateReferUI();
-};
-(function(){
-  var params=new URLSearchParams(location.search);
-  var ref=params.get('ref');
-  if(ref){
-    ref=ref.toUpperCase();
-    document.getElementById('signupReferInput').value=ref;
-    document.getElementById('refInviteMsg').innerText="You were invited with code "+ref+" — Register to count for them!";
-  }
-})();
+document.getElementById('applyReferBtn').onclick=function(){ if(!phone) return pAlert("Login first"); var code=document.getElementById('referInput').value.trim().toUpperCase(); if(!code) return pAlert("Enter a referral code"); if(code===myCode()) return pAlert("You cannot use your own code"); if(localStorage.getItem('payyou_referred_by_'+phone)) return pAlert("You already used a referral code: "+localStorage.getItem('payyou_referred_by_'+phone)); saveReferralForNewUser(phone,code); document.getElementById('referApplyMsg').innerText="Referral code "+code+" applied! Buy 1GB Data to give your referrer credit."; pAlert("Referral code applied! Now buy 1GB Data to count for your referrer."); updateReferUI(); };
+(function(){ var params=new URLSearchParams(location.search); var ref=params.get('ref'); if(ref){ ref=ref.toUpperCase(); document.getElementById('signupReferInput').value=ref; document.getElementById('refInviteMsg').innerText="You were invited with code "+ref+" — Register to count for them!"; } })();
 document.getElementById('network').onchange=function(){ renderPlans(); };
-renderPlans(); renderPricing();
+renderPlans(); renderPricing(); updateEyeIcons();
+(function(){ var saved=localStorage.getItem('payyou_session'); if(saved && saved.length>=10){ phone=saved; document.getElementById('phoneInput').value=saved; loginSuccess(false); } })();
 </script>
 </body>
 </html>
