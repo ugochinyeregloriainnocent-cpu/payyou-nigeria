@@ -1,0 +1,11 @@
+{
+  "name": "PayYou - Fast Data & Airtime",
+  "short_name": "PayYou",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f2f2f2",
+  "theme_color": "#0A8A3E",
+  "icons": [
+    { "src": "IMG-20261105-WA3399.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any maskable" }
+  ]
+}
